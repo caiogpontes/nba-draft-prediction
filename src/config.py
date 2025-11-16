@@ -5,7 +5,7 @@ from dataclasses import dataclass
 # --- Configuração de Logs ---
 def setup_logging():
     logging.basicConfig(
-        level=logging.DEBUG, # Use DEBUG para dev, INFO para prod
+        level=logging.INFO, # Use DEBUG para dev, INFO para prod
         format='%(asctime)s - %(levelname)s - [%(name)s] - %(message)s',
         handlers=[logging.StreamHandler()]
     )
@@ -22,7 +22,7 @@ HEADERS = {
 @dataclass
 class ScraperConfig:
     max_retries: int = 3
-    timeout: int = 15
+    timeout: int = 60
     delay_between_requests: int = 2
 
 # --- Mapeamento de Renomeação ---
@@ -33,7 +33,7 @@ COLLEGE_RENAMES = {
         'AST%': 'AST_pct',  'STL%': 'STL_pct',    'BLK%': 'BLK_pct',
         'TOV%': 'TOV_pct',  'USG%': 'USG_pct'
     },
-    'players_per_poss': {
+    'players_per_min': {
         'Team': 'Tm',       'FG%': 'FG_pct',      '3P%': '3P_pct',
         '2P%': '2P_pct',    'eFG%': 'eFG_pct',    'FT%': 'FT_pct'
     }

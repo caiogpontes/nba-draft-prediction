@@ -81,7 +81,9 @@ class PlayerStatsParser:
                 return []
 
             if 'Season' in df.columns:
-                df = df[~df['Season'].astype(str).isin(['Career'])].copy()
+                invalid_rows = ['Career', 'Total']
+                df = df[~df['Season'].astype(str).isin(invalid_rows)].copy()
+                df = df[df['Season'].str.contains('-', na=False)] # Apenas temporadas válidas (ex: 2018-19)
 
             # Aplica renomeação baseada no dicionário externo (OCP Compliance)
             if table_id in COLLEGE_RENAMES:

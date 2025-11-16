@@ -38,7 +38,7 @@ class DraftParser:
             df['Player_Link'] = df['Player'].map(lambda x: meta_data.get(x, {}).get('link'))
             df['Player_ID'] = df['Player'].map(lambda x: meta_data.get(x, {}).get('id'))
             
-            required = ['Pk', 'Player', 'Player_ID', 'Player_Link', 'College']
+            required = ['Pk', 'Player', 'Player_ID', 'Player_Link'] 
             df.dropna(subset=required, inplace=True)
             
             return df

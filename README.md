@@ -33,7 +33,7 @@ Clone este repositório e instale as dependências:
 
 ```bash
 # 1. Clone o projeto
-git clone [https://github.com/SEU_USUARIO/previsao_jogadores_universitarios_nba.git](https://github.com/SEU_USUARIO/previsao_jogadores_universitarios_nba.git)
+git clone [https://github.com/SEU_USUARIO/nba-draft-prediction.git](https://github.com/SEU_USUARIO/nba-draft-prediction.git)
 cd previsao_jogadores_universitarios_nba
 
 # 2. (Opcional, mas recomendado) Crie um ambiente virtual
@@ -59,7 +59,7 @@ python main.py
 O projeto é dividido em duas partes principais: o pipeline de engenharia (`src`) e os notebooks de análise (`notebooks`).
 
 ```
-previsao_jogadores_universitarios_nba/
+nba-draft-prediction/
 │
 ├── data/
 │   └── .gitkeep             # Onde os .csv de saída são salvos
@@ -102,7 +102,7 @@ previsao_jogadores_universitarios_nba/
 
 ## ✍️ Autor
 
-**[Seu Nome]**
+**[Caio Gonçalves Pontes]**
 * [LinkedIn](https://www.linkedin.com/in/caiogpontes/)
 * [GitHub](https://github.com/caiogpontes)
 

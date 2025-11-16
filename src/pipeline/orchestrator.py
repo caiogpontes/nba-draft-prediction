@@ -45,11 +45,15 @@ class Orchestrator:
         draft_df = DataManager.load_csv(files['draft'])
         if draft_df.empty: return
 
+        # Retirar os jogadores que não vieram via college
+        required = ['College']
+        draft_df.dropna(subset=required, inplace=True)
+
         # Buffers em memória
         data_buffers = {
             'nba': [], 
             'c_adv': [], 
-            'c_poss': []
+            'c_min': []
         }
         new_college_links = {}
         
@@ -80,14 +84,14 @@ class Orchestrator:
                     c_html = self.client.get_html(c_link)
                     if c_html:
                         data_buffers['c_adv'].extend(PlayerStatsParser.parse_stats_college(c_html, 'players_advanced', pid))
-                        data_buffers['c_poss'].extend(PlayerStatsParser.parse_stats_college(c_html, 'players_per_poss', pid))
+                        data_buffers['c_min'].extend(PlayerStatsParser.parse_stats_college(c_html, 'players_per_min', pid))
             
             time.sleep(self.client.config.delay_between_requests)
 
         # Persistência dos Dados
         if data_buffers['nba']: DataManager.save_csv(pd.DataFrame(data_buffers['nba']), files['nba'])
         if data_buffers['c_adv']: DataManager.save_csv(pd.DataFrame(data_buffers['c_adv']), files['college_adv'])
-        if data_buffers['c_poss']: DataManager.save_csv(pd.DataFrame(data_buffers['c_poss']), files['college_poss'])
+        if data_buffers['c_min']: DataManager.save_csv(pd.DataFrame(data_buffers['c_min']), files['college_per_min'])
 
         # Atualização dos Links no arquivo original
         if new_college_links:

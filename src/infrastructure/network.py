@@ -13,21 +13,32 @@ class NetworkClient:
         self.config = config
 
     def get_html(self, url: str) -> Optional[str]:
-        for attempt in range(1, self.config.max_retries + 1):
-            try:
-                response = self.scraper.get(url, headers=HEADERS, timeout=self.config.timeout)
-                response.encoding = 'utf-8' # Força UTF-8
+            for attempt in range(1, self.config.max_retries + 1):
+                try:
+                    response = self.scraper.get(url, headers=HEADERS, timeout=self.config.timeout)
+                    response.encoding = 'utf-8' 
+                    
+                    if response.status_code == 200:
+                        
+                        # --- NOVA LINHA ---
+                        # Se não foi a primeira tentativa, avisa que o retry funcionou
+                        if attempt > 1:
+                            logger.info(f"Sucesso na tentativa {attempt}/{self.config.max_retries} para {url}")
+                        # --- FIM DA NOVA LINHA ---
+                            
+                        return response.text
+                    
+                    logger.warning(f"HTTP {response.status_code} em {url}. Tentativa {attempt}/{self.config.max_retries}")
                 
-                if response.status_code == 200:
-                    return response.text
+                except Exception as e:
+                    # --- MUDANÇA: de ERROR para WARNING ---
+                    # Isso não é um erro fatal ainda, é apenas um aviso de tentativa.
+                    logger.warning(f"Erro de rede na tentativa {attempt}/{self.config.max_retries}: {e} em {url}")
+                    # --- FIM DA MUDANÇA ---
                 
-                logger.warning(f"HTTP {response.status_code} em {url}. Tentativa {attempt}/{self.config.max_retries}")
+                time.sleep(2 ** attempt) # Backoff exponencial
             
-            except Exception as e:
-                logger.error(f"Erro de rede: {e} em {url}")
-            
-            time.sleep(2 ** attempt) # Backoff exponencial
-        
-        logger.error(f"Falha definitiva ao acessar: {url}")
-        return None
+            # Este é o único erro que deve ser 'ERROR'
+            logger.error(f"Falha definitiva ao acessar: {url} após {self.config.max_retries} tentativas.")
+            return None
 
