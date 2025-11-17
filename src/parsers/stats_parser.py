@@ -52,7 +52,7 @@ class PlayerStatsParser:
             
             # Filtros e Limpeza
             if 'Season' in df.columns:
-                invalid_rows = ['Career', 'Total', '2025-2026']
+                invalid_rows = ['Career', 'Total'] # '2025-2026'
                 df = df[~df['Season'].astype(str).isin(invalid_rows)].copy()
                 df = df[df['Season'].str.contains('-', na=False)] # Apenas temporadas válidas (ex: 2018-19)
 
@@ -63,7 +63,7 @@ class PlayerStatsParser:
                 df['VORP'] = pd.to_numeric(df['VORP'], errors='coerce').fillna(0)
 
             df['Player_ID'] = player_id
-            return df.head(5).to_dict('records')
+            return df.to_dict('records') #.head(5)
 
         except Exception as e:
             logger.debug(f"Erro parsing NBA para {player_id}: {e}")

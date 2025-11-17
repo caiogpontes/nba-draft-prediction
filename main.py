@@ -16,8 +16,8 @@ FILES = {
     'mock': "data/mock_drafts.csv"
 }
 
-START_YEAR = 2000
-END_YEAR = 2001
+START_YEAR = 2018
+END_YEAR = 2018
 
 if __name__ == "__main__":
     logger.info("Iniciando pipeline de dados da NBA...")
@@ -25,10 +25,10 @@ if __name__ == "__main__":
     bot = Orchestrator()
     
     # # ETAPA 1: Coletar Drafts Reais (basketbal9 l-reference)
-    # bot.run_drafts(start=START_YEAR, end=END_YEAR, output=FILES['draft'])
+    bot.run_drafts(start=START_YEAR, end=END_YEAR, output=FILES['draft'])
     
     # # ETAPA 2: Coletar Estatísticas dos Jogadores (baseado no Passo 1)
-    # bot.run_stats(files=FILES)
+    bot.run_stats(files=FILES)
 
     # ETAPA 3: Coletar Mock Drafts (nbadraft.net)
     bot.run_mocks(start=START_YEAR, end=END_YEAR, output=FILES['mock'])
