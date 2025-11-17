@@ -20,7 +20,9 @@ class Orchestrator:
 
     def _get_mock_draft_url(self, year: int) -> str:
         """Encapsula a lógica de qual URL usar para mocks."""
-        if year < 2009:
+        if year == 2005:
+            return f"{BASE_URL_NBADRAFT_NET}/{year}-nba-draft/"
+        elif year < 2009:
             return f"{BASE_URL_NBADRAFT_NET}/mock/{year}-mock-draft/"
         else:
             return f"{BASE_URL_NBADRAFT_NET}/nba-mock-drafts/?year-mock={year}"

@@ -2,38 +2,47 @@
 import pandas as pd
 import logging
 from io import StringIO
-from typing import Optional, List, Dict
-import re # <-- Movid_para o topo
-from src.config import MOCK_DRAFT_RENAMES
+from typing import Optional, List
+import re 
+from src.config import MOCK_DRAFT_RENAMES # Importa do config
 
 logger = logging.getLogger(__name__)
 
 class MockDraftParser:
     """
-    - Constantes definidas para Regex ("Valores Mágicos").
-    - _parse_antigo foi quebrado em helpers (SRP).
+    Parser V27: Versão final com regra de limpeza forçada.
+    - Aplica a regra de "Manter apenas as 2 primeiras palavras" no nome
+      do jogador para os formatos antigos (2000-2008), removendo College/Time.
     """
     
-    # --- Constantes de Classe (Auto-documentação) ---
+    # --- Constantes de Classe (V27) ---
     
-    # Regex para extrair "Fr", "So", "Jr", "Sr", "HSSr"
-    _CLASS_PATTERN = re.compile(r'\b(Fr|So|Jr|Sr|HSSr)\b', re.IGNORECASE)
+    _CLASS_PATTERN = re.compile(r'(Fr|So|Jr|Sr|HSSr)', re.IGNORECASE)
+    _POS_PATTERN = re.compile(r'\b(C|PF|SF|SG|PG|G|F|PG/SG|SG/SF|SF/PF)\b')
     
-    # Regex para separar o nome do jogador do resto (ex: "Nome 6-10 ...")
-    _PLAYER_NAME_SPLIT_PATTERN = re.compile(r'\s(?=[567]-\d{1,2})')
-    
-    # Colunas que definem uma tabela "moderna" (após padronização)
+    # V27 - MASTER SPLIT PATTERN
+    _OLD_FORMAT_SPLIT_PATTERN = re.compile(r"""
+        \s                        # Encontra um espaço
+        (?=                       # Seguido por (Lookahead):
+            # 1. Altura (com ou sem ponto, ex: ". 6-9" ou " 7-0")
+            (\.?"?\s?[567]-\d{1,2})
+            |                     # OU
+            # 2. Classe (ex: Sr, Jr)
+            (Fr|So|Jr|Sr|HSSr)
+            |                     # OU
+            # 3. Posição (ex: PF, C, PG/SG)
+            (\b(C|PF|SF|SG|PG|G|F|PG/SG|SG/SF|SF/PF)\b)
+        )
+    """, re.IGNORECASE | re.VERBOSE)
+
     _REQUIRED_MODERN_COLS = {'Mock_Pick', 'Player', 'College'}
-    
-    # Valores que definem uma tabela "antiga" na primeira coluna
-    _ANTIGO_PK_VALUES = ["1", "1.", "1.0"]
+    _OLD_FORMAT_PK_VALUES = ["1", "1.", "1.0"]
 
     
     @staticmethod
     def parse(html_content: str, year: int) -> Optional[pd.DataFrame]:
         """
-        Método principal (Dispatcher). Tenta o formato moderno primeiro,
-        depois faz fallback para o formato antigo.
+        Método principal (Dispatcher).
         """
         try:
             all_tables = pd.read_html(StringIO(html_content))
@@ -53,10 +62,12 @@ class MockDraftParser:
 
             # --- Estratégia 2: Fallback para o Antigo ---
             logger.debug(f"Formato moderno não encontrado para {year}. Tentando formato ANTIGO...")
-            df_antigo = MockDraftParser._parse_antigo(all_tables, year)
-            if df_antigo is not None:
+            
+            df_old = MockDraftParser._parse_old(all_tables, year) 
+            
+            if df_old is not None:
                 logger.debug(f"Formato ANTIGO detectado e parseado para {year}.")
-                return df_antigo
+                return df_old
             
             logger.warning(f"Nenhuma tabela válida (moderna ou antiga) foi encontrada no ano {year}.")
             return pd.DataFrame()
@@ -67,14 +78,13 @@ class MockDraftParser:
 
     @staticmethod
     def _parse_modern(all_tables: List[pd.DataFrame], year: int) -> Optional[pd.DataFrame]:
-        """ Tenta parsear usando a lógica moderna (baseada em cabeçalhos V14). """
+        """ Tenta parsear usando a lógica moderna. """
         found_tables_buffer = [] 
         
         for df_table in all_tables:
             df = df_table.copy()
             df.rename(columns=MOCK_DRAFT_RENAMES, inplace=True, errors='ignore')
 
-            # Usa a constante de classe
             if MockDraftParser._REQUIRED_MODERN_COLS.issubset(set(df.columns)):
                 logger.debug(f"Formato moderno: Tabela candidata encontrada (Shape={df.shape})")
                 found_tables_buffer.append(df)
@@ -95,8 +105,8 @@ class MockDraftParser:
         return df_combined[cols_to_keep].sort_values(by='Mock_Pick')
 
     @staticmethod
-    def _parse_antigo(all_tables: List[pd.DataFrame], year: int) -> Optional[pd.DataFrame]:
-        """ Tenta parsear usando a lógica antiga (baseada em '1.0' e shape). """
+    def _parse_old(all_tables: List[pd.DataFrame], year: int) -> Optional[pd.DataFrame]:
+        """ Tenta parsear usando a lógica antiga. """
         
         # --- 1. Encontra a Tabela ---
         found_df = None
@@ -105,52 +115,50 @@ class MockDraftParser:
                 continue
             
             col_0_values = df_table.iloc[:, 0].astype(str).str.strip()
-            # Usa a constante de classe
-            if col_0_values.isin(MockDraftParser._ANTIGO_PK_VALUES).any():
-                found_df = df_table.copy()
+            if col_0_values.isin(MockDraftParser._OLD_FORMAT_PK_VALUES).any():
+                found_df = df_table.copy() 
                 break 
         
         if found_df is None:
-            return None # Falha: Não encontrou formato antigo
+            return None 
 
-        # --- 2. Reformata a Tabela ---
-        df_combined = MockDraftParser._reshape_antigo_table(found_df)
+        # --- 2. Reformata o DataFrame ---
+        df_combined = MockDraftParser._reshape_old_table(found_df)
         if df_combined is None:
             logger.warning(f"Formato antigo encontrado, mas não pôde ser reformatado (Ano: {year}).")
             return None
 
         # --- 3. Extrai e Limpa os Dados ---
-        df_final = MockDraftParser._extract_antigo_data(df_combined, year)
+        df_final = MockDraftParser._extract_old_data(df_combined, year)
         
         return df_final
 
     @staticmethod
-    def _reshape_antigo_table(df: pd.DataFrame) -> Optional[pd.DataFrame]:
-        """ Helper que contém a lógica de 'shape' (8, 6, 3 colunas). """
+    def _reshape_old_table(df: pd.DataFrame) -> Optional[pd.DataFrame]:
+        """ Helper que contém a lógica de 'shape'. """
         
         shape = df.shape[1]
         
-        if shape == 8: # Formato 2001
-            logger.debug("Processando tabela como 8 colunas (Formato até 2008).")
+        if shape == 8: # Formato 2001-2008
+            logger.debug("Processando tabela como 8 colunas (Formato 2001-2008).")
             df_part1 = df.iloc[:, [0, 2, 3]].copy()
             df_part1.columns = ['Mock_Pick_Raw', 'Team_Raw', 'Player_Info_Raw']
             df_part2 = df.iloc[:, [4, 6, 7]].copy()
             df_part2.columns = ['Mock_Pick_Raw', 'Team_Raw', 'Player_Info_Raw']
             return pd.concat([df_part1, df_part2], ignore_index=True)
         
-        elif shape == 6: # Formato 6 colunas
-            logger.debug("Processando tabela como 6 colunas.")
-            col_names = ['Mock_Pick_Raw', 'Team_Raw', 'Player_Info_Raw',
-                         'Mock_Pick_Raw_2', 'Team_Raw_2', 'Player_Info_Raw_2']
-            df.columns = col_names
-            df_part1 = df[['Mock_Pick_Raw', 'Team_Raw', 'Player_Info_Raw']].copy()
-            df_part2 = df[['Mock_Pick_Raw_2', 'Team_Raw_2', 'Player_Info_Raw_2']].copy()
-            df_part2.columns = ['Mock_Pick_Raw', 'Team_Raw', 'Player_Info_Raw']
+        elif shape == 6: # Formato 2000
+            logger.debug("Processando tabela como 6 colunas (Formato 2000).")
+            df_part1 = df.iloc[:, [0, 1, 2]].copy()
+            df_part1.columns = ['Mock_Pick_Raw', 'Player_Info_Raw', 'Team_Raw']
+            
+            df_part2 = df.iloc[:, [3, 4, 5]].copy()
+            df_part2.columns = ['Mock_Pick_Raw', 'Player_Info_Raw', 'Team_Raw']
             return pd.concat([df_part1, df_part2], ignore_index=True)
         
-        elif shape >= 3: # Formato 3 colunas
+        elif shape >= 3: # Formato 3 colunas (fallback)
             logger.debug("Processando tabela como 3 colunas.")
-            col_names = ['Mock_Pick_Raw', 'Team_Raw', 'Player_Info_Raw']
+            col_names = ['Mock_Pick_Raw', 'Player_Info_Raw', 'Team_Raw']
             df_combined = df.iloc[:, :3].copy()
             df_combined.columns = col_names
             return df_combined
@@ -158,27 +166,48 @@ class MockDraftParser:
         return None # Formato inesperado
 
     @staticmethod
-    def _extract_antigo_data(df: pd.DataFrame, year: int) -> pd.DataFrame:
-        """ Helper que limpa e extrai dados do DataFrame antigo reformatado. """
+    def _extract_old_data(df: pd.DataFrame, year: int) -> pd.DataFrame:
+        """ 
+        Helper V28: Extrai dados e aplica limpeza.
+        Aplica a REGRA DE 2 PALAVRAS apenas para o ano 2000.
+        """
         
         df['Year'] = year
         df['Mock_Pick'] = pd.to_numeric(df['Mock_Pick_Raw'], errors='coerce').astype('Int64')
         df.dropna(subset=['Mock_Pick', 'Player_Info_Raw'], inplace=True)
         
-        # Converte para string para garantir que .str funcione
-        info_raw = df['Player_Info_Raw'].astype(str)
+        info_raw_series = df['Player_Info_Raw'].astype(str)
         
-        # --- Extração usando Constantes de Classe ---
+        # --- Extração ---
         
-        # 1. Extrai Player
-        df['Player'] = info_raw.str.split(MockDraftParser._PLAYER_NAME_SPLIT_PATTERN, n=1).str[0].str.strip()
-        
-        # 2. Extrai Class
-        df['Class'] = info_raw.str.extract(MockDraftParser._CLASS_PATTERN).fillna('Unknown')
+        # 1. Extrai Class e Pos
+        df['Class'] = info_raw_series.str.extract(MockDraftParser._CLASS_PATTERN).iloc[:, 0].fillna('Unknown')
+        df['Pos'] = info_raw_series.str.extract(MockDraftParser._POS_PATTERN).iloc[:, 0].fillna('Unknown')
 
-        # 3. Extrai Team
+        # 2. Extrai Team
         df['Team'] = df['Team_Raw'].astype(str).str.strip()
+
+        # 3. Limpeza Inicial do Player (Remove Altura, Pos, Class da string)
+        temp_player_col = info_raw_series.str.split(
+            MockDraftParser._OLD_FORMAT_SPLIT_PATTERN, 
+            n=1, 
+            regex=True
+        ).str[0]
         
-        df_final = df[['Year', 'Mock_Pick', 'Player', 'Team', 'Class']].copy()
+        # Remove pontuações
+        temp_player_col = temp_player_col.str.replace(r'[\(\)\*."]', '', regex=True).str.strip()
+        
+        # --- REGRA DE NEGÓCIO (V28): APLICADA APENAS PARA 2000 ---
+        # O ano 2000 não tem separador de altura, então cortamos após a 2ª palavra.
+        # Nos outros anos, o Regex acima já deve ter separado pelo padrão de altura.
+        if year == 2000:
+            df['Player'] = temp_player_col.apply(
+                lambda x: " ".join(x.split()[:2]) if isinstance(x, str) else x
+            )
+        else:
+            df['Player'] = temp_player_col
+        
+        # Seleciona as colunas finais
+        df_final = df[['Year', 'Mock_Pick', 'Player', 'Team', 'Class', 'Pos']].copy()
         
         return df_final
