@@ -1,23 +1,11 @@
 # main.py
 import logging
 from src.pipeline.orchestrator import Orchestrator
-from src.config import setup_logging
+from src.config import setup_logging, FILES, START_YEAR, END_YEAR
 
 # Configura o logging
 setup_logging()
 logger = logging.getLogger(__name__)
-
-# Configuração dos arquivos
-FILES = {
-    'draft': "data/nba_drafts.csv",
-    'nba': "data/nba_player_advanced.csv",
-    'college_adv': "data/college_player_advanced.csv",
-    'college_per_min': "data/college_player_per_min.csv",
-    'mock': "data/mock_drafts.csv"
-}
-
-START_YEAR = 2000
-END_YEAR = 2025
 
 if __name__ == "__main__":
     logger.info("Iniciando pipeline de dados da NBA...")

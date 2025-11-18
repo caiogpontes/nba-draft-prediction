@@ -10,6 +10,20 @@ def setup_logging():
         handlers=[logging.StreamHandler()]
     )
 
+# Configuração dos arquivos
+FILES = {
+    'draft': "data/nba_drafts.csv",
+    'nba': "data/nba_player_advanced.csv",
+    'college_adv': "data/college_player_advanced.csv",
+    'college_per_min': "data/college_player_per_min.csv",
+    'mock': "data/mock_drafts.csv"
+}
+
+# AAnos de início e fim para coleta de dados
+START_YEAR = 2000
+END_YEAR = 2025
+
+
 # --- Configuração de Rede ---
 BASE_URL_BASKETBALL_REF = "https://www.basketball-reference.com"
 BASE_URL_NBADRAFT_NET = "https://www.nbadraft.net" 

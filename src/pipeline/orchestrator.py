@@ -74,9 +74,8 @@ class Orchestrator:
         draft_df = DataManager.load_csv(files['draft'])
         if draft_df.empty: return
 
-        # Filtro Não-Destrutivo
+        # --- Filtro Não-Destrutivo ---
         if 'College' not in draft_df.columns:
-            logger.warning("Coluna 'College' não encontrada no arquivo de draft.")
             has_college_mask = pd.Series([False] * len(draft_df), index=draft_df.index)
         else:
             has_college_mask = draft_df['College'].notna() & (draft_df['College'].astype(str).str.strip() != '')
@@ -85,10 +84,10 @@ class Orchestrator:
         if ignored_count > 0:
             logger.info(f"Ignorados {ignored_count} jogadores sem College.")
 
-        # 1. Identifica quem já foi processado
+        # 1. Identifica processados
         processed_nba_ids = self._get_existing_ids(files['nba'], 'Player_ID')
         
-        # Listas para armazenar APENAS OS NOVOS DADOS durante o loop
+        # --- OTIMIZAÇÃO: Listas vazias (não carregamos o histórico para a RAM) ---
         new_nba_data = []
         new_college_adv = []
         new_college_per_min = []
@@ -108,7 +107,7 @@ class Orchestrator:
 
         logger.info(f"Iniciando processamento de {total_pending} jogadores pendentes...")
         
-        unsaved_count = 0 # Contador para controlar o salvamento parcial
+        unsaved_count = 0 
         
         for counter, (idx, row) in enumerate(pending_players.iterrows(), start=1):
             pid = row['Player_ID']
@@ -134,6 +133,7 @@ class Orchestrator:
                     c_html = self.client.get_html(c_link)
                     if c_html:
                         c_adv = PlayerStatsParser.parse_stats_college(c_html, 'players_advanced', pid)
+                        # Atenção ao ID da tabela vs Nome do Arquivo
                         c_per_min = PlayerStatsParser.parse_stats_college(c_html, 'players_per_poss', pid)
                         
                         if c_adv: new_college_adv.append(pd.DataFrame(c_adv))
@@ -141,13 +141,13 @@ class Orchestrator:
             
             unsaved_count += 1
             
-            # Salva PARCIALMENTE a cada 10 novos jogadores processados
+            # --- OTIMIZAÇÃO: Salva e LIMPA a memória ---
             if unsaved_count >= 10:
                 self._append_and_save(new_nba_data, files['nba'])
                 self._append_and_save(new_college_adv, files['college_adv'])
                 self._append_and_save(new_college_per_min, files['college_per_min'])
                 
-                # Limpa os buffers temporários para liberar memória e evitar duplicatas
+                # Esvazia as listas para liberar memória
                 new_nba_data = []
                 new_college_adv = []
                 new_college_per_min = []
@@ -155,23 +155,22 @@ class Orchestrator:
             
             time.sleep(self.client.config.delay_between_requests)
 
-        # Salvamento Final (o que sobrou no buffer)
+        # Salvamento Final (o que sobrou)
         self._append_and_save(new_nba_data, files['nba'])
         self._append_and_save(new_college_adv, files['college_adv'])
         self._append_and_save(new_college_per_min, files['college_per_min'])
 
         if new_college_links:
             self._update_draft_links(draft_df, new_college_links, files['draft'])
-
+   
     def _append_and_save(self, new_data_list: List[pd.DataFrame], filepath: str):
         """
-        Helper OTIMIZADO: Carrega o arquivo existente, adiciona os novos dados,
-        remove duplicatas e salva.
+        Helper OTIMIZADO: Carrega, Concatena, Salva.
         """
         if not new_data_list: return
 
         try:
-            # 1. Carrega dados existentes
+            # 1. Carrega histórico (se existir)
             if os.path.exists(filepath):
                 existing_df = DataManager.load_csv(filepath)
                 all_data = [existing_df] + new_data_list
@@ -181,7 +180,7 @@ class Orchestrator:
             # 2. Concatena
             final_df = pd.concat(all_data, ignore_index=True)
             
-            # 3. Remove duplicatas
+            # 3. Remove duplicatas (Segurança)
             if 'Player_ID' in final_df.columns and 'Season' in final_df.columns:
                  final_df.drop_duplicates(subset=['Player_ID', 'Season'], inplace=True)
             else:
@@ -192,7 +191,7 @@ class Orchestrator:
             
         except Exception as e:
             logger.error(f"Erro ao salvar em {filepath}: {e}")
-
+    
     def _update_draft_links(self, df: pd.DataFrame, new_links: Dict, filename: str):
         logger.info("Atualizando links de college...")
         mapped = df['Player_ID'].map(new_links)
