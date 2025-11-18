@@ -24,12 +24,19 @@ class DataManager:
             return pd.DataFrame()
         
         try:
+            # --- CORREÇÃO V2: Forçar 'Player_ID' a ser string sempre ---
+            # Isso impede que o Pandas leia IDs como números e quebre a comparação de sets.
+            custom_dtypes = {}
+            if 'nba_player_advanced' in filename or 'college' in filename:
+                custom_dtypes['Player_ID'] = str
+            
             # Tenta ler padrão
-            df = pd.read_csv(filename)
+            df = pd.read_csv(filename, dtype=custom_dtypes)
+            
             # Detecção automática de erro de separador (comum em Excel BR)
             if len(df.columns) == 1 and ';' in str(df.iloc[0,0]): 
                 logger.info("Detectado separador ';'. Recarregando arquivo...")
-                df = pd.read_csv(filename, sep=';')
+                df = pd.read_csv(filename, sep=';', dtype=custom_dtypes)
             return df
         except Exception as e:
             logger.error(f"Erro ao ler {filename}: {e}")

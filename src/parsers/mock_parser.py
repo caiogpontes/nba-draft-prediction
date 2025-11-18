@@ -168,46 +168,65 @@ class MockDraftParser:
     @staticmethod
     def _extract_old_data(df: pd.DataFrame, year: int) -> pd.DataFrame:
         """ 
-        Helper V28: Extrai dados e aplica limpeza.
-        Aplica a REGRA DE 2 PALAVRAS apenas para o ano 2000.
+        Helper V27: Corrige a poluição da string 'Player_Info_Raw' 
+        removendo o nome do Time.
         """
         
         df['Year'] = year
         df['Mock_Pick'] = pd.to_numeric(df['Mock_Pick_Raw'], errors='coerce').astype('Int64')
         df.dropna(subset=['Mock_Pick', 'Player_Info_Raw'], inplace=True)
         
+        # --- V27 FIX: Remove o Nome do Time da String Raw ---
+        if 2001 <= year <= 2008:
+            # 1. Cria uma coluna do Time limpa para ser usada na substituição
+            df['Team_Clean'] = df['Team_Raw'].astype(str).str.replace(r'[\(\)\*]', '', regex=True).str.strip()
+            
+            # 2. Remove o Team_Clean da Player_Info_Raw. (Usamos apply e replace(..., 1) para remover apenas a primeira ocorrência)
+            df['Player_Info_Raw'] = df.apply(
+                lambda row: str(row['Player_Info_Raw']).replace(row['Team_Clean'], '', 1).strip(),
+                axis=1
+            )
+        else:
+            # Para o ano 2000 e outros, o Team_Raw é o College/Time
+            df['Team_Clean'] = df['Team_Raw'].astype(str).str.strip()
+        # -----------------------------------------------------------------
+
         info_raw_series = df['Player_Info_Raw'].astype(str)
         
         # --- Extração ---
         
-        # 1. Extrai Class e Pos
+        # 1. Extrai Class (ex: Sr, So)
         df['Class'] = info_raw_series.str.extract(MockDraftParser._CLASS_PATTERN).iloc[:, 0].fillna('Unknown')
+        
+        # 2. Extrai Posição (ex: PF, C, PG/SG)
         df['Pos'] = info_raw_series.str.extract(MockDraftParser._POS_PATTERN).iloc[:, 0].fillna('Unknown')
 
-        # 2. Extrai Team
-        df['Team'] = df['Team_Raw'].astype(str).str.strip()
+        # 3. Extrai Player (Limpando a string)
+        split_pattern_class = re.compile(r'\s(HSSr|Sr|Jr|So|Fr)', re.IGNORECASE)
+        split_pattern_pos = re.compile(r'\s(C|PF|SF|SG|PG|G|F|PG/SG|SG/SF|SF/PF)\b')
 
-        # 3. Limpeza Inicial do Player (Remove Altura, Pos, Class da string)
+        # Usa o Master Split Pattern para quebrar no primeiro delimitador
         temp_player_col = info_raw_series.str.split(
             MockDraftParser._OLD_FORMAT_SPLIT_PATTERN, 
             n=1, 
             regex=True
         ).str[0]
         
-        # Remove pontuações
+        # Limpa pontuações extras e aplica a REGRA DE 2 PALAVRAS (V28)
         temp_player_col = temp_player_col.str.replace(r'[\(\)\*."]', '', regex=True).str.strip()
         
-        # --- REGRA DE NEGÓCIO (V28): APLICADA APENAS PARA 2000 ---
-        # O ano 2000 não tem separador de altura, então cortamos após a 2ª palavra.
-        # Nos outros anos, o Regex acima já deve ter separado pelo padrão de altura.
         if year == 2000:
+            # Regra de 2 palavras para o ano 2000
             df['Player'] = temp_player_col.apply(
                 lambda x: " ".join(x.split()[:2]) if isinstance(x, str) else x
             )
         else:
+            # Nos outros anos, confiamos que o split limpou a faculdade/altura
             df['Player'] = temp_player_col
         
         # Seleciona as colunas finais
+        df['Team'] = df['Team_Clean'] # Usa a coluna Team limpa
+        
         df_final = df[['Year', 'Mock_Pick', 'Player', 'Team', 'Class', 'Pos']].copy()
         
         return df_final
