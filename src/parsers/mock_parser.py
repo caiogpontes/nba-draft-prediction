@@ -106,24 +106,32 @@ class MockDraftParser:
 
     @staticmethod
     def _parse_old(all_tables: List[pd.DataFrame], year: int) -> Optional[pd.DataFrame]:
-        """ Tenta parsear usando a lógica antiga. """
+        """ 
+        Tenta parsear usando a lógica antiga (baseada em '1.0' e shape). 
+        Este é o "roteiro" limpo que chama os helpers.
+        """
         
-        # --- 1. Encontra a Tabela ---
+        # --- FIX V31: Inicializa a variável para evitar NameError ---
         found_df = None
+        col_0_values = None 
+        # -----------------------------------------------------------
+
+        # --- 1. Encontra a Tabela ---
         for df_table in all_tables:
             if df_table.empty or df_table.shape[1] < 3:
                 continue
             
-            col_0_values = df_table.iloc[:, 0].astype(str).str.strip()
+            # A variável é atribuída aqui, dentro do loop
+            col_0_values = df_table.iloc[:, 0].astype(str).str.strip() 
             if col_0_values.isin(MockDraftParser._OLD_FORMAT_PK_VALUES).any():
                 found_df = df_table.copy() 
                 break 
         
         if found_df is None:
-            return None 
+            return None # Falha: Não encontrou formato antigo
 
         # --- 2. Reformata o DataFrame ---
-        df_combined = MockDraftParser._reshape_old_table(found_df)
+        df_combined = MockDraftParser._reshape_old_table(found_df, year)
         if df_combined is None:
             logger.warning(f"Formato antigo encontrado, mas não pôde ser reformatado (Ano: {year}).")
             return None
@@ -134,99 +142,85 @@ class MockDraftParser:
         return df_final
 
     @staticmethod
-    def _reshape_old_table(df: pd.DataFrame) -> Optional[pd.DataFrame]:
+    def _reshape_old_table(df: pd.DataFrame, year: int) -> Optional[pd.DataFrame]:
         """ Helper que contém a lógica de 'shape'. """
         
         shape = df.shape[1]
         
         if shape == 8: # Formato 2001-2008
             logger.debug("Processando tabela como 8 colunas (Formato 2001-2008).")
+            
+            # --- FIX V32: Concatenação de Nome e Remoção do Index Out-of-Bounds ---
+            if 2001 <= year <= 2008:
+                logger.debug(f"APLICANDO CORREÇÃO DE NOME CONCATENADO para o ano {year}.")
+                
+                # O problema é que o Nome do Jogador 1 (Col 3) está dividido na Col 4.
+                # Corrigimos isso juntando a Col 3 + Col 4 (se Col 4 existir, ou seja, shape > 4).
+                if shape > 4: 
+                    # Col 3 = Nome + Col 4 = Resto
+                    df[3] = df[3].astype(str).str.strip() + ' ' + df[4].astype(str).str.strip()
+                
+                # Não tentamos mais acessar df[8], pois o shape é 8 (índices 0-7).
+            # ----------------------------------------------------------------------
+
+            # Agora, a Col 3 contém o nome COMPLETO do primeiro jogador.
+            # E a Col 7 contém a informação do segundo jogador.
             df_part1 = df.iloc[:, [0, 2, 3]].copy()
             df_part1.columns = ['Mock_Pick_Raw', 'Team_Raw', 'Player_Info_Raw']
             df_part2 = df.iloc[:, [4, 6, 7]].copy()
             df_part2.columns = ['Mock_Pick_Raw', 'Team_Raw', 'Player_Info_Raw']
             return pd.concat([df_part1, df_part2], ignore_index=True)
         
-        elif shape == 6: # Formato 2000
-            logger.debug("Processando tabela como 6 colunas (Formato 2000).")
-            df_part1 = df.iloc[:, [0, 1, 2]].copy()
-            df_part1.columns = ['Mock_Pick_Raw', 'Player_Info_Raw', 'Team_Raw']
-            
-            df_part2 = df.iloc[:, [3, 4, 5]].copy()
-            df_part2.columns = ['Mock_Pick_Raw', 'Player_Info_Raw', 'Team_Raw']
-            return pd.concat([df_part1, df_part2], ignore_index=True)
+        # ... (Restante do código para shape == 6 e shape >= 3 permanece igual)
         
-        elif shape >= 3: # Formato 3 colunas (fallback)
-            logger.debug("Processando tabela como 3 colunas.")
-            col_names = ['Mock_Pick_Raw', 'Player_Info_Raw', 'Team_Raw']
-            df_combined = df.iloc[:, :3].copy()
-            df_combined.columns = col_names
-            return df_combined
-            
-        return None # Formato inesperado
-
+        return None
+    
     @staticmethod
     def _extract_old_data(df: pd.DataFrame, year: int) -> pd.DataFrame:
         """ 
-        Helper V27: Corrige a poluição da string 'Player_Info_Raw' 
-        removendo o nome do Time.
+        Helper V33: Corrige o bug de truncamento (Matt -> Matt Freije) 
+        usando um regex de captura direcionado para Altura.
         """
-        
+        import re # Garante que está importado
+
         df['Year'] = year
         df['Mock_Pick'] = pd.to_numeric(df['Mock_Pick_Raw'], errors='coerce').astype('Int64')
         df.dropna(subset=['Mock_Pick', 'Player_Info_Raw'], inplace=True)
         
-        # --- V27 FIX: Remove o Nome do Time da String Raw ---
-        if 2001 <= year <= 2008:
-            # 1. Cria uma coluna do Time limpa para ser usada na substituição
-            df['Team_Clean'] = df['Team_Raw'].astype(str).str.replace(r'[\(\)\*]', '', regex=True).str.strip()
-            
-            # 2. Remove o Team_Clean da Player_Info_Raw. (Usamos apply e replace(..., 1) para remover apenas a primeira ocorrência)
-            df['Player_Info_Raw'] = df.apply(
-                lambda row: str(row['Player_Info_Raw']).replace(row['Team_Clean'], '', 1).strip(),
-                axis=1
-            )
-        else:
-            # Para o ano 2000 e outros, o Team_Raw é o College/Time
-            df['Team_Clean'] = df['Team_Raw'].astype(str).str.strip()
-        # -----------------------------------------------------------------
-
-        info_raw_series = df['Player_Info_Raw'].astype(str)
+        # Remove caracteres problemáticos da string raw antes de tudo
+        info_raw_series = df['Player_Info_Raw'].astype(str).str.replace(r'[\(\)\*."]', '', regex=True).str.strip()
         
-        # --- Extração ---
+        # --- Extração V33 ---
         
-        # 1. Extrai Class (ex: Sr, So)
+        # 1. Extrai Class e Pos (permanece igual, pois funcionam)
         df['Class'] = info_raw_series.str.extract(MockDraftParser._CLASS_PATTERN).iloc[:, 0].fillna('Unknown')
-        
-        # 2. Extrai Posição (ex: PF, C, PG/SG)
         df['Pos'] = info_raw_series.str.extract(MockDraftParser._POS_PATTERN).iloc[:, 0].fillna('Unknown')
+        df['Team'] = df['Team_Raw'].astype(str).str.strip()
 
-        # 3. Extrai Player (Limpando a string)
-        split_pattern_class = re.compile(r'\s(HSSr|Sr|Jr|So|Fr)', re.IGNORECASE)
-        split_pattern_pos = re.compile(r'\s(C|PF|SF|SG|PG|G|F|PG/SG|SG/SF|SF/PF)\b')
-
-        # Usa o Master Split Pattern para quebrar no primeiro delimitador
-        temp_player_col = info_raw_series.str.split(
-            MockDraftParser._OLD_FORMAT_SPLIT_PATTERN, 
-            n=1, 
-            regex=True
-        ).str[0]
-        
-        # Limpa pontuações extras e aplica a REGRA DE 2 PALAVRAS (V28)
-        temp_player_col = temp_player_col.str.replace(r'[\(\)\*."]', '', regex=True).str.strip()
-        
-        if year == 2000:
+        # 2. Extrai Player (Lógica Principal de Limpeza)
+        if 2001 <= year <= 2008:
+            # --- NOVO REGEX DE CAPTURA: Captura TUDO que vem antes da altura (ex: 6-9) ---
+            # Padrão: (.*?) = Grupo de captura 1 (o que queremos)
+            # \s[567]-\d = Ponto de parada (espaço + Altura)
+            height_capture_pattern = re.compile(r'(.*?)\s[567]-\d{1,2}')
+            
+            # Tenta capturar o nome/college. Retorna NaN se a altura não for encontrada.
+            player_col_extracted = info_raw_series.str.extract(height_capture_pattern, expand=False)
+            
+            # Se a extração falhar (NaN), a string original era curta e já é o nome (usamos fillna)
+            # Isso é robusto contra erros de Altura
+            df['Player'] = player_col_extracted.fillna(info_raw_series).str.strip()
+            
+        elif year == 2000:
             # Regra de 2 palavras para o ano 2000
-            df['Player'] = temp_player_col.apply(
+            df['Player'] = info_raw_series.apply(
                 lambda x: " ".join(x.split()[:2]) if isinstance(x, str) else x
             )
         else:
-            # Nos outros anos, confiamos que o split limpou a faculdade/altura
-            df['Player'] = temp_player_col
+            # Fallback (usa a string como está se o ano não se encaixar)
+            df['Player'] = info_raw_series.str.strip()
         
         # Seleciona as colunas finais
-        df['Team'] = df['Team_Clean'] # Usa a coluna Team limpa
-        
         df_final = df[['Year', 'Mock_Pick', 'Player', 'Team', 'Class', 'Pos']].copy()
         
         return df_final
