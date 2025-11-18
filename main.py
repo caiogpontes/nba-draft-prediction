@@ -16,8 +16,8 @@ FILES = {
     'mock': "data/mock_drafts.csv"
 }
 
-START_YEAR = 2018
-END_YEAR = 2018
+START_YEAR = 2000
+END_YEAR = 2025
 
 if __name__ == "__main__":
     logger.info("Iniciando pipeline de dados da NBA...")
