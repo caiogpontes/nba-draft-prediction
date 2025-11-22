@@ -1,21 +1,20 @@
-# src/pipeline/orchestrator.py
+# src/pipeline/orchestrator.py - VERSÃO FINAL LIMPA
 import time
 import pandas as pd
 import logging
 from typing import Dict, List, Set
 import os
+from nba_api.stats.endpoints import draftcombineplayeranthro, draftcombinestats
 
 from src.config import (
     ScraperConfig, BASE_URL_BASKETBALL_REF, BASE_URL_NBADRAFT_NET,
-    API_URL_COMBINE_ANTHRO, API_URL_COMBINE_STRENGTH,
-    NBA_API_HEADERS 
+    HEADERS # Usamos o HEADERS padrão agora
 )
 from src.infrastructure.network import NetworkClient
 from src.infrastructure.storage import DataManager
 from src.parsers.draft_parser import DraftParser
 from src.parsers.stats_parser import PlayerStatsParser
 from src.parsers.mock_parser import MockDraftParser
-from src.parsers.nba_com_parser import NbaComParser 
 
 
 logger = logging.getLogger(__name__)
@@ -23,6 +22,8 @@ logger = logging.getLogger(__name__)
 class Orchestrator:
     def __init__(self):
         self.client = NetworkClient(ScraperConfig())
+
+    # ... (Métodos auxiliares _get_mock_draft_url, _get_existing_ids, _update_draft_links mantidos) ...
 
     def _get_mock_draft_url(self, year: int) -> str:
         """Encapsula a lógica de qual URL usar para mocks."""
@@ -49,7 +50,7 @@ class Orchestrator:
 
     def _append_and_save(self, new_data_list: List[pd.DataFrame], filepath: str):
         """
-        Helper OTIMIZADO: Carrega, Concatena, Salva.
+        Helper OTIMIZADO: Carrega, Concatena, Salva. (Centraliza a lógica de I/O)
         """
         if not new_data_list: return
 
@@ -84,8 +85,9 @@ class Orchestrator:
         else:
             df['College_Link'] = mapped
         DataManager.save_csv(df, filename)
-
+        
     def run_drafts(self, start: int, end: int, output: str):
+        # ... (Mantido)
         existing_years = self._get_existing_ids(output, 'Year')
         existing_years_int = {int(float(y)) for y in existing_years if y.replace('.', '', 1).isdigit()}
         
@@ -101,7 +103,8 @@ class Orchestrator:
 
             logger.info(f"Baixando Draft {year}...")
             url = f"{BASE_URL_BASKETBALL_REF}/draft/NBA_{year}.html"
-            html = self.client.get_html(url)
+            # Não precisa passar headers customizados, usa o padrão HEADERS
+            html = self.client.get_html(url) 
             if html:
                 df_year = DraftParser.parse(html, year)
                 if not df_year.empty:
@@ -115,10 +118,11 @@ class Orchestrator:
             DataManager.save_csv(final_df, output)
 
     def run_stats(self, files: Dict[str, str]):
+        # ... (Mantido)
         draft_df = DataManager.load_csv(files['draft'])
         if draft_df.empty: return
 
-        # --- Filtro Não-Destrutivo ---
+        # Filtro Não-Destrutivo
         if 'College' not in draft_df.columns:
             has_college_mask = pd.Series([False] * len(draft_df), index=draft_df.index)
         else:
@@ -131,7 +135,7 @@ class Orchestrator:
         # 1. Identifica processados
         processed_nba_ids = self._get_existing_ids(files['nba'], 'Player_ID')
         
-        # --- OTIMIZAÇÃO: Listas vazias (não carregamos o histórico para a RAM) ---
+        # OTIMIZAÇÃO: Listas vazias (não carregamos o histórico para a RAM)
         new_nba_data = []
         new_college_adv = []
         new_college_per_min = []
@@ -161,7 +165,8 @@ class Orchestrator:
             
             if not isinstance(nba_link, str): continue
 
-            nba_html = self.client.get_html(nba_link)
+            # Não precisa de headers customizados aqui, usa o padrão.
+            nba_html = self.client.get_html(nba_link) 
             if nba_html:
                 nba_stats = PlayerStatsParser.parse_stats_nba(nba_html, pid)
                 if nba_stats:
@@ -177,7 +182,6 @@ class Orchestrator:
                     c_html = self.client.get_html(c_link)
                     if c_html:
                         c_adv = PlayerStatsParser.parse_stats_college(c_html, 'players_advanced', pid)
-                        # Atenção ao ID da tabela vs Nome do Arquivo
                         c_per_min = PlayerStatsParser.parse_stats_college(c_html, 'players_per_poss', pid)
                         
                         if c_adv: new_college_adv.append(pd.DataFrame(c_adv))
@@ -185,7 +189,7 @@ class Orchestrator:
             
             unsaved_count += 1
             
-            # --- OTIMIZAÇÃO: Salva e LIMPA a memória ---
+            # OTIMIZAÇÃO: Salva e LIMPA a memória
             if unsaved_count >= 10:
                 self._append_and_save(new_nba_data, files['nba'])
                 self._append_and_save(new_college_adv, files['college_adv'])
@@ -206,8 +210,9 @@ class Orchestrator:
 
         if new_college_links:
             self._update_draft_links(draft_df, new_college_links, files['draft'])
-   
+
     def run_mocks(self, start: int, end: int, output: str):
+        # ... (Mantido)
         existing_years = self._get_existing_ids(output, 'Year')
         existing_years_int = {int(float(y)) for y in existing_years if y.replace('.', '', 1).isdigit()}
 
@@ -234,74 +239,67 @@ class Orchestrator:
             final_df = pd.concat(results, ignore_index=True)
             final_df.drop_duplicates(subset=['Year', 'Mock_Pick'], inplace=True)
             DataManager.save_csv(final_df, output)
-
-# --- NOVO MÉTODO AUXILIAR ---
+            
+    # --- NOVO MÉTODO AUXILIAR (Formatador de Ano) ---
     def _format_season_year(self, year: int) -> str:
         """Converte 2000 -> '2000-01' para a API da NBA."""
         next_year = (year + 1) % 100
         return f"{year}-{next_year:02d}"
 
-    # --- NOVO MÉTODO PRINCIPAL ---
     def run_combine(self, start: int, end: int, file_anthro: str, file_strength: str):
-        """Coleta dados do NBA Combine (Antropometria e Força/Agilidade)."""
+        """Coleta dados do NBA Combine usando a biblioteca nba_api."""
         
-        # Carrega históricos se existirem
+        # Listas para armazenar todos os resultados, incluindo o histórico
         anthro_results = []
         strength_results = []
         
+        # Carrega históricos se existirem (para o Delta Load)
         if os.path.exists(file_anthro): anthro_results.append(DataManager.load_csv(file_anthro))
         if os.path.exists(file_strength): strength_results.append(DataManager.load_csv(file_strength))
 
         # Verifica anos já processados (baseado no arquivo de Anthro como referência)
         existing_years = set()
-        if anthro_results:
+        if anthro_results and 'Season_Year' in anthro_results[0].columns:
+            # Concatena temporariamente só para checar os anos existentes
             existing_df = pd.concat(anthro_results)
-            if 'Season_Year' in existing_df.columns:
-                existing_years = set(existing_df['Season_Year'].unique())
+            existing_years = set(existing_df['Season_Year'].astype(int).unique())
 
         for year in range(start, end + 1):
-            # ... (verificação se já existe igual) ...
+            if year in existing_years:
+                logger.info(f"Combine {year} já coletado. Pulando.")
+                continue
 
             season_param = self._format_season_year(year)
-            logger.info(f"Baixando NBA Combine {season_param}...")
+            logger.info(f"Baixando NBA Combine {season_param} via NBA-API...")
 
-            # 1. Coleta Anthro (PASSANDO HEADERS ESPECÍFICOS)
-            url_anthro = f"{API_URL_COMBINE_ANTHRO}?LeagueID=00&SeasonYear={season_param}"
-            
-            # AQUI ESTÁ A MUDANÇA: custom_headers=NBA_API_HEADERS
-            json_anthro = self.client.get_html(url_anthro, custom_headers=NBA_API_HEADERS)
-            
-            if json_anthro:
-                df_anthro = NbaComParser.parse(json_anthro, year)
-                if df_anthro is not None and not df_anthro.empty:
-                    anthro_results.append(df_anthro)
+            try:
+                # 1. Coleta Antropometria
+                anthro_data = draftcombineplayeranthro.DraftCombinePlayerAnthro(season_year=season_param)
+                df_anthro = anthro_data.get_data_frames()[0]
+                df_anthro['Season_Year'] = year
+                anthro_results.append(df_anthro)
 
-            time.sleep(1) 
+                # 2. Coleta Força/Agilidade
+                strength_data = draftcombinestats.DraftCombineStats(season_all_time=season_param)
+                df_strength = strength_data.get_data_frames()[0]
+                df_strength['Season_Year'] = year
+                strength_results.append(df_strength)
 
-            # 2. Coleta Strength (PASSANDO HEADERS ESPECÍFICOS)
-            url_strength = f"{API_URL_COMBINE_STRENGTH}?LeagueID=00&SeasonYear={season_param}"
-            
-            # AQUI TAMBÉM
-            json_strength = self.client.get_html(url_strength, custom_headers=NBA_API_HEADERS)
-            
-            if json_strength:
-                df_strength = NbaComParser.parse(json_strength, year)
-                if df_strength is not None and not df_strength.empty:
-                    strength_results.append(df_strength)
-
-            self._save_combine_partial(anthro_results, file_anthro)
-            self._save_combine_partial(strength_results, file_strength)
+            except Exception as e:
+                logger.error(f"Falha ao coletar dados do Combine {season_param} via NBA-API: {e}")
             
             time.sleep(self.client.config.delay_between_requests)
 
-    def _save_combine_partial(self, data_list: List[pd.DataFrame], filepath: str):
+        # Salvamento Final
+        self._save_combine_final(anthro_results, file_anthro)
+        self._save_combine_final(strength_results, file_strength)
+
+    def _save_combine_final(self, data_list: List[pd.DataFrame], filepath: str):
         if not data_list: return
-        try:
-            final_df = pd.concat(data_list, ignore_index=True)
-            # Remove duplicatas baseadas no ID do jogador e Ano
-            # A API da NBA usa 'PLAYER_ID' (maiúsculo) geralmente
-            subset_cols = ['PLAYER_ID', 'Season_Year'] if 'PLAYER_ID' in final_df.columns else None
-            final_df.drop_duplicates(subset=subset_cols, inplace=True)
-            DataManager.save_csv(final_df, filepath)
-        except Exception as e:
-            logger.error(f"Erro ao salvar combine em {filepath}: {e}")
+        final_df = pd.concat(data_list, ignore_index=True)
+        
+        # Assume que PLAYER_ID é a chave
+        subset_cols = ['PLAYER_ID', 'Season_Year'] if 'PLAYER_ID' in final_df.columns else None
+        
+        final_df.drop_duplicates(subset=subset_cols, inplace=True)
+        DataManager.save_csv(final_df, filepath)

@@ -23,34 +23,14 @@ FILES = {
 
 }
 
-# AAnos de início e fim para coleta de dados
-START_YEAR = 2004
-END_YEAR = 2004
-
-
 # --- Configuração de Rede ---
 BASE_URL_BASKETBALL_REF = "https://www.basketball-reference.com"
 BASE_URL_NBADRAFT_NET = "https://www.nbadraft.net" 
-# URLs da API Oficial (Stats NBA)
-API_URL_COMBINE_ANTHRO = "https://stats.nba.com/stats/draftcombineplayeranthro"
-API_URL_COMBINE_STRENGTH = "https://stats.nba.com/stats/draftcombinestats"
 
-# Headers Padrão (Para sites normais: Basketball-Ref, NBADraft.net)
+# --- 1. Headers Padrão (Também atualizado para Firefox) ---
 HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0',
     'Accept-Language': 'en-US,en;q=0.9,pt;q=0.8',
-}
-
-# Headers Específicos (Apenas para API da NBA)
-NBA_API_HEADERS = {
-    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-    'Accept-Language': 'en-US,en;q=0.9',
-    'Referer': 'https://www.nba.com/',
-    'Origin': 'https://www.nba.com',
-    'Connection': 'keep-alive',
-    'Accept': 'application/json, text/plain, */*',
-    'x-nba-stats-origin': 'stats',
-    'x-nba-stats-token': 'true'
 }
 
 @dataclass

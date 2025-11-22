@@ -1,0 +1,11 @@
+# Bibliotecas Principais de Manipulação de Dados e HTML Parsing
+pandas
+lxml
+beautifulsoup4
+
+# Bibliotecas de Rede e API
+cloudscraper
+nba-api
+
+# Outras dependências (como a dataclasses e typing são nativas)
+# Se você usar NumPy, adicione aqui (embora o pandas o utilize implicitamente).
