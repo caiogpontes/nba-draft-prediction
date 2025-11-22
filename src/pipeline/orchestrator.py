@@ -182,7 +182,7 @@ class Orchestrator:
                     c_html = self.client.get_html(c_link)
                     if c_html:
                         c_adv = PlayerStatsParser.parse_stats_college(c_html, 'players_advanced', pid)
-                        c_per_min = PlayerStatsParser.parse_stats_college(c_html, 'players_per_poss', pid)
+                        c_per_min = PlayerStatsParser.parse_stats_college(c_html, 'players_per_min', pid)
                         
                         if c_adv: new_college_adv.append(pd.DataFrame(c_adv))
                         if c_per_min: new_college_per_min.append(pd.DataFrame(c_per_min))
