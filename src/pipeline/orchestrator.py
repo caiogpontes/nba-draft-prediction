@@ -49,27 +49,36 @@ class Orchestrator:
         return set()
 
     def _append_and_save(self, new_data_list: List[pd.DataFrame], filepath: str):
-        """
-        Helper OTIMIZADO: Carrega, Concatena, Salva. (Centraliza a lógica de I/O)
-        """
-        if not new_data_list: return
-
+        # A verificação inicial 'if not new_data_list: return' já existe, mas é mantida por segurança.
+        
         try:
-            # 1. Carrega histórico (se existir)
+            # 1. Carrega histórico
             if os.path.exists(filepath):
                 existing_df = DataManager.load_csv(filepath)
                 all_data = [existing_df] + new_data_list
             else:
                 all_data = new_data_list
             
-            # 2. Concatena
-            final_df = pd.concat(all_data, ignore_index=True)
+            # --- FIX V3: Filtra explicitamente DataFrames vazios ---
+            # Isso resolve a FutureWarning e garante que o concat receba apenas dados úteis.
+            valid_data = [df for df in all_data if not df.empty]
             
-            # 3. Remove duplicatas (Segurança)
-            if 'Player_ID' in final_df.columns and 'Season' in final_df.columns:
-                 final_df.drop_duplicates(subset=['Player_ID', 'Season'], inplace=True)
+            if not valid_data:
+                logger.warning(f"Arquivo {filepath} não salvo: Todos os DataFrames eram vazios ou não continham dados.")
+                return
+
+            # 2. Concatena (usando valid_data)
+            final_df = pd.concat(valid_data, ignore_index=True)
+            # ----------------------------------------------------
+            
+            # 3. Remove duplicatas
+            if 'Player_ID' in final_df.columns:
+                if 'Season' in final_df.columns:
+                    final_df.drop_duplicates(subset=['Player_ID', 'Season'], inplace=True)
+                else:
+                    final_df.drop_duplicates(subset=['Player_ID'], inplace=True)
             else:
-                 final_df.drop_duplicates(inplace=True)
+                 final_df.drop_duplicates(inplace=True) # Fallback
             
             # 4. Salva
             DataManager.save_csv(final_df, filepath)
@@ -139,6 +148,7 @@ class Orchestrator:
         new_nba_data = []
         new_college_adv = []
         new_college_per_min = []
+        new_college_metadata = []
         
         new_college_links = {}
         
@@ -183,9 +193,11 @@ class Orchestrator:
                     if c_html:
                         c_adv = PlayerStatsParser.parse_stats_college(c_html, 'players_advanced', pid)
                         c_per_min = PlayerStatsParser.parse_stats_college(c_html, 'players_per_min', pid)
+                        c_metadata = PlayerStatsParser.extract_player_metadata(c_html, pid)
                         
                         if c_adv: new_college_adv.append(pd.DataFrame(c_adv))
                         if c_per_min: new_college_per_min.append(pd.DataFrame(c_per_min))
+                        if c_metadata: new_college_metadata.append(pd.DataFrame([c_metadata]))
             
             unsaved_count += 1
             
@@ -194,11 +206,13 @@ class Orchestrator:
                 self._append_and_save(new_nba_data, files['nba'])
                 self._append_and_save(new_college_adv, files['college_adv'])
                 self._append_and_save(new_college_per_min, files['college_per_min'])
+                self._append_and_save(new_college_metadata, files['college_player_metadata'])
                 
                 # Esvazia as listas para liberar memória
                 new_nba_data = []
                 new_college_adv = []
                 new_college_per_min = []
+                new_college_metadata = []
                 unsaved_count = 0
             
             time.sleep(self.client.config.delay_between_requests)
@@ -207,6 +221,8 @@ class Orchestrator:
         self._append_and_save(new_nba_data, files['nba'])
         self._append_and_save(new_college_adv, files['college_adv'])
         self._append_and_save(new_college_per_min, files['college_per_min'])
+        self._append_and_save(new_college_metadata, files['college_player_metadata'])
+        
 
         if new_college_links:
             self._update_draft_links(draft_df, new_college_links, files['draft'])

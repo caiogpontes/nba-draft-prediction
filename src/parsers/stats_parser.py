@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from typing import List, Dict, Optional
 from src.config import COLLEGE_RENAMES, NBA_RENAMES
 from src.parsers.html_helper import HtmlParser
+import re
 
 logger = logging.getLogger(__name__) # Pega o logger configurado
 
@@ -95,3 +96,52 @@ class PlayerStatsParser:
         except Exception as e:
             logger.error(f"Erro parsing College ({table_id}) para {player_id}: {e}")
             return []
+        
+    @staticmethod
+    def extract_player_metadata(html_content: str, player_id: str) -> Dict:
+        """
+        Extrai metadados essenciais (Posição, Altura, Peso, RSCI) 
+        da página de perfil do Sports Reference (CBB).
+        V3: Extração robusta usando p.text, ignorando tags aninhadas.
+        """
+        import re # Garante que está importado aqui, caso o usuário tenha removido do topo
+        
+        metadata = {
+            'Player_ID': player_id,
+            'Position': None,
+            'Height_Weight_Raw': None,
+            'RSCI_Rank': None,
+            'RSCI_Year': None
+        }
+        
+        try:
+            soup = BeautifulSoup(html_content, 'html.parser')
+            info_div = soup.find('div', {'id': 'info'})
+            
+            if info_div:
+                # Itera sobre TODOS os parágrafos dentro do bloco de informação
+                for p_tag in info_div.find_all('p'):
+                    p_text = p_tag.text.strip()
+                    
+                    # 1a. Posição
+                    if p_text.startswith('Position:'):
+                        metadata['Position'] = p_text.replace('Position:', '').strip()
+                        
+                    # 1b. Altura e Peso (Procura por 'lb' e 'kg' no texto)
+                    elif 'lb' in p_text and 'kg' in p_text:
+                        hw_parts = p_text.split('(')
+                        metadata['Height_Weight_Raw'] = hw_parts[0].strip() # Ex: 6-10, 252lb
+
+                    # 2. RSCI Top 100
+                    elif p_text.startswith('RSCI Top 100:'):
+                        rsci_text = p_text.split(':')[-1].strip() 
+                        
+                        match = re.search(r'(\d+)\s*\((\d{4})\)', rsci_text)
+                        if match:
+                            metadata['RSCI_Rank'] = int(match.group(1))
+                            metadata['RSCI_Year'] = int(match.group(2))
+            
+        except Exception as e:
+            logger.error(f"Erro ao extrair metadados para {player_id}: {e}")
+            
+        return metadata

@@ -16,8 +16,8 @@ FILES = {
     'nba': "data/nba_player_advanced.csv",
     'college_adv': "data/college_player_advanced.csv",
     'college_per_min': "data/college_player_per_min.csv",
+    'college_player_metadata': "data/college_player_metadata.csv",
     'mock': "data/mock_drafts.csv",
-    # --- NOVOS ARQUIVOS ---
     'combine_anthro': "data/nba_combine_anthro.csv",
     'combine_strength': "data/nba_combine_strength.csv"
 
