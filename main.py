@@ -8,8 +8,8 @@ setup_logging()
 logger = logging.getLogger(__name__)
 
 # AAnos de início e fim para coleta de dados
-START_YEAR = 2004
-END_YEAR = 2004
+START_YEAR = 2018
+END_YEAR = 2018
 
 if __name__ == "__main__":
     logger.info("Iniciando pipeline de dados da NBA...")

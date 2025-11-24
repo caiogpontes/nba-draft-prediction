@@ -10,6 +10,8 @@ def setup_logging():
         handlers=[logging.StreamHandler()]
     )
 
+PARTIAL_SAVE_INTERVAL = 10
+
 # Configuração dos arquivos
 FILES = {
     'draft': "data/nba_drafts.csv",
@@ -19,7 +21,7 @@ FILES = {
     'college_player_metadata': "data/college_player_metadata.csv",
     'mock': "data/mock_drafts.csv",
     'combine_anthro': "data/nba_combine_anthro.csv",
-    'combine_strength': "data/nba_combine_strength.csv"
+    'combine_strength_agility': "data/nba_combine_strength_agility.csv"
 
 }
 

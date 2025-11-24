@@ -8,7 +8,7 @@ from nba_api.stats.endpoints import draftcombineplayeranthro, draftcombinestats
 
 from src.config import (
     ScraperConfig, BASE_URL_BASKETBALL_REF, BASE_URL_NBADRAFT_NET,
-    HEADERS # Usamos o HEADERS padrão agora
+    PARTIAL_SAVE_INTERVAL
 )
 from src.infrastructure.network import NetworkClient
 from src.infrastructure.storage import DataManager
@@ -49,7 +49,6 @@ class Orchestrator:
         return set()
 
     def _append_and_save(self, new_data_list: List[pd.DataFrame], filepath: str):
-        # A verificação inicial 'if not new_data_list: return' já existe, mas é mantida por segurança.
         
         try:
             # 1. Carrega histórico
@@ -59,12 +58,15 @@ class Orchestrator:
             else:
                 all_data = new_data_list
             
-            # --- FIX V3: Filtra explicitamente DataFrames vazios ---
-            # Isso resolve a FutureWarning e garante que o concat receba apenas dados úteis.
-            valid_data = [df for df in all_data if not df.empty]
+            # --- FIX V4: Filtra DataFrames vazios OU que contenham SOMENTE NaNs ---
+            # df.notna().any().any() retorna True se QUALQUER valor no DF não for NaN.
+            valid_data = [
+                df for df in all_data 
+                if not df.empty and df.notna().any().any()
+            ]
             
             if not valid_data:
-                logger.warning(f"Arquivo {filepath} não salvo: Todos os DataFrames eram vazios ou não continham dados.")
+                logger.warning(f"Arquivo {filepath} não salvo: Lista de dados vazia ou inválida após filtragem.")
                 return
 
             # 2. Concatena (usando valid_data)
@@ -78,7 +80,7 @@ class Orchestrator:
                 else:
                     final_df.drop_duplicates(subset=['Player_ID'], inplace=True)
             else:
-                 final_df.drop_duplicates(inplace=True) # Fallback
+                 final_df.drop_duplicates(inplace=True) 
             
             # 4. Salva
             DataManager.save_csv(final_df, filepath)
@@ -127,6 +129,13 @@ class Orchestrator:
             DataManager.save_csv(final_df, output)
 
     def run_stats(self, files: Dict[str, str]):
+        """
+            Orquestra a coleta de estatísticas da NBA e do College.
+
+            Args:
+                files (Dict[str, str]): Dicionário contendo os caminhos dos arquivos CSV
+                                        para 'draft', 'nba', 'college_adv', etc.
+        """
         # ... (Mantido)
         draft_df = DataManager.load_csv(files['draft'])
         if draft_df.empty: return
@@ -202,7 +211,7 @@ class Orchestrator:
             unsaved_count += 1
             
             # OTIMIZAÇÃO: Salva e LIMPA a memória
-            if unsaved_count >= 10:
+            if unsaved_count >= PARTIAL_SAVE_INTERVAL:
                 self._append_and_save(new_nba_data, files['nba'])
                 self._append_and_save(new_college_adv, files['college_adv'])
                 self._append_and_save(new_college_per_min, files['college_per_min'])
@@ -312,7 +321,17 @@ class Orchestrator:
 
     def _save_combine_final(self, data_list: List[pd.DataFrame], filepath: str):
         if not data_list: return
-        final_df = pd.concat(data_list, ignore_index=True)
+        
+        # --- CORREÇÃO V3: Filtra DataFrames vazios/inválidos ---
+        # Isso remove a causa da FutureWarning (tabelas que deram sucesso, mas vieram vazias).
+        valid_data = [df for df in data_list if not df.empty]
+        
+        if not valid_data:
+            logger.warning(f"Arquivo {filepath} não salvo: Todos os DataFrames estavam vazios ou continham erro.")
+            return
+        
+        final_df = pd.concat(valid_data, ignore_index=True)
+        # -------------------------------------------------------
         
         # Assume que PLAYER_ID é a chave
         subset_cols = ['PLAYER_ID', 'Season_Year'] if 'PLAYER_ID' in final_df.columns else None
