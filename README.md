@@ -1,4 +1,4 @@
-# Previsão de Sucesso de Jogadores Universitários na NBA 🏀
+# nba-draft-prediction: Modelo Preditivo para Sucesso na NBA 🏀
 
 ![Status](https://img.shields.io/badge/status-em_desenvolvimento-yellow)
 
@@ -9,14 +9,16 @@ Projeto final (TCC) do curso de Pós-Graduação em Data Science e IA. O objetiv
 ## 🎯 Objetivos do Projeto
 
 ### 1. Engenharia de Dados (Coleta)
-* **Coleta de Dados Reais:** Desenvolver um scraper robusto para extrair dados históricos do Draft da NBA, estatísticas de carreira (NBA) e estatísticas universitárias (NCAA) do [Basketball-Reference.com](https://www.basketball-reference.com/).
-* **Coleta de Expectativas:** Criar um scraper para extrair dados históricos de "Mock Drafts" do [NBADraft.net](https://www.nbadraft.net/), medindo o "hype" pré-draft de um jogador.
-* **Arquitetura Limpa:** Construir o pipeline de coleta seguindo princípios de Clean Code e SOLID (SRP, OCP), separando a lógica de rede, parsing e orquestração.
+* **Coleta de Dados Reais:** Desenvolver um scraper robusto para extrair dados históricos do Draft, estatísticas de carreira (NBA) e estatísticas universitárias (NCAA) do [Basketball-Reference.com](https://www.basketball-reference.com/).
+* **Coleta Física e Agilidade:** Integrar dados do **NBA Combine (Medidas Antropométricas e Testes de Força/Salto)** utilizando a biblioteca `nba-api`.
+* **Coleta de Expectativas:** Criar um scraper para extrair dados históricos de "Mock Drafts" do [NBADraft.net](https://www.nbadraft.net/).
+* **Arquitetura Limpa:** Construir o pipeline de coleta seguindo princípios de **Clean Code** e **SOLID (SRP, OCP)**.
 
 ### 2. Ciência de Dados (Modelagem)
-* **Preparação:** Unir, limpar e preparar os dados coletados (reais vs. mock) em uma base de modelo única.
+* **Variável Alvo (Y):** Definir o sucesso de carreira pela métrica **VORP Acumulado nos 5 Primeiros Anos**.
 * **Análise (EDA):** Explorar os dados para encontrar correlações e features preditivas.
-* **Modelagem:** Treinar um modelo de classificação (ex: Regressão Logística, Random Forest) para prever se um jogador terá uma carreira de "sucesso" na NBA (definida por métricas como VORP, WS, etc.).
+* **Feature Engineering:** Criar *features* preditivas como `Pick_Differential` (Mock vs. Real) e `Proxy_Usage` (Volume Ofensivo).
+* **Preparação:** Unir, limpar e preparar os 7 DataFrames em uma base de modelo única.
 
 ---
 
@@ -24,17 +26,13 @@ Projeto final (TCC) do curso de Pós-Graduação em Data Science e IA. O objetiv
 
 Este projeto utiliza Python. As dependências estão listadas em `requirements.txt`.
 
-### 1. Pré-requisitos
-* Python 3.9+
-* Git
-
-### 2. Instalação
+### 1. Instalação e Configuração
 Clone este repositório e instale as dependências:
 
 ```bash
-# 1. Clone o projeto
+# 1. Clone o projeto (Certifique-se de estar no diretório raiz)
 git clone [https://github.com/SEU_USUARIO/nba-draft-prediction.git](https://github.com/SEU_USUARIO/nba-draft-prediction.git)
-cd previsao_jogadores_universitarios_nba
+cd nba-draft-prediction
 
 # 2. (Opcional, mas recomendado) Crie um ambiente virtual
 python -m venv venv
@@ -67,24 +65,15 @@ nba-draft-prediction/
 ├── notebooks/
 │   ├── 01_data_preparation.ipynb  # Limpeza e junção dos dados
 │   ├── 02_exploratory_data_analysis.ipynb # EDA
-│   └── 03_model_training.ipynb    # Treinamento do modelo
+│   ├── 03_feature_engineering.ipynb # Criação da Variável Alvo e Features
+│   └── 04_model_training.ipynb    # Treinamento do modelo
 │
-├── src/                     # Código-fonte do pipeline de engenharia (Clean Code)
-│   ├── __init__.py
-│   ├── config.py            # Configs, constantes, URLs e dicionários de renomeação
-│   │
-│   ├── infrastructure/      # Camada de "IO" (Input/Output)
-│   │   ├── network.py       # (Classe NetworkClient) - Responsável por fazer requests
-│   │   └── storage.py       # (Classe DataManager) - Responsável por ler/salvar CSV
-│   │
-│   ├── parsers/             # Camada de "Lógica de Negócio"
-│   │   ├── html_helper.py   # Funções utilitárias (ex: extrair tabela comentada)
-│   │   ├── draft_parser.py  # (Classe DraftParser) - Lógica do Basketball-Reference
-│   │   ├── stats_parser.py  # (Classe PlayerStatsParser) - Lógica de stats
-│   │   └── mock_parser.py   # (Classe MockDraftParser) - Lógica do NBADraft.net
-│   │
-│   └── pipeline/
-│       └── orchestrator.py  # (Classe Orchestrator) - Coordena o fluxo do pipeline
+├── src/                           # Código-fonte do pipeline de engenharia (Clean Code)
+│   ├── config.py                  # Configs, constantes e Mapeamentos
+│   ├── infrastructure/            # NetworkClient, DataManager (I/O)
+│   ├── parsers/                   # Lógica de extração (MockParser, StatsParser)
+│   ├── pipeline/                  # Orchestrator (Coordenação do Fluxo)
+│   └── utils/                     # Para corversoes, métodos para 
 │
 ├── main.py                  # Ponto de entrada para executar o pipeline de coleta
 ├── requirements.txt         # Dependências do Python
@@ -96,6 +85,7 @@ nba-draft-prediction/
 ## 📊 Fontes de Dados
 
 * **Estatísticas Reais:** [Basketball-Reference.com](https://www.basketball-reference.com/)
+* **Dados Físicos (Combine):** [NBA Stats API] (nba-api)
 * **Mock Drafts Históricos:** [NBADraft.net](https://www.nbadraft.net/)
 
 ---

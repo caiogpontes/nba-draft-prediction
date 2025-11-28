@@ -1,11 +1,12 @@
-# Bibliotecas Principais de Manipulação de Dados e HTML Parsing
-pandas
-lxml
-beautifulsoup4
+# Bibliotecas Principais para Engenharia e Análise de Dados
+pandas  # Essencial para DataFrames
+lxml    # Parser rápido de HTML (Dependência do pandas)
+numpy   # Utilizado implicitamente pelo Pandas
+unidecode
+typing
+rapidfuzz
 
 # Bibliotecas de Rede e API
-cloudscraper
-nba-api
-
-# Outras dependências (como a dataclasses e typing são nativas)
-# Se você usar NumPy, adicione aqui (embora o pandas o utilize implicitamente).
+cloudscraper  # Usado para superar proteções (Basketball-Reference, NBADraft.net)
+beautifulsoup4 # Usado para parsing de HTML
+nba-api        # Usado para coleta robusta dos dados do Combine

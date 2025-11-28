@@ -2,6 +2,8 @@
 import math
 import re
 from typing import Tuple, Optional
+from unidecode import unidecode 
+import pandas as pd
 
 def feet_to_meters(feet: float) -> float:
     """Converte pés (como float, ex: 6.5) para metros."""
@@ -12,7 +14,7 @@ def _parse_height_weight_string(hw_str: Optional[str]) -> Tuple[Optional[int], O
     Parses a string like '6-5, 200lb' into (feet, inches, pounds).
     Returns (None, None, None) on failure.
     """
-    if not hw_str:
+    if not hw_str or not isinstance(hw_str, str):
         return None, None, None
         
     # Regex para capturar PÉS, POLEGADAS e PESO
@@ -93,3 +95,18 @@ def class_to_int(class_str: Optional[str]) -> Optional[int]:
     }
 
     return class_map.get(clean_str, None)
+
+def clean_name(name):
+    if pd.isna(name): return ""
+    # 1. Minúsculo
+    name = str(name).lower()
+    # 2. Remove acentos (Dončić -> Doncic)
+    name = unidecode(name)
+    # 3. Remove pontuação (C.J. -> cj) e sufixos comuns
+    name = name.replace(".", "").replace("'", "").replace("-", " ").replace("...", " ")
+    name = name.replace(" jr", "").replace(" iii", "").replace(" ii", "").replace(" iv", "")
+    # 4. Abreviações comuns
+    name = name.replace("william", "will")  
+    name = name.replace("mohamed", "mo")
+    return name.strip()
+

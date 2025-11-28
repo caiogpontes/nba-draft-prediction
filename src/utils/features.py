@@ -2,6 +2,7 @@
 
 import pandas as pd
 from typing import Literal
+from rapidfuzz import process, fuzz
 
 def calculate_proxy_usage(df: pd.DataFrame, source: Literal['per40', 'per100']) -> pd.DataFrame:
     """
@@ -36,3 +37,21 @@ def calculate_proxy_usage(df: pd.DataFrame, source: Literal['per40', 'per100']) 
     )
     
     return df
+
+
+def get_fuzzy_mapping(target_names, candidate_names, cutoff=80):
+    """Cria um dicionário {nome_alvo: nome_candidato} baseado em similaridade."""
+    mapping = {}
+    for name in target_names:
+        match = find_best_match(name, candidate_names, cutoff=cutoff)
+        if match:
+            mapping[name] = match
+    return mapping
+
+# 2. Função para achar o melhor match
+def find_best_match(name, choices, cutoff=90):
+    # Retorna (Melhor Match, Score, Index)
+    match = process.extractOne(name, choices, scorer=fuzz.token_sort_ratio)
+    if match and match[1] >= cutoff:
+        return match[0] # Retorna o nome encontrado na tabela Draft
+    return None
