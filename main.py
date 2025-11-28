@@ -8,8 +8,8 @@ setup_logging()
 logger = logging.getLogger(__name__)
 
 # AAnos de início e fim para coleta de dados
-START_YEAR = 2018
-END_YEAR = 2018
+START_YEAR = 2000
+END_YEAR = 2025
 
 if __name__ == "__main__":
     logger.info("Iniciando pipeline de dados da NBA...")
@@ -30,7 +30,7 @@ if __name__ == "__main__":
         start=START_YEAR, 
         end=END_YEAR, 
         file_anthro=FILES['combine_anthro'], 
-        file_strength=FILES['combine_strength']
+        file_strength=FILES['combine_strength_agility']
     )
     
     logger.info("Pipeline concluído.")

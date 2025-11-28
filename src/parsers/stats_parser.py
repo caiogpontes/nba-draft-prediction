@@ -42,10 +42,8 @@ class PlayerStatsParser:
         return None
 
     @staticmethod
-    def parse_stats_nba(html_content: str, player_id: str) -> List[Dict]:
-        try:
-            table_id = 'advanced'
-
+    def parse_stats_nba(html_content: str, table_id: str, player_id: str) -> List[Dict]:
+        try: 
             dfs = pd.read_html(StringIO(html_content), attrs={'id': table_id})
             if not dfs: return []
             
@@ -68,6 +66,66 @@ class PlayerStatsParser:
 
         except Exception as e:
             logger.debug(f"Erro parsing NBA para {player_id}: {e}")
+            return []
+        
+    # Em src/parsers/stats_parser.py
+
+    @staticmethod
+    def parse_nba_profile_college(html_content: str, table_id: str ,player_id: str) -> List[Dict]:
+        """
+        Extrai a tabela 'College Basketball' do perfil da NBA.
+        V2: Corrige duplicidade de colunas (MP, PTS) que causava erro no pd.to_numeric.
+        """
+        try:
+            soup = BeautifulSoup(html_content, 'html.parser')
+            
+            # 1. Tenta extrair (via comentário ou direto)
+            df = HtmlParser.extract_commented_table(soup, table_id)
+            
+            if df is None or df.empty:
+                dfs = pd.read_html(StringIO(html_content), attrs={'id': table_id})
+                if dfs:
+                    df = dfs[0]
+            
+            if df is None or df.empty:
+                return []
+
+            # --- FIX: Tratamento de MultiIndex e Deduplicação ---
+            if isinstance(df.columns, pd.MultiIndex):
+                # Pega o último nível (Season, Age, MP, PTS...)
+                df.columns = df.columns.get_level_values(-1)
+            
+            # Limpa nomes
+            df.columns = [str(c).strip() for c in df.columns]
+            
+            # REMOVE COLUNAS DUPLICADAS (O Passo Crítico)
+            # Mantém a primeira ocorrência de cada coluna (ex: primeiro MP, primeiro PTS)
+            df = df.loc[:, ~df.columns.duplicated()].copy()
+            # ----------------------------------------------------
+
+            # --- Limpeza de Dados ---
+            if 'Season' in df.columns:
+                df = df[df['Season'] != 'Season'].copy()
+                invalid_rows = ['Career', 'Total']
+                df = df[~df['Season'].astype(str).isin(invalid_rows)].copy()
+                df = df[df['Season'].astype(str).str.contains(r'\d', na=False)].copy()
+
+            if 'advanced' in NBA_RENAMES: # Exemplo, se houver rename especifico
+                 pass 
+
+            # Conversão numérica segura (agora sem risco de duplicatas)
+            cols_to_numeric = ['G', 'MP', 'FG', 'FGA', '3P', '3PA', 'FT', 'FTA', 'TRB', 'AST', 'STL', 'BLK', 'PTS', 'Age']
+            for col in cols_to_numeric:
+                if col in df.columns:
+                    # Agora df[col] é garantidamente uma Series única
+                    df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
+
+            df['Player_ID'] = player_id
+            
+            return df.to_dict('records')
+
+        except Exception as e:
+            logger.debug(f"Tabela College (NBA Profile) não encontrada ou erro de parse para {player_id}: {e}")
             return []
 
     @staticmethod

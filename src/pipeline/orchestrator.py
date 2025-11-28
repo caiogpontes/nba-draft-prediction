@@ -52,28 +52,36 @@ class Orchestrator:
         
         try:
             # 1. Carrega histórico
+            all_data = []
             if os.path.exists(filepath):
                 existing_df = DataManager.load_csv(filepath)
-                all_data = [existing_df] + new_data_list
-            else:
-                all_data = new_data_list
+                if not existing_df.empty:
+                    all_data.append(existing_df)
             
-            # --- FIX V4: Filtra DataFrames vazios OU que contenham SOMENTE NaNs ---
-            # df.notna().any().any() retorna True se QUALQUER valor no DF não for NaN.
-            valid_data = [
-                df for df in all_data 
-                if not df.empty and df.notna().any().any()
-            ]
+            # Adiciona os novos dados à lista bruta
+            all_data.extend(new_data_list)
+            
+            # --- FIX V5: Limpeza Profunda Pré-Concatenação ---
+            # Remove linhas 100% vazias de cada DataFrame antes de juntar.
+            # Isso elimina o aviso de "all-NA entries".
+            valid_data = []
+            for df in all_data:
+                if df is not None and not df.empty:
+                    # Remove linhas E colunas onde TODOS os valores são NaN
+                    df_clean = df.dropna(how='all')         # remove linhas all-NA
+                    df_clean = df_clean.dropna(axis=1, how='all')  # remove colunas all-NA
+                    if not df_clean.empty and df_clean.shape[1] > 0:
+                        valid_data.append(df_clean)
             
             if not valid_data:
-                logger.warning(f"Arquivo {filepath} não salvo: Lista de dados vazia ou inválida após filtragem.")
+                # Se não sobrou nada, não faz sentido salvar
                 return
 
-            # 2. Concatena (usando valid_data)
+            # 2. Concatena (agora seguro)
             final_df = pd.concat(valid_data, ignore_index=True)
-            # ----------------------------------------------------
+            # -------------------------------------------------
             
-            # 3. Remove duplicatas
+            # 3. Remove duplicatas (Lógica de Chave)
             if 'Player_ID' in final_df.columns:
                 if 'Season' in final_df.columns:
                     final_df.drop_duplicates(subset=['Player_ID', 'Season'], inplace=True)
@@ -87,6 +95,7 @@ class Orchestrator:
             
         except Exception as e:
             logger.error(f"Erro ao salvar em {filepath}: {e}")
+
     
     def _update_draft_links(self, df: pd.DataFrame, new_links: Dict, filename: str):
         logger.info("Atualizando links de college...")
@@ -155,6 +164,7 @@ class Orchestrator:
         
         # OTIMIZAÇÃO: Listas vazias (não carregamos o histórico para a RAM)
         new_nba_data = []
+        new_nba_college_data = []
         new_college_adv = []
         new_college_per_min = []
         new_college_metadata = []
@@ -187,9 +197,10 @@ class Orchestrator:
             # Não precisa de headers customizados aqui, usa o padrão.
             nba_html = self.client.get_html(nba_link) 
             if nba_html:
-                nba_stats = PlayerStatsParser.parse_stats_nba(nba_html, pid)
-                if nba_stats:
-                    new_nba_data.append(pd.DataFrame(nba_stats))
+                nba_stats = PlayerStatsParser.parse_stats_nba(nba_html, 'advanced',pid)
+                nba_college_stats = PlayerStatsParser.parse_nba_profile_college(nba_html, 'all_college_stats',pid)
+                if nba_stats: new_nba_data.append(pd.DataFrame(nba_stats))
+                if nba_college_stats: new_nba_college_data.append(pd.DataFrame(nba_college_stats))
                 
                 c_link = row.get('College_Link')
                 if pd.isna(c_link):
@@ -213,12 +224,14 @@ class Orchestrator:
             # OTIMIZAÇÃO: Salva e LIMPA a memória
             if unsaved_count >= PARTIAL_SAVE_INTERVAL:
                 self._append_and_save(new_nba_data, files['nba'])
+                self._append_and_save(new_nba_college_data, files['nba_college_stats'])
                 self._append_and_save(new_college_adv, files['college_adv'])
                 self._append_and_save(new_college_per_min, files['college_per_min'])
                 self._append_and_save(new_college_metadata, files['college_player_metadata'])
                 
                 # Esvazia as listas para liberar memória
                 new_nba_data = []
+                new_nba_college_data = []
                 new_college_adv = []
                 new_college_per_min = []
                 new_college_metadata = []
@@ -228,6 +241,7 @@ class Orchestrator:
 
         # Salvamento Final (o que sobrou)
         self._append_and_save(new_nba_data, files['nba'])
+        self._append_and_save(new_nba_college_data, files['nba_college_stats'])
         self._append_and_save(new_college_adv, files['college_adv'])
         self._append_and_save(new_college_per_min, files['college_per_min'])
         self._append_and_save(new_college_metadata, files['college_player_metadata'])

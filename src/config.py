@@ -16,6 +16,7 @@ PARTIAL_SAVE_INTERVAL = 10
 FILES = {
     'draft': "data/nba_drafts.csv",
     'nba': "data/nba_player_advanced.csv",
+    'nba_college_stats': "data/nba_college_player_stats.csv",
     'college_adv': "data/college_player_advanced.csv",
     'college_per_min': "data/college_player_per_min.csv",
     'college_player_metadata': "data/college_player_metadata.csv",
@@ -62,7 +63,11 @@ NBA_RENAMES = {
         'DRB%': 'DRB_pct',    'TRB%': 'TRB_pct','AST%': 'AST_pct',  
         'STL%': 'STL_pct',    'BLK%': 'BLK_pct','TOV%': 'TOV_pct',  
         'USG%': 'USG_pct'
+    },
+    'all_college_stats': {
+        'FG%': 'FG_pct',  '3P%': '3P_pct', 'FT%': 'FT_pct'
     }
+
 }
 
 DRAFT_RENAMES = {
