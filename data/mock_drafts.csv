@@ -1,61 +1,1549 @@
-﻿Year,Mock_Pick,Player,Team,Class,Pos
-2004,1,Dwight  Howard,Orlando,HSSr,PF
-2004,2,Emeka  Okafor,Charlotte,Jr,PF
-2004,3,Ben  Gordon,Chicago,Jr,PG
-2004,4,Devin  Harris,LA  Clippers,Jr,PG
-2004,5,Shaun  Livingston,*Dallas,HSSr,PG
-2004,6,Luol  Deng,Atlanta,Fr,SF
-2004,7,Andre  Iguodala,*Chicago,So,SG
-2004,8,Luke  Jackson,Toronto,so,SG
-2004,9,Andris  Biedrins,Philadelphia,Unknown,PF
-2004,10,Pavel  Podkolzine,Cleveland,Unknown,C
-2004,11,Josh  Childress,Golden  State,Jr,SG
-2004,12,Jameer  Nelson,Seattle,so,PG
-2004,13,Kirk  Snyder,Portland,Jr,SG
-2004,14,Sergey  Monya,Utah,Unknown,SG
-2004,15,Robert  Swift,Boston,HSSr,C
-2004,16,Rafael  Araujo,*Utah,Sr,C
-2004,17,Josh  Smith,*Atlanta,HSSr,SF
-2004,18,JR  Smith,New  Orleans,JR,SG
-2004,19,Al  Jefferson,Miami,so,PF
-2004,20,Kris  Humphries,Denver,so,PF
-2004,21,Anderson  Varejão,*Utah,so,PF
-2004,22,Sebastian  Telfair,Portland,HSSr,PG
-2004,23,Viktor  Khryapa,*Portland,Unknown,SF
-2004,24,Peter  Ramos,*Boston,Unknown,C
-2004,25,Dorell  Wright,*Boston,HSSr,SG
-2004,26,Sasha  Vujacic,Sacramento,Unknown,PG
-2004,27,David  Harrison,LA  Lakers,so,C
-2004,28,Kevin  Martin,San  Antonio,Jr,SG
-2004,29,Minnesota’s  forfeits first-rounder in 2004 590,*Minnesota,so,Unknown
-2004,30,Delonte  West,Indiana,Jr,PG
-2004,31,Andre  Emmett,Orlando,Sr,SG
-2004,32,Viktor  Sanikidze,*Phoenix,Unknown,SF
-2004,33,Tony  Allen,Washington,Sr,SG
-2004,34,Donta  Smith,LA  Clippers,So,SF
-2004,35,Beno  Udrih,Atlanta,Unknown,PG
-2004,36,Jackson  Vroman,*Seattle,so,PF
-2004,37,Chris  Duhon,*Orlando,Sr,PG
-2004,38,Ha  Seung-Jin,*Atlanta,Unknown,C
-2004,39,Matt  Freije,*Chicago,Fr,SF
-2004,40,Bryant  Matthews,*Toronto,Sr,SF
-2004,41,Ricky  Minard,Boston,Sr,SG
-2004,42,Michel  Morandais,Seattle,Sr,SG
-2004,43,Antonio  Burks,*Atlanta,Sr,PG
-2004,44,David  Hawkins,New  York,Sr,SG
-2004,45,Tim  Pickett,New  Orleans,Sr,SG
-2004,46,Damien  Wilkins,*Charlotte,Sr,SF
-2004,47,Jaber  Rouzbahani,Portland,Unknown,C
-2004,48,Trevor  Ariza,Miami,Fr,SF
-2004,49,Romain  Sato,*Sacramento,Sr,SG
-2004,50,Bernard  Robinson,*Memphis,so,SG
-2004,51,Mo  Ke,*Dallas,Unknown,PF
-2004,52,Darius  Rice,New  Jersey,Sr,SF
-2004,53,Christian  Drejer,*San  Antonio,Unknown,SG
-2004,54,Jackie  Butler,*Miami,HSSr,PF
-2004,55,Lionel  Chalmers,Detroit,Sr,PG
-2004,56,Pape  Sow,*Houston,So,PF
-2004,57,Arthur  Johnson,LA  Lakers,so,PF
-2004,58,Desmon  Farmer,San  Antonio,Sr,SG
-2004,59,Nigel  Dixon,Minnesota,Sr,C
-2004,60,Sergey  Lishchuk,Indiana,Unknown,PF
+﻿Year,Mock_Pick,Player,Team,Class,Pos,College,Weight,Height
+2000,1,Kenyon Martin,New  Jersey,Sr,PF,,,
+2000,2,Stromile Swift,Vancouver,So,PF,,,
+2000,3,Marcus Fizer,LA  Clippers,Jr,PF,,,
+2000,4,Darius Miles,Chicago,Sr,SF,,,
+2000,5,Chris Mihm,Orlando  (from GS),Jr,C,,,
+2000,6,DerMarr Johnson,Atlanta,so,SF,,,
+2000,7,Courtney Alexander,Chicago,Fr,SG,,,
+2000,8,Joel Przybilla,Cleveland,so,C,,,
+2000,9,Jerome Moiso,Houston,so,PF,,,
+2000,10,Mike Miller,Orlando (From Den),So,SF,,,
+2000,11,Jake Tsakalidis,Boston,Unknown,C,,,
+2000,12,Keyon Dooling,Dallas,so,PG,,,
+2000,13,DeShawn Stevenson,Orlando,so,SG,,,
+2000,14,Jamal Crawford,"Detroit  *(Hou, or Van)",Fr,PG,,,
+2000,15,Etan Thomas,Milwaukee,Sr,PF,,,
+2000,16,Desmond Mason,Sacramento,so,SG,,,
+2000,17,Quentin Richardson,Seattle,so,SG,,,
+2000,18,Erick Barkley,LA  Clippers (from Tor),So,PG,,,
+2000,19,Morris Peterson,Charlotte,so,SG,,,
+2000,20,Olumide Oyedeji,Philadalphia,Unknown,PF,,,
+2000,21,Craig Claxton,Toronto  (Minn via Den),Sr,PG,,,
+2000,22,Jamaal Magloire,New  York,Sr,PF,,,
+2000,23,Jason Collier,Utah  (from Miami),so,C,,,
+2000,24,Mateen Cleaves,Chicago  (fom SA),Sr,PG,,,
+2000,25,Mamadou N’diaye,Phoenix *(Orl or Hou),Sr,C,,,
+2000,26,Dalibor Bagaric,Denver  (from Utah),Unknown,C,,,
+2000,27,Marco Jaric,Indiana  (GS has option),Unknown,SG,,,
+2000,28,Donnell Harvey,Portland,Fr,PF,,,
+2000,29,JaRon Rush,LA  Lakers,So,SF,,,
+2000,30,Chris Carrawell,LA  Clippers,Sr,SG,,,
+2000,31,Hanno Mottola,Dallas  (from Chi),Sr,SF,,,
+2000,32,Ernest Brown,Chicago (from GS),So,C,,,
+2000,33,Jabari Smith,Chicago  (from Van),Sr,C,,,
+2000,34,Michael Redd,Chicago (from Atl),Jr,SG,,,
+2000,35,Corey Hightower,Washington,So,SF,,,
+2000,36,Soumaila Samake,New  Jersey,So,C,,,
+2000,37,Hidayet Turkoglu,Denver (from Cle),Unknown,SF,,,
+2000,38,Lavor Postell,Houston,Sr,SG,,,
+2000,39,Mark Madsen,New  York  (Bos),Sr,PF,,,
+2000,40,Mark Karcher,Atlanta  (from Den),Jr,SG,,,
+2000,41,Khalid El-Amin,San  Antonio (from Dal),Jr,PG,,,
+2000,42,Brad Millard,Seattle (from Orl),Sr,C,,,
+2000,43,Primoz Brezec,Milwaukee,Unknown,C,,,
+2000,44,Scoonie Penn,Detroit,Sr,PG,,,
+2000,45,Pete Mickeal,Sacramento,Sr,SF,,,
+2000,46,AJ Guyton,Toronto,Sr,PG,,,
+2000,47,Chris Porter,Seattle,Sr,SF,,,
+2000,48,Eduardo Najera,Philadelphia *(Detroit),Sr,SF,,,
+2000,49,Dan McClintock,Milwaukee  (from Char),Sr,C,,,
+2000,50,Dan Langhi,Utah (from NY),Sr,SF,,,
+2000,51,Schea Cotton,Minnesota,So,SG,,,
+2000,52,Jason Hart,Miami,so,PG,,,
+2000,53,Kaniel Dickens,Denver  (from Pho),Jr,SF,,,
+2000,54,Jarrett Stephens,San  Antonio,Sr,PF,,,
+2000,55,Justin Love,Golden  State (from Utah),Sr,PG,,,
+2000,56,Eddie Gill,Indiana,Sr,PG,,,
+2000,57,Eric Coley,Atlanta  (from Det),Unknown,SG,,,
+2000,58,Alexios Amanatidis-Zevrosenko,Dallas  (from LAL),Unknown,C,,,
+2001,1,Kwame  Brown,Washington,HSSr,PF,,,
+2001,2,Eddy Curry,LA  Clippers,HSSr,C,,,
+2001,3,Tyson Chandler,x-Memphis,so,SF,,,
+2001,4,Eddie  Griffin,Chicago,Fr,SF,,,
+2001,5,Pau  Gasol,Golden  State,so,SF,,,
+2001,6,Jason Richardson,Memphis,so,SG,,,
+2001,7,Rodney  White,New  Jersey,Fr,SF,,,
+2001,8,Joe Johnson,Cleveland,so,SF,,,
+2001,9,Sagana  Diop,Detroit,HSSr,C,,,
+2001,10,Shane Battier,Boston,Sr,SF,,,
+2001,11,Kedrick  Brown,x-Boston,So,SF,,,
+2001,12,Troy  Murphy,Seattle,Jr,PF,,,
+2001,13,Vladimir Radmanovic,Houston,Unknown,SF,,,
+2001,14,Michael  Bradley,x-Golden  State,Jr,PF,,,
+2001,15,Steven Hunter,Orlando,So,C,,,
+2001,16,Joseph Forte,Charlotte,So,SG,,,
+2001,17,Richard Jefferson,Toronto,so,SF,,,
+2001,18,Zach  Randolph,x-Houston,Fr,PF,,,
+2001,19,Loren  Woods,Portland,Sr,C,,,
+2001,20,Gilbert Arenas,x-Cleveland,So,SG,,,
+2001,21,Tony  Parker,x-Boston,Fr,PG,,,
+2001,22,Omar  Cook,x-Orlando,Fr,PG,,,
+2001,23,Jason Collins,x-Houston,so,C,,,
+2001,24,Brendan Haywood,Utah,Sr,C,,,
+2001,25,Samuel  Dalembert,Sacramento,So,C,,,
+2001,26,Gerald Wallace,Philadelphia,Fr,SG,,,
+2001,27,Jamaal Tinsley,x-Atlanta,Sr,PG,,,
+2001,28,Jeff  Trepagnier,San  Antonio,So,SG,,,
+2001,30,Alvin  Jones,Chicago,Sr,C,,,
+2001,31,Rashad  Phillips,Golden  State,Sr,PG,,,
+2001,32,Kirk  Haston,x-Orlando,Jr,PF,,,
+2001,33,Trenton  Hassell,Memphis,Jr,SG,,,
+2001,34,Antonis  Fotsis,Atlanta,Unknown,SF,,,
+2001,35,Jeryl  Sasser,New  Jersey,Sr,PG,,,
+2001,36,Ousmane  Cisse,Cleveland,Sr,PF,,,
+2001,37,Jamison  Brewer,Philadelphia,so,PG,,,
+2001,38,Kenny  Satterfield,Detroit,So,PG,,,
+2001,39,Benjamin  Eze,x-New  York,So,PF,,,
+2001,40,Brian  Scalabrine,x-Seattle,So,PF,,,
+2001,41,Maurice  Evans,Indiana,Jr,SG,,,
+2001,42,Mehmet  Okur,Seattle,Unknown,PF,,,
+2001,43,Ken  Johnson,x-New  York,so,PF,,,
+2001,44,Martin  Rancik,x-Dallas,Sr,SF,,,
+2001,45,Damone  Brown,x-Chicago,Sr,SF,,,
+2001,46,Ruben  Boumtje Boumtje,Minnesota,Sr,C,,,
+2001,47,Terence  Morris,x-Denver,Sr,SF,,,
+2001,48,Brandon  Armstrong,x-Memphis,Jr,SG,,,
+2001,49,Lee  Scruggs,Miami,Sr,SF,,,
+2001,50,Cookie  Belcher,Portland,Sr,PG,,,
+2001,51,Raul  Lopez,Phoenix,Unknown,PG,,,
+2001,52,Jamario  Moon,x-Milwaukee,So,SG,,,
+2001,53,Michael  Wright,Utah,Jr,PF,,,
+2001,54,Ognjen  Askrabic,Dallas,Unknown,SF,,,
+2001,55,Jarron  Collins,Sacramento,Sr,PF,,,
+2001,56,Eric  Chenowith,x-San  Antonio,Sr,C,,,
+2001,57,Horace  Jenkins,Philadelphia,so,PG,,,
+2001,58,Kimani  Ffriend,San  Antonio,fr,PF,,,
+2002,1,Yao  Ming,Houston,Unknown,C,,,
+2002,2,Jay  Williams,Chicago,Jr,PG,,,
+2002,3,Mike  Dunleavy,Golden  State,Jr,SF,,,
+2002,4,Drew  Gooden,Memphis,Jr,PF,,,
+2002,5,Maybyner  Nene Hilario,Denver,Unknown,PF,,,
+2002,6,Chris  Wilcox,Cleveland,So,PF,,,
+2002,7,Jared  Jeffries,New  York,fr,SF,,,
+2002,8,Dajuan  Wagner,*LA  Clippers (Atl),Fr,PG,,,
+2002,9,Nickoloz  Tskitishvili,Phoenix,Unknown,SF,,,
+2002,10,Caron  Butler,Miami,So,SF,,,
+2002,11,Curtis  Borchardt,Washington,Jr,C,,,
+2002,12,Amare  Stoudemire,LA  Clippers,HSSr,PF,,,
+2002,13,Bostjan  Nachbar,Milwaukee,Unknown,SF,,,
+2002,14,Kareem  Rush,Indiana,so,SG,,,
+2002,15,Qyntel  Woods,*Houston  (Tor),So,SG,,,
+2002,16,Dan  Dickau,Philadalphia,Sr,PG,,,
+2002,17,Melvin  Ely,Washington  (NO),Fr,PF,,,
+2002,18,Marcus  Haislip,Orlando,Jr,PF,,,
+2002,19,Carlos  Boozer,Utah,Jr,PF,,,
+2002,20,Jiri  Welsch,"*Toronto  (via Sea, NY)",Unknown,PG,,,
+2002,21,Rod  Grizzard,Portland,Jr,SG,,,
+2002,22,Casey  Jacobsen,*Phoenix  (Bos),Jr,SG,,,
+2002,23,Frank  Williams,Detroit,Fr,PG,,,
+2002,24,Luis  Scola,New  Jersey,Unknown,PF,,,
+2002,25,Tayshaun  Prince,*Denver  (Dal),Sr,SF,,,
+2002,26,John  Salmons,San  Antonio,Sr,PG,,,
+2002,27,Mladen  Sekularac,LA  Lakers,Unknown,SG,,,
+2002,28,Nenad  Krstic,Sacramento,Unknown,PF,,,
+2002,30,Jamal  Sampson,Golden  State,so,PF,,,
+2002,31,Roger  Mason,Chicago,so,PG,,,
+2002,32,Jason  Jennings,Memphis,so,C,,,
+2002,33,Vincent  Yarbrough,Denver,Sr,SF,,,
+2002,34,Steve  Logan,Milwaukee  (Hou),Sr,PG,,,
+2002,35,Chris  Jefferies,Cleveland,Fr,SF,,,
+2002,36,Sam  Clancy,New  York,So,PF,,,
+2002,37,Juan  Dixon,Atlanta,Sr,SG,,,
+2002,38,Dan  Gadzuric,Houston  (Miami),Sr,C,,,
+2002,39,Lazaros  Papadopoulos,Washington  (Pho v. Den),Unknown,C,,,
+2002,40,Frederick  Jones,Washington,Fr,SG,,,
+2002,41,Lubos  Barton,LA  Clippers,so,SF,,,
+2002,42,Darius  Songaila,Milwaukee,So,PF,,,
+2002,43,Smush  Parker,Portland  (Tor via Chi),So,PG,,,
+2002,44,Chris  Christoffersen,Chicago  (Ind),Sr,C,,,
+2002,45,Ryan  Humphrey,Philadalphia,Sr,SF,,,
+2002,46,Predrag  Savovic,Memphis  (Orl),Sr,SG,,,
+2002,47,Tito  Maddox,Utah,Jr,PG,,,
+2002,48,Peter  Fehse,Milwaukee  (NO),Unknown,PF,,,
+2002,49,Marcus  Taylor,Seattle,So,PG,,,
+2002,50,Robert  Archibald,Boston,Sr,PF,,,
+2002,51,Corsley  Edwards,Portland,Unknown,PF,,,
+2002,52,Rasual  Butler,Minnesota,Sr,SF,,,
+2002,53,Elvin  Mims,Miami,So,SG,,,
+2002,54,Ronald  Murray,New  Jersey,Sr,PG,,,
+2002,55,Aaron  McGhee,Dallas,Sr,PF,,,
+2002,56,JR  Bremer,San  Antonio,JR,PG,,,
+2002,57,Jannero  Pargo,San  Antonio (LAL),Sr,PG,,,
+2002,58,Lonny  Baxter,Sacramento,Sr,PF,,,
+2003,1,Lebron  James,Cleveland,HSSr,PG,,,
+2003,2,Darko  Milicic,*Detroit,Unknown,PF,,,
+2003,3,Carmelo  Anthony,Denver,Fr,SF,,,
+2003,4,Chris  Bosh,Toronto,Fr,PF,,,
+2003,5,Kirk  Hinrich,Miami,Sr,PG,,,
+2003,6,Chris  Kaman,*LA  Clippers,Jr,C,,,
+2003,7,Dwyane  Wade,Chicago,Jr,SG,,,
+2003,8,TJ  Ford,*Milwaukee,So,PG,,,
+2003,9,Mike  Sweetney,New  York,Jr,PF,,,
+2003,10,Jarvis  Hayes,Washington,Jr,SG,,,
+2003,11,Maciej  Lampe,Golden  State,Unknown,SF,,,
+2003,12,Nick  Collison,Seattle,so,PF,,,
+2003,13,Mickaël  Pietrus,*Memphis,Fr,SG,,,
+2003,14,Luke  Ridnour,*Seattle,Jr,PG,,,
+2003,15,Reece  Gaines,Orlando,Sr,PG,,,
+2003,16,Marcus  Banks,Boston,Sr,PG,,,
+2003,17,Zarko  Cabarkapa,Phoenix,Unknown,SF,,,
+2003,18,Sofoklis  Schortsanitis,New  Orleans,So,PF,,,
+2003,19,Aleksandar  Pavlovic,Utah,Unknown,SG,,,
+2003,20,Brian  Cook,*Boston,Sr,SF,,,
+2003,21,Boris  Diaw,*Atlanta,Fr,PG,,,
+2003,22,Zoran  Planinic,New  Jersey,Unknown,PG,,,
+2003,23,David  West,Portland,Sr,PF,,,
+2003,24,Zaur  Pachulia,LA  Lakers,Unknown,PF,,,
+2003,25,Carlos  Delfino,Detroit,Unknown,SG,,,
+2003,26,Josh  Howard,Minnesota,Sr,SG,,,
+2003,27,Travis  Outlaw,*Memphis,HSSr,SF,,,
+2003,28,Kendrick  Perkins,San  Antonio,HSSr,PF,,,
+2003,29,Jerome  Beasley,Dallas,Sr,PF,,,
+2003,30,Mo  Williams,*New  York,So,PG,,,
+2003,31,Leandrinho  Barbosa,*Cleveland,Unknown,PG,,,
+2003,32,Troy  Bell,*LA  Lakers,Sr,PG,,,
+2003,33,Carl  English,*Miami,Jr,SG,,,
+2003,34,Malick  Badiane,LA  Clippers,Unknown,PF,,,
+2003,35,Jason  Kapono,*Milwaukee,so,SF,,,
+2003,36,Ndudi  Ebi,Chicago,HSSr,SF,,,
+2003,37,Tommy  Smith,Atlanta,Sr,SF,,,
+2003,38,Mario  Austin,Washington,Jr,PF,,,
+2003,39,Uche  Nswondu-Amadi,New  York,Sr,PF,,,
+2003,40,Travis  Hansen,Golden  State,Sr,SG,,,
+2003,41,James  Lang,Seattle,HSSr,PF,,,
+2003,42,Szymon  Szewczyk,*Orlando,Unknown,PF,,,
+2003,43,Luke  Walton,Milwaukee,Sr,SF,,,
+2003,44,Slavko  Vranes,Houston,Unknown,C,,,
+2003,45,Kirk  Penney,*Chicago,Sr,SG,,,
+2003,46,Derrick  Zimmerman,*Denver,Sr,PG,,,
+2003,47,Theron  Smith,Utah,Sr,SF,,,
+2003,48,Brandon  Hunter,New  Orleans,Sr,PF,,,
+2003,49,Paccelis  Morlende,Indiana,Fr,PG,,,
+2003,50,Dahntay  Jones,*Philadalphia,Sr,SG,,,
+2003,51,Josh  Powell,New  Jersey,So,PF,,,
+2003,52,Zoltan  Bencze,*Toronto,Unknown,PF,,,
+2003,53,Matt  Bonner,*Chicago,Sr,PF,,,
+2003,54,Marquis  Daniels,Portland,Sr,SG,,,
+2003,55,Rick  Rickert,Minnesota,so,PF,,,
+2003,56,Wayne  Wallace,*Boston,Sr,PF,,,
+2003,57,Ronald  Dupree,Dallas,Sr,SF,,,
+2003,58,Justin  Hamilton,*Detroit,Sr,PG,,,
+2004,1,Dwight  Howard,Orlando,HSSr,PF,,,
+2004,2,Emeka  Okafor,Charlotte,Jr,PF,,,
+2004,3,Ben  Gordon,Chicago,Jr,PG,,,
+2004,4,Devin  Harris,LA  Clippers,Jr,PG,,,
+2004,5,Shaun  Livingston,*Dallas,HSSr,PG,,,
+2004,6,Luol  Deng,Atlanta,Fr,SF,,,
+2004,7,Andre  Iguodala,*Chicago,So,SG,,,
+2004,8,Luke  Jackson,Toronto,so,SG,,,
+2004,9,Andris  Biedrins,Philadelphia,Unknown,PF,,,
+2004,10,Pavel  Podkolzine,Cleveland,Unknown,C,,,
+2004,11,Josh  Childress,Golden  State,Jr,SG,,,
+2004,12,Jameer  Nelson,Seattle,so,PG,,,
+2004,13,Kirk  Snyder,Portland,Jr,SG,,,
+2004,14,Sergey  Monya,Utah,Unknown,SG,,,
+2004,15,Robert  Swift,Boston,HSSr,C,,,
+2004,16,Rafael  Araujo,*Utah,Sr,C,,,
+2004,17,Josh  Smith,*Atlanta,HSSr,SF,,,
+2004,18,JR  Smith,New  Orleans,JR,SG,,,
+2004,19,Al  Jefferson,Miami,so,PF,,,
+2004,20,Kris  Humphries,Denver,so,PF,,,
+2004,21,Anderson  Varejão,*Utah,so,PF,,,
+2004,22,Sebastian  Telfair,Portland,HSSr,PG,,,
+2004,23,Viktor  Khryapa,*Portland,Unknown,SF,,,
+2004,24,Peter  Ramos,*Boston,Unknown,C,,,
+2004,25,Dorell  Wright,*Boston,HSSr,SG,,,
+2004,26,Sasha  Vujacic,Sacramento,Unknown,PG,,,
+2004,27,David  Harrison,LA  Lakers,so,C,,,
+2004,28,Kevin  Martin,San  Antonio,Jr,SG,,,
+2004,29,Minnesota’s  forfeits first-rounder in 2004 590,*Minnesota,so,Unknown,,,
+2004,30,Delonte  West,Indiana,Jr,PG,,,
+2004,31,Andre  Emmett,Orlando,Sr,SG,,,
+2004,32,Viktor  Sanikidze,*Phoenix,Unknown,SF,,,
+2004,33,Tony  Allen,Washington,Sr,SG,,,
+2004,34,Donta  Smith,LA  Clippers,So,SF,,,
+2004,35,Beno  Udrih,Atlanta,Unknown,PG,,,
+2004,36,Jackson  Vroman,*Seattle,so,PF,,,
+2004,37,Chris  Duhon,*Orlando,Sr,PG,,,
+2004,38,Ha  Seung-Jin,*Atlanta,Unknown,C,,,
+2004,39,Matt  Freije,*Chicago,Fr,SF,,,
+2004,40,Bryant  Matthews,*Toronto,Sr,SF,,,
+2004,41,Ricky  Minard,Boston,Sr,SG,,,
+2004,42,Michel  Morandais,Seattle,Sr,SG,,,
+2004,43,Antonio  Burks,*Atlanta,Sr,PG,,,
+2004,44,David  Hawkins,New  York,Sr,SG,,,
+2004,45,Tim  Pickett,New  Orleans,Sr,SG,,,
+2004,46,Damien  Wilkins,*Charlotte,Sr,SF,,,
+2004,47,Jaber  Rouzbahani,Portland,Unknown,C,,,
+2004,48,Trevor  Ariza,Miami,Fr,SF,,,
+2004,49,Romain  Sato,*Sacramento,Sr,SG,,,
+2004,50,Bernard  Robinson,*Memphis,so,SG,,,
+2004,51,Mo  Ke,*Dallas,Unknown,PF,,,
+2004,52,Darius  Rice,New  Jersey,Sr,SF,,,
+2004,53,Christian  Drejer,*San  Antonio,Unknown,SG,,,
+2004,54,Jackie  Butler,*Miami,HSSr,PF,,,
+2004,55,Lionel  Chalmers,Detroit,Sr,PG,,,
+2004,56,Pape  Sow,*Houston,So,PF,,,
+2004,57,Arthur  Johnson,LA  Lakers,so,PF,,,
+2004,58,Desmon  Farmer,San  Antonio,Sr,SG,,,
+2004,59,Nigel  Dixon,Minnesota,Sr,C,,,
+2004,60,Sergey  Lishchuk,Indiana,Unknown,PF,,,
+2005,1,Andrew  Bogut,Milwaukee,So,C,,,
+2005,2,Marvin  Williams,Atlanta,Fr,SF,,,
+2005,3,Deron  Williams,*Utah,Jr,PG,,,
+2005,4,Chris  Paul,NewOrleans,So,PG,,,
+2005,5,Raymond  Felton,Charlotte,Jr,PG,,,
+2005,6,Martell  Webster,*Portland,HSSr,SG,,,
+2005,7,Charlie  Villanueva,Toronto,So,PF,,,
+2005,8,Channing  Frye,New  York,Fr,C,,,
+2005,9,Ike  Diogu,Golden  St.,Jr,PF,,,
+2005,10,Andrew  Bynum,LA  Lakers,HSSr,C,,,
+2005,11,Fran  Vazquez,Orlando,Fr,PF,,,
+2005,12,Yaroslav  Korolev,LA  Clippers,Unknown,SF,,,
+2005,13,Sean  May,*Charlotte,Jr,PF,,,
+2005,14,Rashad  McCants,Minnesota,Jr,SG,,,
+2005,15,Antoine  Wright,New  Jersey,Jr,SG,,,
+2005,16,Joey  Graham,*Toronto,Sr,SF,,,
+2005,17,Danny  Granger,Indiana,Sr,SF,,,
+2005,18,Gerald  Green,Boston,HSSr,SF,,,
+2005,19,Hakim  Warrick,Memphis,Sr,SF,,,
+2005,20,Julius  Hodge,*Denver,Sr,SG,,,
+2005,21,Nate  Robinson,*Phoenix,so,PG,,,
+2005,22,Jarrett  Jack,Denver,Jr,PG,,,
+2005,23,Francisco  Garcia,Sacramento,Fr,SG,,,
+2005,24,Luther  Head,Houston,Sr,SG,,,
+2005,25,Johan  Petro,Seattle,Fr,C,,,
+2005,26,Jason  Maxiell,Detroit,so,PF,,,
+2005,27,Linas  Kleiza,*Portland,so,SF,,,
+2005,28,Ian  Mahinmi,San  Antonio,Fr,PF,,,
+2005,29,Wayne  Simien,Miami,Sr,PF,,,
+2005,30,David  Lee,*New  York,Sr,PF,,,
+2005,31,Salim  Stoudamire,Atlanta,Sr,SG,,,
+2005,32,Daniel  Ewing,*LA  Clippers,Sr,PG,,,
+2005,33,Brandon  Bass,NewOrleans,So,PF,,,
+2005,34,CJ  Miles,Utah,HSSr,SG,,,
+2005,35,Ricky  Sanchez,Portland,HSSr,SF,,,
+2005,36,Ersan  Ilyasova,Milwaukee,so,SF,,,
+2005,37,Ronny  Turiaf,*Lakers,Sr,PF,,,
+2005,38,Travis  Diener,*Orlando,Sr,PG,,,
+2005,39,Von  Wafer,LA  Lakers,So,SG,,,
+2005,40,Monta  Ellis,Golden  St.,HSSr,PG,,,
+2005,41,Roko  Ukic,*Toronto,Unknown,PG,,,
+2005,42,Chris  Taft,*Golden  St.,So,PF,,,
+2005,43,Mile  Ilic,New  Jersey,Unknown,C,,,
+2005,44,M  Andriuskevicius,*Orlando,Unknown,PF,,,
+2005,45,Louis  Williams,*Philly,HSSr,SG,,,
+2005,46,Erazem  Lorbek,Indiana,Unknown,PF,,,
+2005,47,Bracey  Wright,Minnesota,Jr,SG,,,
+2005,48,Mickaël  Gelabale,*Seattle,Fr,SF,,,
+2005,49,Andray  Blatche,Washington,HSSr,PF,,,
+2005,50,Ryan  Gomes,Boston,Sr,SF,,,
+2005,51,Robert  Whaley,*Utah,Sr,PF,,,
+2005,52,Axel  Hervelle,Denver,Unknown,PF,,,
+2005,53,Orien  Greene,*Boston,Sr,PG,,,
+2005,54,Dijon  Thompson,*New  York,so,SG,,,
+2005,55,Lawrence  Roberts,Seattle,Sr,PF,,,
+2005,56,Amir  Johnson,Detroit,so,SF,,,
+2005,57,Marcin  Gortat,*Phoenix,Unknown,C,,,
+2005,58,Uros  Slokar,*Toronto,Unknown,PF,,,
+2005,59,Cenk  Akyol,*Atlanta,Unknown,PG,,,
+2005,60,Alex  Acker,*Detroit,Jr,SG,,,
+2006,1,Andrea  Bargnani,Toronto,Unknown,PF,,,
+2006,2,Tyrus  Thomas,*Chicago,Fr,PF,,,
+2006,3,Adam  Morrison,Charlotte,so,SF,,,
+2006,4,LaMarcus  Aldridge,Portland,So,PF,,,
+2006,5,Shelden  Williams,Atlanta,Sr,PF,,,
+2006,6,Rudy  Gay,Minnesota,So,SF,,,
+2006,7,Randy  Foye,*Portland,Sr,PG,,,
+2006,8,Brandon  Roy,Houston,Sr,SG,,,
+2006,9,Patrick  O’Bryant,Golden  St.,So,C,,,
+2006,10,Ronnie  Brewer,Seattle,Jr,SG,,,
+2006,11,Rodney  Carney,Orlando,Sr,SF,,,
+2006,12,Hilton  Armstrong,NO/OK  City,Sr,C,,,
+2006,13,Marcus  Williams,Philadelphia,Jr,PG,,,
+2006,14,Cedric  Simmons,Utah,So,PF,,,
+2006,15,JJ  Redick,*NO/OK  City,Sr,SG,,,
+2006,16,Thabo  Sefolosha,Chicago,Unknown,SG,,,
+2006,17,Shannon  Brown,Indiana,Jr,SG,,,
+2006,18,Saer  Sene,Washington,Unknown,C,,,
+2006,19,Sergio  Rodriguez,Sacramento,Unknown,PG,,,
+2006,20,Shawne  Williams,*New  York,Fr,SF,,,
+2006,21,Kyle  Lowry,*Phoenix,So,PG,,,
+2006,22,Oleksiy  Pecherov,*NewJersey,Unknown,PF,,,
+2006,23,Jordan  Farmar,New  Jersey,So,PG,,,
+2006,24,Maurice  Ager,Memphis,Sr,SG,,,
+2006,25,Rajon  Rondo,Cleveland,So,PG,,,
+2006,26,Mardy  Collins,*LA  Lakers,Sr,PG,,,
+2006,27,Josh  Boone,Phoenix,Jr,PF,,,
+2006,28,James  White,Dallas,Sr,SG,,,
+2006,29,PJ  Tucker,*New  York,Jr,SG,,,
+2006,30,Ryan  Hollins,*Portland,Sr,PF,,,
+2006,31,Quincy  Douby,Portland,Jr,PG,,,
+2006,32,Daniel  Gibson,*Houston,so,PG,,,
+2006,33,Dee  Brown,Atlanta,Sr,PG,,,
+2006,34,Joel  Freeland,*LAClippers,Fr,PF,,,
+2006,35,Denham  Brown,Toronto,Sr,SG,,,
+2006,36,Marcus  Vinicius,*Minnesota,Unknown,SF,,,
+2006,37,Louis  Amundson,Minnesota,so,SF,,,
+2006,38,Steve  Novak,Golden  St.,Sr,SF,,,
+2006,39,Kevin  Pittsnogle,*Milwaukee,Sr,PF,,,
+2006,40,Mike  Gansey,Seattle,Sr,SG,,,
+2006,41,Will  Blalock,Orlando,Jr,PG,,,
+2006,42,Allan  Ray,*Cleveland,Sr,SG,,,
+2006,43,Renaldo  Balkman,NO/OK  City,So,SF,,,
+2006,44,Alexander  Johnson,*Orlando,so,PF,,,
+2006,45,Guillermo  Diaz,Indiana,Jr,SG,,,
+2006,46,Brandon  Bowman,*Utah,Sr,SF,,,
+2006,47,Hassan  Adams,Utah,Sr,SF,,,
+2006,48,Paul  Davis,Washington,Sr,PF,,,
+2006,49,Gerry  McNamara,Denver,Sr,PG,,,
+2006,50,Craig  Smith,*Charlotte,Sr,PF,,,
+2006,51,Leon  Powe,LA  Lakers,So,PF,,,
+2006,52,Darius  Washington,LA  Clippers,So,PG,,,
+2006,53,Eric  Williams,*Seattle,Sr,PF,,,
+2006,54,Bobby  Jones,New  Jersey,Sr,SG,,,
+2006,55,Pops  Mensah-Bonsu,Cleveland,Sr,PF,,,
+2006,56,Dwayne  Mitchell,*Toronto,Sr,SG,,,
+2006,57,Brad  Buckman,*Minnesota,Sr,PF,,,
+2006,58,Taj  Gray,Dallas,Sr,PF,,,
+2006,59,Nik  Caner-Medley,San  Antonio,Sr,SF,,,
+2006,60,Eric  Hicks,Detroit,Sr,PF,,,
+2007,1,Greg  Oden,Portland,Fr,C,,,
+2007,2,Kevin  Durant,Seattle,Fr,SF,,,
+2007,3,Al  Horford,Atlanta,Jr,PF,,,
+2007,4,Mike  Conley,Memphis,Fr,PG,,,
+2007,5,Yi  Jianlian,Boston,Unknown,PF,,,
+2007,6,Jeff  Green,Milwaukee,Jr,SF,,,
+2007,7,Joakim  Noah,Minnesota,Jr,PF,,,
+2007,8,Brandan  Wright,Charlotte,Fr,PF,,,
+2007,9,Julian  Wright,*Chicago,So,SF,,,
+2007,10,Corey  Brewer,Sacramento,Jr,SF,,,
+2007,11,Acie  Law,*Atlanta,Sr,PG,,,
+2007,12,Spencer  Hawes,Philadelphia,Fr,C,,,
+2007,13,Nick  Young,NewOrleans,Jr,SG,,,
+2007,14,Al  Thornton,LA  Clippers,Sr,SF,,,
+2007,15,Marco  Belinelli,*Detroit,Unknown,SG,,,
+2007,16,Javaris  Crittenton,Washington,Fr,PG,,,
+2007,17,Rodney  Stuckey,New  Jersey,So,SG,,,
+2007,18,Thaddeus  Young,Golden  St.,Fr,SF,,,
+2007,19,Rudy  Fernandez,LA  Lakers,Unknown,SG,,,
+2007,20,Derrick  Byars,Miami,Sr,SG,,,
+2007,21,Jason  Smith,*Philadelphia,so,PF,,,
+2007,22,Daequan  Cook,*Charlotte,Fr,SG,,,
+2007,23,Wilson  Chandler,*New  York,so,SF,,,
+2007,24,Tiago  Splitter,*Phoenix,Unknown,PF,,,
+2007,25,Josh  McRoberts,Utah,So,PF,,,
+2007,26,Arron  Afflalo,Houston,Jr,SG,,,
+2007,27,Marc  Gasol,Detroit,so,C,,,
+2007,28,Alando  Tucker,San  Antonio,Sr,SF,,,
+2007,29,Gabe  Pruitt,Phoenix,Jr,PG,,,
+2007,30,Sean  Williams,*Philadelphia,Jr,PF,,,
+2007,31,Jared  Dudley,*Seattle,Sr,SF,,,
+2007,32,Morris  Almond,Boston,Sr,SG,,,
+2007,33,Aaron  Brooks,*San  Antonio,Sr,PG,,,
+2007,34,Marcus  Williams,*Dallas,So,SG,,,
+2007,35,Kyle  Visser,Seattle,Sr,C,,,
+2007,36,Petteri  Koponen,*Golden  St.,Unknown,PG,,,
+2007,37,Reyshawn  Terry,Portland,Sr,SF,,,
+2007,38,Aaron  Gray,*Philadelphia,Sr,C,,,
+2007,39,Quinton  Hosley,*Heat,Fr,SF,,,
+2007,40,Ramon  Sessions,*LA  Lakers,Jr,PG,,,
+2007,41,Stanko  Barac,*Minnesota,Unknown,C,,,
+2007,42,Carl  Landry,*Portland,Sr,PF,,,
+2007,43,Kyrylo  Fesenko,NewOrleans,Unknown,PF,,,
+2007,44,Nick  Fazekas,Orlando,Sr,PF,,,
+2007,45,Demetris  Nichols,LA  Clippers,Sr,SF,,,
+2007,46,Caleb  Green,*Golden  St.,Sr,SF,,,
+2007,47,Glen  Davis,Washington,Jr,PF,,,
+2007,48,Ali  Traore,LA  Lakers,Fr,PF,,,
+2007,49,DJ  Strawberry,*Chicago,Sr,SG,,,
+2007,50,Marko  Tomas,*Dallas,Unknown,SG,,,
+2007,51,Taurean  Green,*Chicago,Jr,PG,,,
+2007,52,Stephane  Lasme,*Portland,Sr,PF,,,
+2007,53,Dominic  McGuire,*Portland,Fr,SF,,,
+2007,54,Chris  Richard,*Orlando,Sr,PF,,,
+2007,55,Giorgos  Printezis,Utah,Unknown,SF,,,
+2007,56,Herbert  Hill,*Milwaukee,Sr,PF,,,
+2007,57,Renaldas  Seibutis,Detroit,Unknown,SG,,,
+2007,58,Zoran  Erceg,San  Antonio,Unknown,PF,,,
+2007,59,Sun  Yue,Phoenix,Unknown,SG,,,
+2007,60,Milovan  Rakovic,Dallas,Unknown,PF,,,
+2008,1,Derrick  Rose,Chicago,Fr,PG,,,
+2008,2,Michael  Beasley,Miami,Fr,SF,,,
+2008,3,OJ  Mayo,Minnesota,Fr,SG,,,
+2008,4,Brook  Lopez,Seattle,So,C,,,
+2008,5,Jerryd  Bayless,Memphis,Fr,SG,,,
+2008,6,Russell  Westbrook,New  York,So,PG,,,
+2008,7,Eric  Gordon,LA  Clippers,Fr,SG,,,
+2008,8,Joe  Alexander,Milwaukee,Jr,SF,,,
+2008,9,Kevin  Love,Charlotte,Fr,PF,,,
+2008,10,Danilo  Gallinari,New  Jersey,Unknown,SF,,,
+2008,11,Anthony  Randolph,Indiana,Fr,SF,,,
+2008,12,DJ  Augustin,Sacramento,So,PG,,,
+2008,13,Brandon  Rush,Portland,Jr,SF,,,
+2008,14,Kosta  Koufos,Golden  St.,Fr,C,,,
+2008,15,Mario  Chalmers,*Phoenix,Jr,PG,,,
+2008,16,Marreese  Speights,Philadelphia,So,PF,,,
+2008,17,DeAndre  Jordan,*Indiana,Fr,C,,,
+2008,18,Roy  Hibbert,Washington,Sr,C,,,
+2008,19,Darrell  Arthur,Cleveland,So,PF,,,
+2008,20,Robin  Lopez,*Charlotte,So,C,,,
+2008,21,JaVale  McGee,*New  Jersey,So,C,,,
+2008,22,Donte  Greene,Orlando,Fr,SF,,,
+2008,23,Jason  Thompson,Utah,so,PF,,,
+2008,24,Nicolas  Batum,*Seattle,Fr,SG,,,
+2008,25,CDouglas-Roberts,Houston,Jr,SG,,,
+2008,26,Ryan  Anderson,San  Antonio,so,PF,,,
+2008,27,Alexis  Ajinca,*Portland,Fr,PF,,,
+2008,28,JJ  Hickson,*Memphis,so,PF,,,
+2008,29,Nathan  Jawai,Detroit,Unknown,PF,,,
+2008,30,Omer  Asik,Boston,Unknown,PF,,,
+2008,31,Nikola  Pekovic,*Minnesota,Unknown,PF,,,
+2008,32,Serge  Ibaka,Seattle,Unknown,PF,,,
+2008,33,Courtney  Lee,*Portland,Sr,SG,,,
+2008,34,Bill  Walker,Minnesota,Fr,SG,,,
+2008,35,Kyle  Weaver,LA  Clippers,Sr,SG,,,
+2008,36,Goran  Dragic,*Portland,Unknown,PG,,,
+2008,37,Gary  Forbes,Milwaukee,Sr,SG,,,
+2008,38,Semih  Erden,Charlotte,Unknown,C,,,
+2008,39,George  Hill,Chicago,Jr,PG,,,
+2008,40,Damjan  Rudez,New  Jersey,Unknown,SF,,,
+2008,41,Sonny  Weems,Indiana,So,SG,,,
+2008,42,Jamont  Gordon,*Sacramento,Jr,SG,,,
+2008,43,Joey  Dorsey,Sacramento,Sr,PF,,,
+2008,44,DJ  White,*Utah,Sr,PF,,,
+2008,45,DeVon  Hardin,*San  Antonio,Sr,PF,,,
+2008,46,LR  Mbah a Moute,*Seattle,Jr,SF,,,
+2008,47,Mike  Taylor,Washington,Unknown,SG,,,
+2008,48,Davon  Jefferson,*Phoenix,so,SF,,,
+2008,49,James  Gist,Golden  St.,Sr,SF,,,
+2008,50,Richard  Hendrix,*Seattle,Jr,PF,,,
+2008,51,Anton  Ponkrashov,Dallas,Unknown,PG,,,
+2008,52,Trent  Plaisted,*Miami,Jr,PF,,,
+2008,53,Ante  Tomic,Utah,Unknown,PF,,,
+2008,54,Bryce  Taylor,Houston,Sr,SG,,,
+2008,55,Will  Daniels,*Portland,Sr,SF,,,
+2008,56,Reggie  Williams,*Seattle,Sr,SG,,,
+2008,57,Jaycee  Carroll,San  Antonio,Sr,SG,,,
+2008,58,JR  Giddens,LA  Lakers,JR,SG,,,
+2008,59,Othello  Hunter,Detroit,Sr,PF,,,
+2008,60,DeMarcus  Nelson,Boston,so,SG,,,
+2009,1,Blake Griffin,LA Clippers,So.,PF,Oklahoma,248.0,6-10
+2009,2,Hasheem Thabeet,Memphis,Jr.,C,UConn,267.0,7-2
+2009,3,Ricky Rubio,Oklahoma Cty,Intl.,PG,Spain,180.0,6-4
+2009,4,Tyreke Evans,Sacramento,Fr.,SG,Memphis,221.0,6-5
+2009,5,James Harden,*Minnesota,So.,SG,Arizona St.,222.0,6-5
+2009,6,Jonny Flynn,Minnesota,So.,PG,Syracuse,196.0,6-0
+2009,7,Stephen Curry,Golden St.,Jr.,PG/SG,Davidson,181.0,6-3
+2009,8,Jordan Hill,New York,Jr.,PF,Arizona,232.0,6-10
+2009,9,James Johnson,Toronto,So.,SF,Wake Forest,257.0,6-8
+2009,10,DeMar DeRozan,Milwaukee,Fr.,SG,USC,211.0,6-7
+2009,11,Gerald Henderson,New Jersey,Jr.,SG/SF,Duke,215.0,6-5
+2009,12,Terrence Williams,Charlotte,Sr.,SG/SF,Louisville,213.0,6-6
+2009,13,DeJuan Blair,Indiana,So.,PF,Pittsburgh,277.0,6-6
+2009,14,Earl Clark,Phoenix,Jr.,SF,Louisville,226.0,6-10
+2009,15,BJ Mullens,Detroit,Fr.,C,Ohio St.,258.0,7-0
+2009,16,Tyler Hansbrough,Chicago,Sr.,PF,North Carolina,234.0,6-9
+2009,17,Eric Maynor,Philadelphia,Sr.,PG,VCU,164.0,6-3
+2009,18,Sam Young,*Minnesota,Sr.,SF,Pittsburgh,223.0,6-6
+2009,19,Jeff Teague,Atlanta,So.,PG,Wake Forest,175.0,6-2
+2009,20,Jrue Holiday,Utah,Fr.,PG/SG,UCLA,199.0,6-4
+2009,21,Ty Lawson,New Orleans Old,Jr.,PG,North Carolina,197.0,6-0
+2009,22,Brandon Jennings,*Portland,Intl.,PG,USA,170.0,6-1
+2009,23,Omri Casspi,*Sacramento,Intl.,SF,Israel,211.0,6-9
+2009,24,Nick Calathes,*Dallas,Intl.,PG,USA,185.0,6-5
+2009,25,Chase Budinger,*Oklahoma Cty,Jr.,SG/SF,Arizona,206.0,6-7
+2009,26,Wayne Ellington,*Chicago,Jr.,SG,North Carolina,202.0,6-5
+2009,27,DaJuan Summers,*Memphis,Jr.,SF,Georgetown,243.0,6-8
+2009,28,Jonas Jerebko,*Minnesota,Intl.,SF,Sweden,220.0,6-9
+2009,29,Toney Douglas,*New York,Sr.,PG/SG,Florida St.,183.0,6-2
+2009,30,Austin Daye,Cleveland,So.,SF,Gonzaga,192.0,6-11
+2009,31,Jermaine Taylor,Sacramento,Sr.,SG,Central Florida,207.0,6-5
+2009,32,Rodrigue Beaubois,Washington,Intl.,PG,France,182.0,6-2
+2009,33,Derrick Brown,*Portland,Jr.,SF,Xavier,225.0,6-8
+2009,34,Victor Claver,*Denver,Intl.,SF,Spain,236.0,6-9
+2009,35,Josh Heytvelt,*Detroit,Sr.,PF,Gonzaga,246.0,6-11
+2009,36,DeMarre Carroll,Memphis,Sr.,SF/PF,Missouri,207.0,6-8
+2009,37,Patrick Mills,*San Antonio,So.,PG,St. Mary's,175.0,6-0
+2009,38,Taj Gibson,*Portland,Jr.,PF,USC,214.0,6-10
+2009,39,Marcus Thornton,*Detroit,Sr.,SG,LSU,194.0,6-4
+2009,40,Dionte Christmas,*Charlotte,Sr.,SG,Temple,211.0,6-5
+2009,41,Jeff Pendergraph,Milwaukee,Sr.,PF,Arizona St.,240.0,6-10
+2009,42,Darren Collison,*LA Lakers,Sr.,PG,UCLA,166.0,6-1
+2009,43,Jerel McNeal,*Miami,Sr.,SG,Marquette,190.0,6-3
+2009,44,Sergii Gladyr,Detroit,Intl.,SG,Ukraine,190.0,6-6
+2009,45,Curtis Jerrells,*Minnesota,Sr.,PG,Baylor,195.0,6-1
+2009,46,Jeff Adrien,*Phoenix,Sr.,PF,UConn,235.0,6-6
+2009,47,Danny Green,*Minnesota,Sr.,SF,North Carolina,208.0,6-6
+2009,48,Vyacheslav Kravt...,Phoenix,Intl.,C,Ukraine,235.0,6-11
+2009,49,Jodie Meeks,Atlanta,Jr.,SG,Kentucky,211.0,6-4
+2009,50,Jon Brockman,Utah,Sr.,PF,Washington,255.0,6-7
+2009,51,Sergio Llull,*San Antonio,Intl.,PG,Spain,180.0,6-3
+2009,52,Leo Lyons,*Indiana,Sr.,SF/PF,Missouri,235.0,6-9
+2009,53,Terrel Harris,*San Antonio,Sr.,SG,Oklahoma State,190.0,6-4
+2009,54,Tyrese Rice,*Charlotte,Sr.,PG,Boston College,190.0,6-0
+2009,55,Dante Cunningham,*Portland,Sr.,SF/PF,Villanova,227.0,6-8
+2009,56,Nando De Colo,*Dallas,Intl.,PG/SG,France,190.0,6-5
+2009,57,Robert Dozier,*Phoenix,Sr.,SF/PF,Memphis,215.0,6-10
+2009,58,Wesley Matthews,Boston,Sr.,SG,Marquette,215.0,6-5
+2009,59,Courtney Fells,LA Lakers,Sr.,SG,NC State,210.0,6-6
+2009,60,Chris Johnsonn,*Miami,Sr.,PF/C,LSU,205.0,6-11
+2010,1,John Wall,Washington,Fr.,PG,Kentucky,196.0,6-4
+2010,2,Evan Turner,*Philadelphia,Jr.,SG,Ohio St.,214.0,6-7
+2010,3,Derrick Favors,New Jersey,Fr.,PF,Georgia Tech,245.0,6-10
+2010,4,Wesley Johnson,Minnesota,Jr.,SF,Syracuse,206.0,6-7
+2010,5,DeMarcus Cousins,Sacramento,Fr.,PF/C,Kentucky,292.0,6-11
+2010,6,Ekpe Udoh,Golden St.,Jr.,PF,Baylor,237.0,6-10
+2010,7,Greg Monroe,Detroit,So.,PF/C,Georgetown,247.0,6-11
+2010,8,Al-Farouq Aminu,LA Clippers,So.,SF,Wake Forest,216.0,6-8
+2010,9,Ed Davis,*Utah,So.,PF,North Carolina,227.0,6-10
+2010,10,Luke Babbitt,Indiana,So.,SF/PF,Nevada,218.0,6-9
+2010,11,Patrick Patterson,New Orleans Old,Jr.,PF,Kentucky,240.0,6-9
+2010,12,Paul George,Memphis,So.,SF,Fresno St.,214.0,6-9
+2010,13,Cole Aldrich,Toronto,Jr.,C,Kansas,236.0,6-10
+2010,14,Gordon Hayward,Houston,So.,SF,Butler,211.0,6-8
+2010,15,Xavier Henry,*Milwaukee,Fr.,SG,Kansas,210.0,6-6
+2010,16,Larry Sanders,*Minnesota,Jr.,PF/C,VCU,222.0,6-10
+2010,17,Damion James,*Washington,Sr.,SF,Texas,227.0,6-7
+2010,18,Eric Bledsoe,Oklahoma Cty,Fr.,PG/SG,Kentucky,192.0,6-1
+2010,19,Avery Bradley,Boston,Fr.,SG,Texas,180.0,6-3
+2010,20,Elliot Williams,San Antonio,So.,SG,Memphis,180.0,6-4
+2010,21,Craig Brackins,*Oklahoma Cty,Jr.,PF,Iowa St.,229.0,6-10
+2010,22,Kevin Seraphin,Portland,Intl.,PF/C,France,263.0,6-9
+2010,23,James Anderson,*Minnesota,Jr.,SG,Oklahoma State,208.0,6-6
+2010,24,Hassan Whiteside,Atlanta,Fr.,C,Marshall,227.0,7-0
+2010,25,Devin Ebanks,*Memphis,So.,SF,West Virginia,208.0,6-8
+2010,26,Tibor Pleiss,*Oklahoma Cty,Intl.,C,Germany,235.0,7-1
+2010,27,Terrico White,*New Jersey,So.,PG/SG,Mississippi,203.0,6-5
+2010,28,Jordan Crawford,*Memphis,So.,SG,Xavier,198.0,6-4
+2010,29,Dominique Jones,Orlando,Jr.,SG,South Florida,216.0,6-4
+2010,30,Greivis Vasquez,*Washington,Sr.,PG/SG,Maryland,211.0,6-6
+2010,31,Tiny Gallon,New Jersey,Fr.,PF,Oklahoma,296.0,6-9
+2010,32,Daniel Orton,*Miami,Fr.,PF/C,Kentucky,269.0,6-10
+2010,33,Ryan Richards,Sacramento,Intl.,PF/C,England,230.0,7-0
+2010,34,Gani Lawal,*Portland,Jr.,PF,Georgia Tech,233.0,6-9
+2010,35,Quincy Pondexter,Washington,Sr.,SF,Washington,215.0,6-7
+2010,36,Lance Stephenson,Detroit,Fr.,SG,Cincinnati,227.0,6-6
+2010,37,Armon Johnson,*Milwaukee,Jr.,PG/SG,Nevada,190.0,6-3
+2010,38,Darington Hobson,New York,Jr.,SF,New Mexico,204.0,6-6
+2010,39,Willie Warren,*New York,So.,PG/SG,Oklahoma,208.0,6-4
+2010,40,Stanley Robinson,Indiana,Sr.,SF,UConn,213.0,6-8
+2010,41,Solomon Alabi,*Miami,So.,C,Florida St.,237.0,7-1
+2010,42,Thomas Heurtel,*Miami,Intl.,PG,France,180.0,6-2
+2010,43,Jerome Jordan,*LA Lakers,Sr.,C,Tulsa,244.0,7-1
+2010,44,Nemanja Bjelica,*Milwaukee,Intl.,SF,Serbia,223.0,6-10
+2010,45,Trevor Booker,*Minnesota,Sr.,PF,Clemson,236.0,6-7
+2010,46,Lazar Hayward,*Phoenix,Sr.,SF,Marquette,226.0,6-6
+2010,47,Mikhail Torrance,Milwaukee,Sr.,PG/SG,Alabama,209.0,6-5
+2010,48,Art Parakhouski,Miami,Sr.,C,Radford,268.0,6-11
+2010,49,Samardo Samuels,*San Antonio,So.,PF,Louisville,245.0,6-8
+2010,50,Dwayne Collins,*Dallas,Sr.,PF,Miami,241.0,6-8
+2010,51,Mac Koshwal,*Oklahoma Cty,Jr.,PF,DePaul,250.0,6-9
+2010,52,Jarvis Varnado,Boston,Sr.,PF,Mississippi St.,210.0,6-9
+2010,53,Manny Harris,Atlanta,Jr.,SG,Michigan,185.0,6-5
+2010,54,Sherron Collins,*LA Clippers,Sr.,PG,Kansas,217.0,5-11
+2010,55,Brian Zoubek,Utah,Sr.,C,Duke,245.0,7-1
+2010,56,Landon Milbourne,*Minnesota,Sr.,SF,Maryland,207.0,6-7
+2010,57,Luke Harangody,*Indiana,Sr.,SF/PF,Notre Dame,240.0,6-7
+2010,58,Alexey Shved,LA Lakers,Intl.,PG/SG,Russia,178.0,6-6
+2010,59,Denis Clemente,Orlando,Sr.,PG,Kansas State,175.0,6-0
+2010,60,Latavious Williams,*Phoenix,Intl.,PF,USA,205.0,6-8
+2011,1,Kyrie Irving,*Cleveland,Fr.,PG,Duke,191.0,6-3
+2011,2,Derrick Williams,Minnesota,So.,SF/PF,Arizona,248.0,6-8
+2011,3,Enes Kanter,*Utah,Fr.,PF/C,Kentucky,259.0,6-11
+2011,4,Jonas Valanciunas,Cleveland,Intl.,C,Lithuania,240.0,6-11
+2011,5,Brandon Knight,Toronto,Fr.,PG/SG,Kentucky,177.0,6-3
+2011,6,Jan Vesely,Washington,Intl.,SF/PF,Czech Republic,230.0,6-11
+2011,7,Tristan Thompson,Sacramento,Fr.,PF,Texas,227.0,6-9
+2011,8,Bismack Biyombo,Detroit,Intl.,C,Congo,243.0,6-9
+2011,9,Kawhi Leonard,Charlotte,So.,SF,San Diego St.,227.0,6-7
+2011,10,Jimmer Fredette,Milwaukee,Sr.,PG,,196.0,6-2
+2011,11,Klay Thompson,Golden St.,Jr.,SG/SF,Washington St...,206.0,6-7
+2011,12,Kemba Walker,*Utah,Jr.,PG,UConn,184.0,6-1
+2011,13,Alec Burks,*Phoenix,So.,PG/SG,Colorado,193.0,6-6
+2011,14,Marcus Morris,Houston,Jr.,SF/PF,Kansas,230.0,6-8
+2011,15,Markieff Morris,Indiana,Jr.,PF,Kansas,241.0,6-9
+2011,16,Jordan Hamilton,Philadelphia,So.,SG/SF,Texas,228.0,6-8
+2011,17,Chris Singleton,New York,Jr.,SF/PF,Florida St.,230.0,6-9
+2011,18,Marshon Brooks,*Washington,Sr.,SG,Providence,195.0,6-5
+2011,19,Donatas Motiejunas,*Charlotte,Intl.,PF,Lithuania,224.0,7-0
+2011,20,Iman Shumpert,*Minnesota,Jr.,PG/SG,Georgia Tech,222.0,6-5
+2011,21,Kenneth Faried,Portland,Sr.,PF,Morehead St.,225.0,6-7
+2011,22,Tobias Harris,Denver,Fr.,SF/PF,Tennessee,223.0,6-8
+2011,23,Nikola Vucevic,*Houston,Jr.,C,USC,260.0,6-11
+2011,24,Reggie Jackson,Oklahoma Cty,Jr.,PG/SG,Boston College,200.0,6-3
+2011,25,Trey Thompkins,Boston,Jr.,PF,Georgia,239.0,6-10
+2011,26,Tyler Honeycutt,Dallas,So.,SG/SF,UCLA,187.0,6-8
+2011,27,Nikola Mirotic,*New Jersey,Intl.,SF/PF,Montenegro,225.0,6-10
+2011,28,Kyle Singler,*Chicago,Sr.,SF,Duke,228.0,6-9
+2011,29,Davis Bertans,San Antonio,Intl.,SF,Latvia,211.0,6-10
+2011,30,Norris Cole,Chicago,Sr.,PG,Cleveland St.,174.0,6-1
+2011,31,Darius Morris,*Miami,So.,PG,Michigan,190.0,6-4
+2011,32,JaJuan Johnson P...,Cleveland,Sr.,PF,Purdue,220.0,6-10
+2011,33,Jeremy Tyler,*Detroit,Intl.,PF/C,USA,262.0,6-10
+2011,34,Jimmy Butler,Washington,Sr.,SF,Marquette,222.0,6-7
+2011,35,Shelvin Mack,Sacramento,Jr.,PG/SG,Butler,205.0,6-2
+2011,36,Justin Harper,New Jersey,Sr.,PF,Richmond,228.0,6-9
+2011,37,Malcolm Lee,*LA Clippers,Jr.,PG/SG,UCLA,198.0,6-5
+2011,38,Nolan Smith,*Houston,Sr.,PG/SG,Duke,189.0,6-3
+2011,39,Josh Selby,Charlotte,Fr.,PG/SG,Kansas,195.0,6-3
+2011,40,Jon Leuer,Milwaukee,Sr.,PF,Wisconsin,223.0,6-11
+2011,41,Chandler Parsons,*LA Lakers,Sr.,SF,Florida,221.0,6-10
+2011,42,Jordan Williams,Indiana,So.,PF,Maryland,247.0,6-9
+2011,43,Travis Leslie,*Chicago,Jr.,SG/SF,Georgia,205.0,6-4
+2011,44,Cory Joseph,*Golden St.,Fr.,PG,Texas,186.0,6-3
+2011,45,Charles Jenkins,*New Orleans Old,Sr.,PG/SG,Hofstra,216.0,6-3
+2011,46,Andrew Goudelock,*LA Lakers,Sr.,PG/SG,Charleston,198.0,6-2
+2011,47,Keith Benson,*LA Clippers,Sr.,C,Oakland,217.0,6-11
+2011,48,Greg Smith,Atlanta,So.,PF/C,Fresno St.,253.0,6-9
+2011,49,Bojan Bogdanovic,Memphis,Intl.,SG/SF,Croatia,195.0,6-7
+2011,50,Matthew Bryan-Am...,*Philadelphia,Sr.,PF,Washington,232.0,6-10
+2011,51,Malcolm Thomas,*Portland,Sr.,PF,San Diego St.,223.0,6-9
+2011,52,Xavi Rabaseda,*Detroit,Intl.,SG,Spain,190.0,6-7
+2011,53,E'twaun Moore,Orlando,Sr.,PG/SG,Purdue,191.0,6-4
+2011,54,Rick Jackson,*Cleveland,Sr.,PF,Syracuse,242.0,6-9
+2011,55,David Lighty,Boston,Sr.,SG,Ohio St.,216.0,6-6
+2011,56,Willie Reed,LA Lakers,Jr.,PF,St. Louis,220.0,6-9
+2011,57,Cam Long,Dallas,Sr.,SG,George Mason,192.0,6-4
+2011,58,Julyan Stone,*LA Lakers,Sr.,PG,UTEP,200.0,6-6
+2011,59,DeAndre Liggins,San Antonio,Jr.,SG,Kentucky,202.0,6-6
+2011,60,DeAngelo Casto,*Sacramento,Jr.,PF,Washington St...,255.0,6-8
+2012,1,Anthony Davis,New Orleans Old,Fr.,PF,Kentucky,222.0,6-10
+2012,2,Bradley Beal,Charlotte,Fr.,SG,Florida,202.0,6-4
+2012,3,Michael Kidd-Gil...,Washington,Fr.,SF,Kentucky,233.0,6-7
+2012,4,Harrison Barnes,Cleveland,So.,SF,North Carolina,228.0,6-8
+2012,5,Thomas Robinson,Sacramento,Jr.,PF,Kansas,244.0,6-9
+2012,6,Damian Lillard,*Portland,Jr.,PG,Weber St.,189.0,6-3
+2012,7,Dion Waiters,*Golden St.,So.,SG,Syracuse,215.0,6-4
+2012,8,Andre Drummond,Toronto,Fr.,PF/C,UConn,279.0,6-11
+2012,9,John Henson,Detroit,Jr.,PF,North Carolina,216.0,6-10
+2012,10,Austin Rivers,*New Orleans Old,Fr.,SG,Duke,203.0,6-5
+2012,11,Tyler Zeller,Portland,Sr.,PF/C,North Carolina,247.0,7-0
+2012,12,Meyers Leonard,*Houston,So.,C,Illinois,250.0,7-1
+2012,13,Jeremy Lamb,Phoenix,So.,SG,UConn,179.0,6-5
+2012,14,Terrence Ross,*Milwaukee,So.,SG/SF,Washington,197.0,6-7
+2012,15,Andrew Nicholson,Philadelphia,Sr.,PF,St. Bonaventure,234.0,6-10
+2012,16,Moe Harkless,*Houston,Fr.,SF,St. Johns,207.0,6-8
+2012,17,Arnett Moultrie,*Cleveland,Jr.,PF,Mississippi St.,233.0,6-11
+2012,18,Marquis Teague,*Houston,Fr.,PG,Kentucky,189.0,6-2
+2012,19,Jared Sullinger,Orlando,So.,PF,Ohio St.,268.0,6-9
+2012,20,Kendall Marshall,Denver,So.,PG,North Carolina,197.0,6-4
+2012,21,Perry Jones,Boston,So.,SF/PF,Baylor,234.0,6-11
+2012,22,Royce White,*Boston,So.,SF,Iowa St.,261.0,6-8
+2012,23,Terrence Jones,Atlanta,So.,SF/PF,Kentucky,252.0,6-9
+2012,24,Draymond Green,*Cleveland,Sr.,SF/PF,Michigan St.,236.0,6-7
+2012,25,Fab Melo,Memphis,So.,C,Syracuse,255.0,7-0
+2012,26,Jeffery Taylor,Indiana,Sr.,SF,Vanderbilt,213.0,6-7
+2012,27,Evan Fournier,*Philadelphia,Intl.,SG,France,204.0,6-7
+2012,28,Doron Lamb,Oklahoma Cty,So.,SG,Kentucky,199.0,6-4
+2012,29,Will Barton,Chicago,So.,SG/SF,Memphis,174.0,6-6
+2012,30,Quincy Miller,*Golden St.,Fr.,SF,Baylor,219.0,6-10
+2012,31,Tony Wroten,Charlotte,Fr.,PG/SG,Washington,203.0,6-6
+2012,32,John Jenkins,Washington,Jr.,SG,Vanderbilt,212.0,6-4
+2012,33,Jared Cunningham,*Dallas,Jr.,SG,Oregon St.,188.0,6-5
+2012,34,Furkan Aldemir,*Dallas,Intl.,PF,Turkey,230.0,6-10
+2012,35,Kim English,*Golden St.,Sr.,SG,Missouri,192.0,6-6
+2012,36,Festus Ezeli,*Indiana,Sr.,C,Vanderbilt,264.0,6-11
+2012,37,Darius Miller,Toronto,Sr.,SF,Kentucky,238.0,6-7
+2012,38,Khris Middleton,*Denver,Jr.,SG/SF,Texas A&M,216.0,6-8
+2012,39,Miles Plumlee,Detroit,Sr.,PF/C,Duke,252.0,7-0
+2012,40,Mike Scott,*Portland,Sr.,PF,Virginia,237.0,6-8
+2012,41,Darius Johnson-O...,*Brooklyn,Sr.,SG,Marquette,212.0,6-3
+2012,42,Kevin Murphy,Milwaukee,Sr.,SG,Tennessee Tech,195.0,6-6
+2012,43,Drew Gordon,*Atlanta,Sr.,PF,New Mexico,239.0,6-9
+2012,44,Hollis Thompson,*Detroit,Jr.,SG,Georgetown,205.0,6-8
+2012,45,Robert Sacre,*Miami,Sr.,C,Gonzaga,260.0,6-11
+2012,46,Tyshawn Taylor,*New Orleans Old,Sr.,PG/SG,Kansas,180.0,6-3
+2012,47,Kevin Jones,Utah,Sr.,PF,West Virginia,251.0,6-7
+2012,48,Justin Hamilton,New York,Jr.,C,LSU,260.0,7-0
+2012,49,Quincy Acy,Orlando,Sr.,PF,Baylor,224.0,6-8
+2012,50,Kris Joseph,Denver,Sr.,SF,Syracuse,215.0,6-7
+2012,51,Kyle O'Quinn,Boston,Sr.,PF,Norfolk St.,241.0,6-10
+2012,52,Kostas Papanikol...,*Golden St.,Intl.,SF,Greece,230.0,6-9
+2012,53,Tornike Shengelia,LA Clippers,Intl.,SF,Rep. of Georgia,217.0,6-9
+2012,54,Alex Young,*Philadelphia,Sr.,SG/SF,IUPUI,216.0,6-6
+2012,55,JaMychal Green,*Dallas,Sr.,PF,Alabama,217.0,6-9
+2012,56,Tomas Satoransky,*Toronto,Intl.,PG/SG,Czech Republic,201.0,6-7
+2012,57,William Buford,*Brooklyn,Sr.,SG,Ohio St.,215.0,6-5
+2012,58,Henry Sims,*Minnesota,Sr.,C,Georgetown,251.0,6-11
+2012,59,Josep Franch,San Antonio,Intl.,PG,Spain,190.0,6-3
+2012,60,Scott Machado,*LA Lakers,Sr.,PG,Iona,205.0,6-2
+2013,1,Alex Len,Cleveland,So.,C,Maryland,255.0,7-1
+2013,2,Victor Oladipo,*Orlando,Jr.,SG/SF,Indiana,213.0,6-4
+2013,3,Otto Porter,Washington,So.,SF,Georgetown,200.0,6-9
+2013,4,Nerlens Noel,Charlotte,Fr.,PF/C,Kentucky,206.0,6-11
+2013,5,Ben McLemore,Phoenix,Fr.,SG,Kansas,190.0,6-5
+2013,6,Trey Burke,*New Orleans,So.,PG,Michigan,190.0,6-1
+2013,7,CJ McCollum,*Sacramento,Sr.,PG/SG,Lehigh,197.0,6-3
+2013,8,Michael Carter-W...,Detroit,So.,PG,Syracuse,185.0,6-6
+2013,9,Kentavious Caldw...,*Utah,So.,SG,Georgia,205.0,6-6
+2013,10,Anthony Bennett,*Portland,Fr.,SF/PF,UNLV,240.0,6-7
+2013,11,Cody Zeller,*Philadelphia,So.,PF/C,Indiana,230.0,7-0
+2013,12,Lucas Nogueira,*Oklahoma Cty,Intl.,PF/C,Brazil,220.0,7-0
+2013,13,Sergey Karasev,*Boston,Intl.,SG/SF,Russia,197.0,6-7
+2013,14,Steven Adams,*Minnesota,Fr.,C,Pittsburgh,255.0,7-0
+2013,15,Giannis Adetokoubo,Milwaukee,Intl.,SF,Greece,205.0,6-10
+2013,16,Dennis Schroder,*Atlanta,Intl.,PG,Germany,168.0,6-2
+2013,17,Kelly Olynyk,Atlanta,Jr.,C,Gonzaga,234.0,7-0
+2013,18,Shabazz Muhammad,*Dallas,Fr.,SF,UCLA,225.0,6-6
+2013,19,Tim Hardaway Jr,*Cleveland,Jr.,SG,Michigan,200.0,6-6
+2013,20,Tony Snell,Chicago,Jr.,SG/SF,New Mexico,198.0,6-7
+2013,21,Shane Larkin,*Minnesota,So.,PG,Miami,171.0,5-11
+2013,22,Gorgui Dieng,Brooklyn,Jr.,C,Louisville,230.0,6-11
+2013,23,Mason Plumlee,Indiana,Sr.,PF,Duke,238.0,6-11
+2013,24,Tony Mitchell,New York,So.,SF/PF,North Texas,236.0,6-9
+2013,25,Allen Crabbe,LA Clippers,Jr.,SG,California,197.0,6-6
+2013,26,Isaiah Canaan,*Oklahoma Cty,Sr.,PG,Murray St.,190.0,6-0
+2013,27,Nate Wolters,Denver,Sr.,PG,South Dakota ...,196.0,6-5
+2013,28,Erick Green,San Antonio,Sr.,PG/SG,Virginia Tech,180.0,6-3
+2013,29,Rudy Gobert,*Phoenix,Intl.,C,France,238.0,7-2
+2013,30,Jamaal Franklin,*Golden St.,Jr.,SG/SF,San Diego St.,191.0,6-5
+2013,31,Reggie Bullock,*Cleveland,Jr.,SG/SF,North Carolina,200.0,6-7
+2013,32,Livio Jean-Charles,*Oklahoma Cty,Intl.,SF/PF,France,217.0,6-9
+2013,33,Jeff Withey,Cleveland,Sr.,C,Kansas,222.0,7-0
+2013,34,Ricardo Ledo,*Houston,Fr.,SG,Providence,197.0,6-6
+2013,35,Glen Rice Jr.,*Philadelphia,Jr.,SG,USA,211.0,6-6
+2013,36,James Ennis,Sacramento,Sr.,SG/SF,Long Beach St...,200.0,6-7
+2013,37,CJ Leslie,Detroit,Jr.,SF/PF,NC State,209.0,6-9
+2013,38,Lorenzo Brown,*Milwaukee,Jr.,PG/SG,NC State,189.0,6-5
+2013,39,Erik Murphy,*Portland,Sr.,PF,Florida,240.0,6-10
+2013,40,James Southerland,Portland,Sr.,SF/PF,Syracuse,221.0,6-8
+2013,41,Kenny Kadji,*Memphis,Sr.,PF/C,Miami,242.0,6-10
+2013,42,Trevor Mbakwe,*New Orleans,Sr.,PF/C,Minnesota,236.0,6-8
+2013,43,Pierre Jackson,*Dallas,Sr.,PG,Baylor,176.0,5-10
+2013,44,DeShaun Thomas,*Atlanta,Jr.,SF/PF,Ohio St.,220.0,6-6
+2013,45,Grant Jerrett,*Portland,Fr.,PF,Arizona,232.0,6-10
+2013,46,Ryan Kelly,Utah,Sr.,PF,Duke,230.0,6-11
+2013,47,Archie Goodwin,*Denver,Fr.,SG,Kentucky,189.0,6-5
+2013,48,Myck Kabongo,LA Lakers,So.,PG,Texas,180.0,6-2
+2013,49,Carrick Felix,Chicago,Sr.,SG/SF,Arizona St.,203.0,6-6
+2013,50,Mike Muscala,*Miami,Sr.,PF/C,Bucknell,230.0,6-11
+2013,51,Peyton Siva,*Orlando,Sr.,PG,Louisville,181.0,6-1
+2013,52,Alex Abrines,*Minnesota,Intl.,SG,Spain,190.0,6-6
+2013,53,Bojan Dubljevic,Indiana,Intl.,PF/C,Montenegro,235.0,6-9
+2013,54,Brandon Paul,*Philadelphia,Sr.,SG,Illinois,200.0,6-4
+2013,55,Robert Covington,Memphis,Sr.,SF,Tennessee State,209.0,6-7
+2013,56,Vitalis Chikoko,*Detroit,Intl.,PF/C,Germany,219.0,6-10
+2013,57,Ray McCallum,*Phoenix,Jr.,PG,Detroit,190.0,6-1
+2013,58,Nemanja Nedovic,San Antonio,Intl.,PG/SG,Serbia,190.0,6-3
+2013,59,Janis Timma,*Minnesota,Intl.,SF,Latvia,226.0,6-8
+2013,60,Dewayne Dedmon,*Memphis,Jr.,C,USC,240.0,6-11
+2014,1,Andrew Wiggins,Cleveland,Fr.,SF,Kansas,200.0,6-8
+2014,2,Jabari Parker,Milwaukee,Fr.,SF/PF,Duke,240.0,6-9
+2014,3,Joel Embiid,*Philadelphia,Fr.,C,Kansas,250.0,7-0
+2014,4,Dante Exum,Orlando,Intl.,PG/SG,Australia,196.0,6-6
+2014,5,Aaron Gordon,Utah,Fr.,PF,Arizona,220.0,6-9
+2014,6,Marcus Smart,*Boston,So.,PG,Oklahoma State,227.0,6-3
+2014,7,Julius Randle,LA Lakers,Fr.,PF,Kentucky,250.0,6-9
+2014,8,Noah Vonleh,Sacramento,Fr.,PF,Indiana,247.0,6-9
+2014,9,Doug McDermott,*Charlotte,Sr.,SF,Creighton,220.0,6-7
+2014,10,Nik Stauskas,*Orlando,So.,SG,Michigan,207.0,6-6
+2014,11,Elfrid Payton,*Chicago,Jr.,PG,Louisiana Laf...,185.0,6-4
+2014,12,Rodney Hood,*Philadelphia,So.,SF,Duke,208.0,6-8
+2014,13,Zach LaVine,*Minnesota,Fr.,PG/SG,UCLA,180.0,6-6
+2014,14,Gary Harris,*Phoenix,So.,SG,Michigan St.,205.0,6-4
+2014,15,Dario Saric,*Atlanta,Intl.,SF/PF,Croatia,225.0,6-10
+2014,16,Adreian Payne,*Denver,Sr.,PF,Michigan St.,240.0,6-10
+2014,17,Jusuf Nurkic,*Boston,Intl.,C,Bosnia & Herz...,280.0,6-11
+2014,18,Kyle Anderson,*Phoenix,So.,SF,UCLA,230.0,6-9
+2014,19,Shabazz Napier,*Denver,Sr.,PG,UConn,175.0,6-0
+2014,20,Tyler Ennis,Toronto,Fr.,PG,Syracuse,180.0,6-2
+2014,21,TJ Warren,*Oklahoma Cty,So.,SF,NC State,220.0,6-8
+2014,22,James Young,Memphis,Fr.,SG,Kentucky,215.0,6-6
+2014,23,Jordan Adams,*Utah,So.,SG,UCLA,209.0,6-5
+2014,24,Glenn Robinson III,*Miami,So.,SF,Michigan,211.0,6-7
+2014,25,Jordan Clarkson,Houston,Jr.,PG/SG,Missouri,186.0,6-4
+2014,26,Jarnell Stokes,Charlotte,Jr.,PF,Tennessee,260.0,6-8
+2014,27,Cleanthony Early,*Phoenix,Sr.,SF/PF,Wichita State,210.0,6-7
+2014,28,Jerami Grant,LA Clippers,So.,SF,Syracuse,214.0,6-8
+2014,29,Clint Capela,Oklahoma Cty,Intl.,PF/C,Switzerland,222.0,6-11
+2014,30,Bogdan Bogdanovic,San Antonio,Intl.,SG,Serbia,205.0,6-6
+2014,31,CJ Wilcox,Milwaukee,Sr.,SG,Washington,201.0,6-5
+2014,32,KJ McDaniels,*Philadelphia,Jr.,SF,Clemson,196.0,6-6
+2014,33,PJ Hairston,*Cleveland,Jr.,SG,USA,228.0,6-5
+2014,34,Spencer Dinwiddie,*New York,Jr.,PG/SG,Colorado,205.0,6-6
+2014,35,Vasilje Micic,*Memphis,Intl.,PG,Serbia,202.0,6-6
+2014,36,Mitch McGary,*Milwaukee,So.,C,Michigan,266.0,6-10
+2014,37,Damien Inglis,*Toronto,Intl.,SF/PF,France,240.0,6-9
+2014,38,Johnny O'Bryant,Detroit,Jr.,PF/C,LSU,257.0,6-8
+2014,39,DeAndre Daniels,*Philadelphia,Jr.,SF,UConn,195.0,6-8
+2014,40,Markel Brown,*Minnesota,Sr.,SG,Oklahoma State,185.0,6-4
+2014,41,Thanasis Antetok...,Denver,Intl.,SF,Greece,205.0,6-6
+2014,42,Dwight Powell,*Houston,Sr.,PF,Stanford,235.0,6-11
+2014,43,Nick Johnson,Atlanta,Jr.,SG,Arizona,198.0,6-3
+2014,44,Semaj Christon,*Brooklyn,So.,PG,Xavier,186.0,6-3
+2014,45,Khem Birch,Charlotte,Jr.,PF,UNLV,209.0,6-9
+2014,46,James McAdoo,*LA Lakers,Jr.,PF,North Carolina,230.0,6-9
+2014,47,Walter Tavares,*New Orleans,Intl.,C,Spain,260.0,7-3
+2014,48,Alessandro Gentile,*Atlanta,Intl.,SG/SF,Italy,230.0,6-7
+2014,49,Cameron Bairstow,Chicago,Sr.,PF,New Mexico,252.0,6-10
+2014,50,Artem Klimenko,Phoenix,Intl.,C,Russia,245.0,7-0
+2014,51,Cory Jefferson,*New York,Sr.,PF,Baylor,220.0,6-9
+2014,52,CJ Fair,*Philadelphia,Sr.,SF,Syracuse,218.0,6-8
+2014,53,Nikola Jokic,*Minnesota,Intl.,PF/C,Serbia,255.0,6-11
+2014,54,Alec Brown,*San Antonio,Sr.,PF/C,Wisconsin Gre...,231.0,7-1
+2014,55,Jabari Brown,*Charlotte,Jr.,SG,Missouri,215.0,6-4
+2014,56,DeAndre Kane,*Orlando,Sr.,PG/SG,Iowa St.,200.0,6-4
+2014,57,Deonte Burton NV,Indiana,Sr.,PG/SG,Nevada,193.0,6-1
+2014,58,Joe Harris,*Philadelphia,Sr.,SG/SF,Virginia,215.0,6-6
+2014,59,Ronald Roberts,*Brooklyn,Sr.,PF,St. Joseph's,215.0,6-8
+2014,60,Nemanja Dangubic,*Brooklyn,Intl.,SG,Serbia,195.0,6-8
+2015,1,Karl-Anthony Towns,Minnesota,Fr.,C,Kentucky,250.0,7-0
+2015,2,D'Angelo Russell,LA Lakers,Fr.,PG/SG,Ohio St.,195.0,6-4
+2015,3,Jahlil Okafor,Philadelphia,Fr.,C,Duke,270.0,6-11
+2015,4,Emmanuel Mudiay,*New York,Intl.,PG,Congo,200.0,6-5
+2015,5,Kristaps Porzingis,Orlando,Intl.,PF,Latvia,230.0,7-1
+2015,6,Mario Hezonja,Sacramento,Intl.,SG/SF,Croatia,215.0,6-8
+2015,7,Justise Winslow,Denver,Fr.,SG/SF,Duke,222.0,6-6
+2015,8,Stanley Johnson,Detroit,Fr.,SF,Arizona,242.0,6-6
+2015,9,Frank Kaminsky,Charlotte,Sr.,C,Wisconsin,230.0,7-1
+2015,10,Myles Turner,Miami,Fr.,C,Texas,240.0,6-11
+2015,11,Cameron Payne,Indiana,So.,PG,Murray St.,185.0,6-2
+2015,12,Trey Lyles,Utah,Fr.,PF,Kentucky,240.0,6-10
+2015,13,Bobby Portis,Phoenix,So.,PF,Arkansas,245.0,6-11
+2015,14,Willie Cauley-St...,Oklahoma Cty,Jr.,C,Kentucky,242.0,7-0
+2015,15,Devin Booker,*Washington,Fr.,SG,Kentucky,205.0,6-6
+2015,16,Kelly Oubre,Boston,Fr.,SF,Kansas,205.0,6-7
+2015,17,Sam Dekker,Milwaukee,Jr.,SF,Wisconsin,220.0,6-9
+2015,18,Tyus Jones,*Houston,Fr.,PG,Duke,185.0,6-1
+2015,19,Montrezl Harrell,*New York,Jr.,PF,Louisville,255.0,6-8
+2015,20,Rondae Hollis-Je...,Toronto,So.,SF,Arizona,210.0,6-7
+2015,21,Jerian Grant,Dallas,Sr.,PG,Notre Dame,200.0,6-4
+2015,22,Terry Rozier,Chicago,So.,PG,Louisville,190.0,6-2
+2015,23,Kevon Looney,*Brooklyn,Fr.,PF,UCLA,222.0,6-9
+2015,24,Rashad Vaughn,*Minnesota,Fr.,SG,UNLV,200.0,6-5
+2015,25,Jarell Martin,Memphis,So.,PF,LSU,240.0,6-9
+2015,26,Justin Anderson,San Antonio,Jr.,SG/SF,Virginia,230.0,6-6
+2015,27,Nikola Milutinov,*LA Lakers,Intl.,PF/C,Serbia,225.0,7-0
+2015,28,Chris McCullough,*Boston,Fr.,PF,Syracuse,200.0,6-9
+2015,29,Delon Wright,*Brooklyn,Sr.,PG/SG,Utah,180.0,6-5
+2015,30,Rakeem Christmas,Golden St.,Sr.,PF/C,Syracuse,245.0,6-9
+2015,31,Richaun Holmes,*Cleveland,Sr.,PF,Bowling Green,245.0,6-9
+2015,32,Norman Powell,*Houston,Sr.,SG,UCLA,215.0,6-4
+2015,33,Jordan Mickey,*Boston,So.,PF,LSU,240.0,6-8
+2015,34,RJ Hunter,*LA Lakers,Jr.,SG,Georgia St.,185.0,6-6
+2015,35,Cedi Osman,*New York,Intl.,SF,Turkey,215.0,6-8
+2015,36,Guillermo Hernan...,*Cleveland,Intl.,PF/C,Spain,250.0,6-11
+2015,37,Christian Wood,*Philadelphia,So.,PF,UNLV,215.0,6-10
+2015,38,Jonathan Holmes,Detroit,Sr.,PF,Texas,245.0,6-9
+2015,39,Cliff Alexander,*Brooklyn,Fr.,PF/C,Kansas,240.0,6-8
+2015,40,Olivier Hanlan,Miami,Jr.,PG/SG,Boston College,185.0,6-4
+2015,41,Terran Petteway,*Portland,Jr.,SF,Nebraska,210.0,6-6
+2015,42,Joseph Young,Utah,Sr.,PG/SG,Oregon,185.0,6-2
+2015,43,Luis Montero,Indiana,So.,SG/SF,JUCO,195.0,6-7
+2015,44,Mouhammadou Jaiteh,*Memphis,Intl.,C,France,250.0,6-11
+2015,45,Dakari Johnson,Boston,So.,C,Kentucky,260.0,7-0
+2015,46,Josh Richardson,*Toronto,Sr.,SG,Tennessee,200.0,6-6
+2015,47,JP Tokoto,*Philadelphia,Jr.,SG/SF,North Carolina,195.0,6-6
+2015,48,Travis Trice,Oklahoma Cty,Sr.,PG,Michigan St.,170.0,6-1
+2015,49,Pat Connaughton,Washington,Sr.,SG,Notre Dame,215.0,6-5
+2015,50,Anthony Brown,*Atlanta,Sr.,SG/SF,Stanford,210.0,6-7
+2015,51,Arturas Gudaitis,*Orlando,Intl.,C,Lithuania,255.0,6-10
+2015,52,Brandon Ashley,Dallas,Jr.,PF,Arizona,230.0,6-8
+2015,53,Vince Hunter,*Cleveland,So.,SF/PF,UTEP,210.0,6-8
+2015,54,Andrew Harrison,*Portland,So.,PG/SG,Kentucky,215.0,6-6
+2015,55,Aaron White,San Antonio,Sr.,SF/PF,Iowa,220.0,6-9
+2015,56,Robert Upshaw,*LA Clippers,So.,C,Washington,260.0,7-0
+2015,57,Michael Frazier,*Denver,Jr.,SG,Florida,200.0,6-5
+2015,58,Larry Nance Jr.,*Philadelphia,Sr.,PF,Wyoming,230.0,6-9
+2015,59,Treveon Graham,Atlanta,Sr.,SG,VCU,220.0,6-6
+2015,60,Chasson Randle,*Philadelphia,Sr.,PG/SG,Stanford,180.0,6-2
+2016,1,Ben Simmons,Philadelphia,Fr.,SF/PF,LSU,240.0,6-10
+2016,2,Brandon Ingram,LA Lakers,Fr.,SF,Duke,195.0,6-9
+2016,3,Kris Dunn,*Boston,Jr.,PG,Providence,220.0,6-4
+2016,4,Dragan Bender,Phoenix,Intl.,PF,Croatia,220.0,7-0
+2016,5,Buddy Hield,*Minnesota,Sr.,SG,Oklahoma,215.0,6-5
+2016,6,Jamal Murray,New Orleans,Fr.,PG/SG,Kentucky,205.0,6-4
+2016,7,Marquese Chriss,*Denver,Fr.,PF,Washington,235.0,6-10
+2016,8,Domantas Sabonis,*Phoenix,So.,PF/C,Gonzaga,240.0,6-10
+2016,9,Jaylen Brown,*Toronto,Fr.,SG/SF,California,225.0,6-6
+2016,10,Deyonta Davis,Milwaukee,Fr.,PF/C,Michigan St.,240.0,6-10
+2016,11,Skal Labissiere,*Oklahoma Cty,Fr.,PF/C,Kentucky,215.0,7-0
+2016,12,Malik Beasley,*Atlanta,Fr.,SG,Florida St.,190.0,6-5
+2016,13,Jakob Poeltl,*Sacramento,So.,C,Utah,240.0,7-1
+2016,14,Henry Ellenson,Chicago,Fr.,PF/C,Marquette,245.0,6-11
+2016,15,Timothe Luwawu,*Denver,Intl.,SG/SF,France,195.0,6-7
+2016,16,Ivica Zubac,*Boston,Intl.,C,Croatia,265.0,7-0
+2016,17,Malachi Richardson,Memphis,Fr.,SG,Syracuse,200.0,6-6
+2016,18,Denzel Valentine,Detroit,Sr.,SG/SF,Michigan St.,210.0,6-5
+2016,19,Juan Hernangomez,*Denver,Intl.,PF,Spain,225.0,6-9
+2016,20,Dejounte Murray,*Brooklyn,Fr.,PG/SG,Washington,170.0,6-5
+2016,21,Damian Jones,Atlanta,Jr.,C,Vanderbilt,245.0,6-11
+2016,22,Furkan Korkmaz,*Sacramento,Intl.,SG,Turkey,175.0,6-7
+2016,23,Georgios Papagia...,Boston,Intl.,C,Greece,275.0,7-2
+2016,24,DeAndre Bembry,*Philadelphia,Jr.,SG/SF,St. Joseph's,205.0,6-5
+2016,25,Brice Johnson,LA Clippers,Sr.,PF,North Carolina,210.0,6-10
+2016,26,Wade Baldwin,*Philadelphia,So.,PG/SG,Vanderbilt,200.0,6-4
+2016,27,Cheick Diallo,Toronto,Fr.,PF/C,Kansas,220.0,6-9
+2016,28,Ante Zizic,*Sacramento,Intl.,C,Croatia,250.0,6-11
+2016,29,Guerschon Yabusele,San Antonio,Intl.,PF,France,260.0,6-8
+2016,30,Taurean Prince,Golden St.,Sr.,SF,Baylor,220.0,6-8
+2016,31,Malcolm Brogdon,*Memphis,Sr.,SG,Virginia,225.0,6-5
+2016,32,Caris LeVert,LA Lakers,Sr.,SG,Michigan,190.0,6-7
+2016,33,Demetrius Jackson,*New Orleans,Jr.,PG,Notre Dame,195.0,6-1
+2016,34,Diamond Stone,Phoenix,Fr.,C,Maryland,255.0,6-10
+2016,35,Patrick McCaw,*Memphis,So.,SG,UNLV,180.0,6-6
+2016,36,Thon Maker,*Milwaukee,HSSr.,PF/C,Australia,215.0,7-1
+2016,37,Stephen Zimmerman,*Houston,Fr.,PF/C,UNLV,235.0,6-11
+2016,38,Pascal Siakam,*Golden St.,So.,PF,New Mexico St.,230.0,6-9
+2016,39,Isaiah Cousins,*LA Clippers,Sr.,PG/SG,Oklahoma,190.0,6-4
+2016,40,Joel Bolomboy,*LA Clippers,Sr.,PF,Weber St.,225.0,6-9
+2016,41,Michael Gbinije,Orlando,Sr.,SG/SF,Syracuse,205.0,6-7
+2016,42,Isaiah Whitehead,*Brooklyn,So.,PG/SG,Seton Hall,210.0,6-4
+2016,43,Zhou Qi,Houston,Intl.,PF/C,China,215.0,7-2
+2016,44,Gary Payton II,*Atlanta,Sr.,PG/SG,Oregon St.,185.0,6-3
+2016,45,Isaia Cordinier,*Boston,Intl.,SG,France,180.0,6-5
+2016,46,Ben Bentil,*Dallas,So.,PF,Providence,230.0,6-8
+2016,47,Tyler Ulis,*Portland,So.,PG,Kentucky,150.0,5-10
+2016,48,Anthony Barber,*Chicago,Jr.,PG,NC State,175.0,6-3
+2016,49,Daniel Hamilton,Detroit,So.,SG/SF,UConn,200.0,6-7
+2016,50,Troy Williams,Indiana,Jr.,SF,Indiana,215.0,6-7
+2016,51,Paul Zipser,*Boston,Intl.,SF,Germany,210.0,6-8
+2016,52,Kahlil Felder,*Utah,Jr.,PG,Oakland,175.0,5-9
+2016,53,Petr Cornelie,*Denver,Intl.,PF/C,France,210.0,6-11
+2016,54,Jarrod Uthoff,*Cleveland,Sr.,PF,Iowa,215.0,6-10
+2016,55,Zach Auguste,*Utah,Sr.,PF,Notre Dame,240.0,6-10
+2016,56,Wayne Selden,*Oklahoma Cty,Jr.,SG,Kansas,230.0,6-5
+2016,57,Perry Ellis,*Memphis,Sr.,PF,Kansas,220.0,6-8
+2016,58,Rade Zagorac,*Boston,Intl.,SG/SF,Serbia,200.0,6-9
+2016,59,AJ Hammons,*Sacramento,Sr.,C,Purdue,260.0,7-0
+2016,60,Georges Niang,*Utah,Sr.,SF/PF,Iowa St.,230.0,6-8
+2017,1,Markelle Fultz,*Philadelphia,Fr.,PG,Washington,190.0,6-4
+2017,2,Lonzo Ball,LA Lakers,Fr.,PG,UCLA,190.0,6-6
+2017,3,Jayson Tatum,*Boston,Fr.,SF,Duke,205.0,6-8
+2017,4,Josh Jackson,Phoenix,Fr.,SG/SF,Kansas,205.0,6-8
+2017,5,De'Aaron Fox,Sacramento,Fr.,PG,Kentucky,170.0,6-3
+2017,6,Dennis Smith,Orlando,Fr.,PG,NC State,195.0,6-2
+2017,7,Jonathan Isaac,Chicago,Fr.,SF/PF,Florida St.,210.0,6-10
+2017,8,Frank Ntilikina,New York,Intl.,PG,France,190.0,6-5
+2017,9,Malik Monk,Dallas,Fr.,SG,Kentucky,200.0,6-3
+2017,10,Lauri Markkanen,*Portland,Fr.,PF,Arizona,230.0,7-0
+2017,11,Zach Collins,Charlotte,Fr.,C,Gonzaga,230.0,6-11
+2017,12,Luke Kennard,Detroit,So.,SG,Duke,195.0,6-6
+2017,13,John Collins,*Utah,So.,PF/C,Wake Forest,225.0,6-9
+2017,14,Donovan Mitchell,Miami,So.,SG,Louisville,210.0,6-2
+2017,15,TJ Leaf,Sacramento,Fr.,PF,UCLA,225.0,6-10
+2017,16,Justin Jackson,*Minnesota,Jr.,SF,North Carolina,200.0,6-8
+2017,17,Bam Adebayo,Milwaukee,Fr.,PF/C,Kentucky,245.0,6-10
+2017,18,Terrance Ferguson,Indiana,Intl.,SG,USA,185.0,6-7
+2017,19,Justin Patton,Atlanta,Fr.,C,Creighton,230.0,6-11
+2017,20,Jarrett Allen,*Sacramento,Fr.,C,Texas,235.0,6-10
+2017,21,Frank Jackson,Oklahoma Cty,Fr.,PG/SG,Duke,200.0,6-3
+2017,22,DJ Wilson,*Brooklyn,Jr.,PF,Michigan,235.0,6-10
+2017,23,Jawun Evans,*Toronto,So.,PG,Oklahoma State,185.0,6-0
+2017,24,Kyle Kuzma,*Denver,Jr.,PF,Utah,225.0,6-9
+2017,25,Harry Giles,*Philadelphia,Fr.,PF/C,Duke,230.0,6-10
+2017,26,Caleb Swanigan,*Portland,So.,PF/C,Purdue,250.0,6-9
+2017,27,Isaiah Hartenstein,*LA Lakers,Intl.,PF,Germany,250.0,7-0
+2017,28,Jordan Bell,*Utah,Jr.,PF/C,Oregon,225.0,6-8
+2017,29,Ivan Rabb,San Antonio,So.,PF/C,California,220.0,6-10
+2017,30,Tony Bradley,*LA Lakers,Fr.,C,North Carolina,250.0,6-10
+2017,31,Derrick White,*New Orleans,Sr.,PG/SG,Colorado,190.0,6-4
+2017,32,OG Anunoby,Phoenix,So.,SF/PF,Indiana,235.0,6-7
+2017,33,Wesley Iwundu,*Orlando,Sr.,SG/SF,Kansas State,195.0,6-7
+2017,34,Tyler Lydon,*Sacramento,So.,PF,Syracuse,215.0,6-9
+2017,35,Frank Mason,*Memphis,Sr.,PG,Kansas,190.0,6-0
+2017,36,Jonah Bolden,*Philadelphia,Intl.,PF,Australia,235.0,6-10
+2017,37,Cam Oliver,*Boston,So.,PF,Nevada,240.0,6-8
+2017,38,Ike Anigbogu,*Golden St.,Fr.,C,UCLA,250.0,6-10
+2017,39,Josh Hart,*LA Clippers,Sr.,SG,Villanova,210.0,6-5
+2017,40,PJ Dozier,Charlotte,So.,PG/SG,South Carolina,200.0,6-6
+2017,41,Sindarius Thornw...,*Atlanta,Sr.,SG,South Carolina,210.0,6-5
+2017,42,Mathias Lessort,*LA Lakers,Intl.,PF,France,235.0,6-9
+2017,43,Tyler Dorsey,*Houston,So.,SG,Oregon,185.0,6-4
+2017,44,Anzejs Pasecniks,*New York,Intl.,C,Latvia,220.0,7-1
+2017,45,Damyean Dotson,*Houston,Sr.,SG/SF,Houston,205.0,6-6
+2017,46,Semi Ojeleye,*Milwaukee,Jr.,SF/PF,SMU,240.0,6-6
+2017,47,Dillon Brooks,Indiana,Jr.,SF,Oregon,220.0,6-6
+2017,48,Sterling Brown,LA Clippers,Sr.,SG/SF,SMU,225.0,6-5
+2017,49,Vlatko Cancar,*Denver,Intl.,SF/PF,Slovenia,210.0,6-9
+2017,50,Alec Peters,*Philadelphia,Sr.,PF,Valparaiso,235.0,6-8
+2017,51,Jaron Blossomgame,*Denver,Sr.,SF,Clemson,220.0,6-7
+2017,52,Johnathan Motley,*Indiana,Jr.,PF,Baylor,240.0,6-9
+2017,53,Kadeem Allen,*Boston,Sr.,SG,Arizona,190.0,6-2
+2017,54,Monte Morris,*Phoenix,Sr.,PG,Iowa St.,175.0,6-2
+2017,55,Edmond Sumner,Utah,So.,PG/SG,Xavier,175.0,6-5
+2017,56,Isaiah Hicks,*Boston,Sr.,PF,North Carolina,235.0,6-8
+2017,57,Wesley Da Silva,*Brooklyn,Intl.,SG/SF,Brazil,190.0,6-6
+2017,58,Charles Cooke,*New York,Sr.,SG,Dayton,190.0,6-5
+2017,59,Dwayne Bacon,San Antonio,So.,SG/SF,Florida St.,220.0,6-6
+2017,60,Kobi Simmons,*Atlanta,Fr.,PG/SG,Arizona,170.0,6-4
+2018,1,Deandre Ayton,Phoenix,Fr.,C,Arizona,260.0,7-0
+2018,2,Marvin Bagley,Sacramento,Fr.,PF,Duke,235.0,6-11
+2018,3,Luka Doncic,Dallas,Intl.,SG/SF,Slovenia,225.0,6-8
+2018,4,Jaren Jackson Jr.,Memphis,Fr.,PF/C,Michigan St.,235.0,6-11
+2018,5,Mohamed Bamba,Atlanta,Fr.,C,Texas,225.0,7-0
+2018,6,Trae Young,Orlando,Fr.,PG,Oklahoma,180.0,6-2
+2018,7,Wendell Carter,Chicago,Fr.,C,Duke,250.0,6-10
+2018,8,Collin Sexton,*Cleveland,Fr.,PG,Alabama,185.0,6-2
+2018,9,Kevin Knox,New York,Fr.,SF/PF,Kentucky,215.0,6-9
+2018,10,Mikal Bridges,*Phoenix,Jr.,SG/SF,Villanova,210.0,6-7
+2018,11,Shai Gilgeous-Al...,*LA Clippers,Fr.,PG,Kentucky,180.0,6-6
+2018,12,Miles Bridges,Charlotte,So.,SF/PF,Michigan St.,220.0,6-6
+2018,13,Jerome Robinson,LA Clippers,Jr.,SG,Boston College,190.0,6-5
+2018,14,Michael Porter,Denver,Fr.,SF,Missouri,210.0,6-11
+2018,15,Lonnie Walker,Washington,Fr.,SG,Miami,195.0,6-5
+2018,16,Zhaire Smith,*Philadelphia,Fr.,SG,Texas Tech,200.0,6-4
+2018,17,Donte DiVincenzo,Milwaukee,So.,SG,Villanova,200.0,6-5
+2018,18,Kevin Huerter,San Antonio,So.,SG,Maryland,195.0,6-7
+2018,19,Grayson Allen,*Atlanta,Sr.,SG,Duke,200.0,6-4
+2018,20,Aaron Holiday,*Minnesota,Jr.,PG,UCLA,185.0,6-1
+2018,21,Robert Williams,Utah,So.,PF/C,Texas A&M,240.0,6-9
+2018,22,Chandler Hutchison,*Chicago,Sr.,SG/SF,Boise State,195.0,6-7
+2018,23,Elie Okobo,Indiana,Intl.,PG,France,180.0,6-2
+2018,24,Troy Brown,Portland,Fr.,SG,Oregon,210.0,6-7
+2018,25,Anfernee Simons,*LA Lakers,HSSr.,PG/SG,Undecided,185.0,6-3
+2018,26,Khyri Thomas,Philadelphia,Jr.,SG,Creighton,200.0,6-4
+2018,27,Josh Okogie,Boston,So.,SG/SF,Georgia Tech,210.0,6-4
+2018,28,Gary Trent Jr.,Golden St.,Fr.,SG,Duke,205.0,6-5
+2018,29,Dzanan Musa,*Brooklyn,Intl.,SF,Bosnia & Herz...,195.0,6-9
+2018,30,Moritz Wagner,*Atlanta,Jr.,PF/C,Michigan,240.0,6-11
+2018,31,Keita Bates-Diop,Phoenix,Jr.,SF/PF,Ohio St.,225.0,6-8
+2018,32,Jacob Evans,*Memphis,Jr.,SG/SF,Cincinnati,200.0,6-5
+2018,33,Jalen Brunson,Dallas,Jr.,PG,Villanova,200.0,6-2
+2018,34,Landry Shamet,Charlotte,So.,PG/SG,Wichita State,190.0,6-5
+2018,35,Omari Spellman,*Orlando,Fr.,PF/C,Villanova,255.0,6-9
+2018,36,De'Anthony Melton,*New York,So.,PG/SG,USC,195.0,6-3
+2018,37,Rawle Alkins,*Portland,So.,SG,Arizona,220.0,6-4
+2018,38,Shake Milton,*Detroit,Jr.,PG/SG,SMU,205.0,6-6
+2018,39,Mitchell Robinson,*LA Lakers,Fr.,C,USA,225.0,7-1
+2018,40,Issuf Sanon,*Denver,Intl.,PG/SG,Ukraine,190.0,6-4
+2018,41,Melvin Frazier,*Denver,Jr.,SG/SF,Tulane,200.0,6-6
+2018,42,Hamidou Diallo,Detroit,Fr.,SG,Kentucky,195.0,6-5
+2018,43,Brandon McCoy UNLV,*Orlando,Fr.,C,UNLV,250.0,7-1
+2018,44,Jevon Carter,Washington,Sr.,PG,West Virginia,195.0,6-1
+2018,45,Sviatoslav Mykha...,*Charlotte,Sr.,SG,Kansas,210.0,6-8
+2018,46,Jarred Vanderbilt,*Houston,Fr.,SF,Kentucky,215.0,6-9
+2018,47,Rodions Kurucs,*LA Lakers,Intl.,SF,Latvia,220.0,6-9
+2018,48,Isaac Bonga,Minnesota,Intl.,SF,Germany,200.0,6-9
+2018,49,Chimezie Metu,San Antonio,Jr.,PF/C,USC,220.0,6-10
+2018,50,Trevon Duval,Indiana,Fr.,PG,Duke,190.0,6-3
+2018,51,Keenan Evans,New Orleans,Sr.,PG/SG,Texas Tech,185.0,6-3
+2018,52,Raymond Spalding,Houston,Jr.,PF,Louisville,215.0,6-10
+2018,53,Justin Jackson MD,Oklahoma Cty,So.,SF/PF,Maryland,230.0,6-7
+2018,54,Devonte Graham,*Philadelphia,Sr.,PG,Kansas,185.0,6-1
+2018,55,Kostas Antetokou...,*Charlotte,Fr.,SF/PF,Dayton,195.0,6-10
+2018,56,Kenrich Williams,Dallas,Sr.,SF,TCU,200.0,6-7
+2018,57,Kevin Hervey,*Oklahoma Cty,Sr.,SF/PF,Texas Arlington,215.0,6-8
+2018,58,Alize Johnson,*Denver,Sr.,PF,Missouri State,215.0,6-8
+2018,59,Arnoldas Kulboka,*Phoenix,Intl.,SF,Lithuania,215.0,6-11
+2018,60,Bruce Brown,*Dallas,So.,SG,Miami,195.0,6-5
+2019,1,Zion Williamson,New Orleans,Fr.,PF,Duke,280.0,6-6
+2019,2,Ja Morant,Memphis,So.,PG,Murray St.,175.0,6-3
+2019,3,RJ Barrett,New York,Fr.,SG,Duke,210.0,6-7
+2019,4,DeAndre Hunter,*New Orleans,So.,SF/PF,Virginia,225.0,6-7
+2019,5,Darius Garland,*Cleveland,Fr.,PG,Vanderbilt,175.0,6-2
+2019,6,Coby White,Phoenix,Fr.,PG/SG,North Carolina,190.0,6-5
+2019,7,Jarrett Culver,Chicago,So.,SG,Texas Tech,195.0,6-6
+2019,8,Cameron Reddish,Atlanta,Fr.,SG/SF,Duke,210.0,6-8
+2019,9,Sekou Doumbouya,Washington,Intl.,SF/PF,France,230.0,6-9
+2019,10,Jaxson Hayes,*Atlanta,Fr.,PF/C,Texas,220.0,6-11
+2019,11,Rui Hachimura,Minnesota,Jr.,PF,Gonzaga,235.0,6-8
+2019,12,Nassir Little,Charlotte,Fr.,SF,North Carolina,225.0,6-6
+2019,13,PJ Washington,Miami,So.,PF,Kentucky,230.0,6-8
+2019,14,Keldon Johnson,*Boston,Fr.,SG/SF,Kentucky,215.0,6-6
+2019,15,Goga Bitadze,Detroit,Intl.,C,Rep. of Georgia,250.0,6-11
+2019,16,Tyler Herro,Orlando,Fr.,SG,Kentucky,195.0,6-6
+2019,17,Matisse Thybulle,*Atlanta,Sr.,SG/SF,Washington,200.0,6-6
+2019,18,Bol Bol,Indiana,Fr.,C,Oregon,210.0,7-2
+2019,19,Mfiondu Kabengele,San Antonio,So.,PF/C,Florida St.,255.0,6-10
+2019,20,Ty Jerome,*Boston,Jr.,PG,Virginia,195.0,6-5
+2019,21,Bruno Fernando,Oklahoma Cty,So.,C,Maryland,240.0,6-10
+2019,22,Eric Paschall,Boston,Sr.,PF,Villanova,255.0,6-7
+2019,23,Romeo Langford,Utah,Fr.,SG,Indiana,210.0,6-6
+2019,24,Nicolas Claxton,*Philadelphia,So.,PF,Georgia,215.0,6-11
+2019,25,Brandon Clarke,Portland,Jr.,PF/C,Gonzaga,210.0,6-8
+2019,26,Kevin Porter,*Cleveland,Fr.,SG/SF,USC,215.0,6-5
+2019,27,Nickeil Alexande...,*Brooklyn,So.,SG,Virginia Tech,205.0,6-5
+2019,28,Dylan Windler,Golden St.,Sr.,SG/SF,Belmont,195.0,6-7
+2019,29,Luka Samanic,*San Antonio,Intl.,PF,Croatia,230.0,6-11
+2019,30,KZ Okpala,*Milwaukee,So.,SG/SF,Stanford,210.0,6-8
+2019,31,Darius Bazley,*Brooklyn,,SF/PF,USA,210.0,6-9
+2019,32,Carsen Edwards,Phoenix,Jr.,PG,Purdue,200.0,6-0
+2019,33,Chuma Okeke,*Philadelphia,So.,SF/PF,Auburn,235.0,6-8
+2019,34,Naz Reid,*Philadelphia,Fr.,C,LSU,255.0,6-10
+2019,35,DaQuan Jeffries,Atlanta,Sr.,SF,,215.0,6-5
+2019,36,Jalen Lecque,*Charlotte,HSSr.,PG/SG,NC State,185.0,6-4
+2019,37,Cameron Johnson,*Dallas,Sr.,SF,North Carolina,205.0,6-8
+2019,38,Terance Mann,*Chicago,Sr.,SG,Florida St.,205.0,6-6
+2019,39,Grant Williams,New Orleans,Jr.,PF,Tennessee,240.0,6-7
+2019,40,Daniel Gafford,*Sacramento,So.,PF/C,Arkansas,240.0,6-10
+2019,41,Alen Smailagic,*Atlanta,Intl.,PF/C,Serbia,215.0,6-10
+2019,42,Jalen McDaniels,*Philadelphia,So.,SF/PF,San Diego St.,190.0,6-9
+2019,43,Ky Bowman,*Minnesota,Jr.,PG,Boston College,180.0,6-2
+2019,44,Isaiah Roby,*Atlanta,Jr.,SF/PF,Nebraska,215.0,6-8
+2019,45,Justin Wright-Fo...,Detroit,Sr.,PG/SG,Hofstra,190.0,6-2
+2019,46,Jontay Porter,*Orlando,So.,PF/C,Missouri,210.0,6-11
+2019,47,Kyle Guy,*Sacramento,Jr.,PG/SG,Virginia,170.0,6-2
+2019,48,Terence Davis,*LA Clippers,Sr.,PG/SG,Mississippi,190.0,6-4
+2019,49,Adam Mokoka,San Antonio,Intl.,SG,France,210.0,6-5
+2019,50,Jordan Bone,Indiana,Jr.,PG,Tennessee,180.0,6-3
+2019,51,Luguentz Dort,Boston,Fr.,SG,Arizona St.,220.0,6-4
+2019,52,Jaylen Hoard,*Charlotte,Fr.,SF/PF,Wake Forest,215.0,6-8
+2019,53,Joshua Obiesie,Utah,Intl.,PG/SG,Germany,195.0,6-6
+2019,54,Louis King,Philadelphia,Fr.,SF,Oregon,195.0,6-8
+2019,55,Jaylen Hands,*New York,So.,PG,UCLA,180.0,6-3
+2019,56,Tremont Waters,*LA Clippers,So.,PG,LSU,175.0,5-11
+2019,57,Tacko Fall,*New Orleans,Sr.,C,Central Florida,290.0,7-6
+2019,58,Marial Shayok,Golden St.,Sr.,SG/SF,Iowa St.,195.0,6-6
+2019,59,Kris Wilkes,Toronto,So.,SF,UCLA,210.0,6-7
+2019,60,Talen Horton-Tuc...,*Sacramento,Fr.,SG/SF,Iowa St.,235.0,6-4
+2020,1,Anthony Edwards,New York,Fr.,SG,Georgia,225.0,6-5
+2020,2,James Wiseman,Cleveland,Fr.,C,Memphis,235.0,7-1
+2020,3,LaMelo Ball,Phoenix,Intl.,PG,USA,180.0,6-6
+2020,4,Patrick Williams,Chicago,Fr.,SF/PF,Florida St.,215.0,6-7
+2020,5,Obi Toppin,Atlanta,So.,PF,Dayton,220.0,6-9
+2020,6,Onyeka Okongwu,Washington,Fr.,PF/C,USC,235.0,6-9
+2020,7,Deni Avdija,New Orleans,Intl.,SF,Israel,210.0,6-9
+2020,8,Tyrese Haliburton,Memphis,So.,PG,Iowa St.,185.0,6-5
+2020,9,Isaac Okoro,Dallas,Fr.,SG/SF,Auburn,215.0,6-6
+2020,10,Kira Lewis,Minnesota,So.,PG,Alabama,170.0,6-3
+2020,11,Devin Vassell,LA Lakers,So.,SG,Florida St.,200.0,6-7
+2020,12,Saddiq Bey,Charlotte,So.,SF,Villanova,215.0,6-8
+2020,13,Jalen Smith,Miami,So.,PF,Maryland,220.0,6-10
+2020,14,Killian Hayes,Sacramento,Intl.,PG,France,195.0,6-5
+2020,15,Cole Anthony,Detroit,Fr.,PG,North Carolina,185.0,6-3
+2020,16,Precious Achiuwa,Orlando,Fr.,SF/PF,Memphis,235.0,6-9
+2020,17,Jaden McDaniels,Brooklyn,Fr.,PF,Washington,200.0,6-10
+2020,18,Tyrell Terry,Indiana,Fr.,PG,Stanford,170.0,6-3
+2020,19,RJ Hampton,San Antonio,Intl.,PG/SG,USA,175.0,6-4
+2020,20,Tyrese Maxey,LA Clippers,Fr.,SG,Kentucky,200.0,6-3
+2020,21,Desmond Bane,Oklahoma Cty,Sr.,SG,TCU,220.0,6-6
+2020,22,Theo Maledon,Boston,Intl.,PG,France,185.0,6-5
+2020,23,Josh Green,Utah,Fr.,SG,Arizona,215.0,6-6
+2020,24,Vernon Carey,Philadelphia,Fr.,PF/C,Duke,270.0,6-10
+2020,25,Aleksej Pokusevski,Portland,Intl.,C,Serbia,190.0,7-0
+2020,26,Aaron Nesmith,Houston,So.,SG/SF,Vanderbilt,215.0,6-6
+2020,27,Malachi Flynn,Denver,Jr.,PG,San Diego St.,185.0,6-2
+2020,28,Tyler Bey,Golden St.,Jr.,PF,Colorado,215.0,6-7
+2020,29,Devon Dotson,Toronto,So.,PG,Kansas,185.0,6-2
+2020,30,Isaiah Joe,Milwaukee,So.,SG,Arkansas,170.0,6-4
+2020,31,Leandro Bolmaro,New York,Intl.,PG/SG,Argentina,180.0,6-6
+2020,32,Zeke Nnaji,Cleveland,Fr.,PF/C,Arizona,245.0,6-11
+2020,33,Jahmius Ramsey,Phoenix,Fr.,SG,Texas Tech,195.0,6-4
+2020,34,Daniel Oturu,Chicago,So.,C,Minnesota,240.0,6-10
+2020,35,Nico Mannion,Atlanta,Fr.,PG,Arizona,190.0,6-3
+2020,36,Elijah Hughes,Washington,Jr.,SG,Syracuse,230.0,6-6
+2020,37,Payton Pritchard,New Orleans,Sr.,PG,Oregon,195.0,6-2
+2020,38,Reggie Perry,Memphis,So.,PF/C,Mississippi St.,250.0,6-9
+2020,39,Isaiah Stewart,Dallas,Fr.,PF/C,Washington,245.0,6-8
+2020,40,Cassius Stanley,Minnesota,Fr.,SG,Duke,200.0,6-6
+2020,41,Paul Reed,LA Lakers,Jr.,PF/C,DePaul,220.0,6-10
+2020,42,Immanuel Quickley,Charlotte,So.,PG/SG,Kentucky,185.0,6-3
+2020,43,Udoka Azubuike,Miami,Sr.,C,Kansas,260.0,6-11
+2020,44,Markus Howard,Sacramento,Sr.,PG,Marquette,170.0,5-11
+2020,45,Nick Richards,Detroit,Jr.,C,Kentucky,240.0,7-0
+2020,46,Karim Mane,Orlando,So.,SG,Canada,195.0,6-6
+2020,47,Abdoulaye N'Doye,Brooklyn,Intl.,PG/SG,France,200.0,6-7
+2020,48,Tre Jones,Indiana,So.,PG,Duke,185.0,6-2
+2020,49,Jordan Nwora,San Antonio,Jr.,SF,Louisville,225.0,6-7
+2020,50,Nate Hinton,LA Clippers,So.,SG/SF,Houston,210.0,6-5
+2020,51,Marko Simonovic,Oklahoma Cty,Intl.,PF/C,Montenegro,215.0,7-0
+2020,52,Lamar Stevens,Boston,Sr.,SF/PF,Penn State,230.0,6-7
+2020,53,Yam Madar,Utah,Intl.,PG,Israel,180.0,6-3
+2020,54,Jay Scrubb,Philadelphia,So.,SG,JUCO,185.0,6-6
+2020,55,Cassius Winston,Portland,Sr.,PG,Michigan St.,195.0,6-2
+2020,56,Omer Yurtseven,Houston,Jr.,C,Georgetown,275.0,7-0
+2020,57,Ashton Hagans,Denver,So.,PG,Kentucky,195.0,6-3
+2020,58,Naji Marshall,Golden St.,Jr.,PG/SG,Xavier,235.0,6-7
+2020,59,Yoeli Childs,Toronto,Sr.,PF,BYU,225.0,6-7
+2020,60,Robert Woodard,Milwaukee,So.,SF,Mississippi St.,230.0,6-7
+2021,1,Cade Cunningham,*Detroit,Fr.,PG/SG,Oklahoma State,220.0,6-8
+2021,2,Jalen Green,*Houston,Fr.,SG,G-League,180.0,6-5
+2021,3,Evan Mobley,Cleveland,Fr.,PF/C,USC,215.0,7-0
+2021,4,Scottie Barnes,*Toronto,Fr.,SF/PF,Florida St.,225.0,6-8
+2021,5,Jalen Suggs,Orlando,Fr.,PG,Gonzaga,205.0,6-4
+2021,6,James Bouknight,*Oklahoma Cty,So.,SG,UConn,190.0,6-5
+2021,7,Jonathan Kuminga,Golden St.,Fr.,SF/PF,G-League,220.0,6-7
+2021,8,Moses Moody,*Orlando,Fr.,SG,Arkansas,210.0,6-6
+2021,9,Franz Wagner,Sacramento,So.,SF/PF,Michigan,220.0,6-10
+2021,10,Josh Giddey,*Memphis,Intl.,PG,Australia,205.0,6-8
+2021,11,Kai Jones,Charlotte,So.,C,Texas,220.0,6-11
+2021,12,Alperen Sengun,San Antonio,Intl.,PF/C,Turkey,240.0,6-9
+2021,13,Corey Kispert,Indiana,Sr.,SG/SF,Gonzaga,225.0,6-7
+2021,14,Davion Mitchell,*Golden St.,Jr.,PG,Baylor,200.0,6-1
+2021,15,Chris Duarte,Washington,Sr.,SG,Oregon,190.0,6-6
+2021,16,Jalen Johnson,*Houston,Fr.,SF/PF,Duke,210.0,6-9
+2021,17,Trey Murphy,*New Orleans,Jr.,SF/PF,Virginia,205.0,6-9
+2021,18,Keon Johnson,*Oklahoma Cty,Fr.,SG/SF,Tennessee,185.0,6-5
+2021,19,Miles McBride,*Charlotte,So.,PG,West Virginia,195.0,6-2
+2021,20,Ziaire Williams,Atlanta,Fr.,SG/SF,Stanford,190.0,6-9
+2021,21,Isaiah Jackson,*LA Clippers,Fr.,PF/C,Kentucky,205.0,6-10
+2021,22,Jared Butler,*Washington,Jr.,PG/SG,Baylor,195.0,6-3
+2021,23,Usman Garuba,*Houston,Intl.,PF/C,Spain,230.0,6-8
+2021,24,Cameron Thomas,*Houston,Fr.,SG,LSU,200.0,6-3
+2021,25,Nah'Shon Hyland,*New York,So.,PG/SG,VCU,170.0,6-3
+2021,26,Joshua Primo,Denver,Fr.,SG,Alabama,190.0,6-5
+2021,27,Ayo Dosunmu,Brooklyn,Jr.,PG/SG,Illinois,195.0,6-5
+2021,28,Jaden Springer,Philadelphia,Fr.,SG,Tennessee,200.0,6-4
+2021,29,Day'Ron Sharpe,*Brooklyn,Fr.,PF/C,North Carolina,265.0,6-10
+2021,30,Joel Ayayi,*Memphis,Jr.,PG/SG,Gonzaga,180.0,6-5
+2021,31,Quentin Grimes,*Washington,Jr.,SG,Houston,210.0,6-5
+2021,32,Isaiah Todd,*New York,Fr.,PF/C,G-League,220.0,6-10
+2021,33,Tre Mann,*LA Clippers,So.,PG,Florida,180.0,6-4
+2021,34,Josh Christopher,*New York,Fr.,SG,Arizona St.,215.0,6-4
+2021,35,Charles Bassey,New Orleans,Jr.,PF/C,Western Kentu...,230.0,6-10
+2021,36,Sharife Cooper,*New York,Fr.,PG,Auburn,180.0,6-1
+2021,37,JT Thor,*Charlotte,Fr.,PF/C,Auburn,205.0,6-10
+2021,38,BJ Boston,Chicago,Fr.,SG,Kentucky,185.0,6-7
+2021,39,Juhann Begarin,Sacramento,Intl.,PG/SG,France,215.0,6-6
+2021,40,Joe Wieskamp,*Utah,Jr.,SG/SF,Iowa,205.0,6-7
+2021,41,Jason Preston,San Antonio,Jr.,PG,Ohio,180.0,6-4
+2021,42,Herbert Jones,*Detroit,Sr.,SG/SF,Alabama,205.0,6-7
+2021,43,Moses Wright,*Portland,Sr.,PF/C,Georgia Tech,225.0,6-9
+2021,44,Jericho Sims,*Brooklyn,Sr.,PF/C,Texas,250.0,6-10
+2021,45,Jeremiah Robinso...,Boston,So.,PF,Villanova,240.0,6-9
+2021,46,Aaron Wiggins,*Toronto,Jr.,SG,Maryland,190.0,6-6
+2021,47,Filip Petrusev,*Toronto,Intl.,C,Serbia,235.0,6-11
+2021,48,Greg Brown,*Atlanta,Fr.,SF/PF,Texas,205.0,6-8
+2021,49,Isaiah Livers,*Brooklyn,Sr.,SF/PF,Michigan,230.0,6-7
+2021,50,Neemias Queta,*Philadelphia,Jr.,C,Utah State,250.0,7-0
+2021,51,Vrenz Bleijenbergh,*LA Clippers,Intl.,SF/PF,Belgium,190.0,6-9
+2021,52,Kessler Edwards,*Detroit,Jr.,PF,Pepperdine,205.0,6-8
+2021,53,Daishen Nix,*Philadelphia,Fr.,PG,G-League,225.0,6-4
+2021,54,David Johnson,*Milwaukee,So.,PG,Louisville,205.0,6-4
+2021,55,Duane Washington...,*Oklahoma Cty,Jr.,PG/SG,Ohio St.,210.0,6-3
+2021,56,Justin Champagnie,*Charlotte,So.,SF,Pittsburgh,205.0,6-7
+2021,57,EJ Onu,*Detroit,Sr.,PF,Shawnee State,240.0,6-11
+2021,58,Rokas Jokubaitis,*New York,Intl.,PG,Lithuania,190.0,6-4
+2021,59,David Duke,*Brooklyn,Jr.,PG/SG,Providence,205.0,6-5
+2021,60,Sandro Mamukelas...,*Milwaukee,Sr.,PF,Seton Hall,240.0,6-10
+2022,1,Jabari Smith,Orlando,Fr.,PF,Auburn,220.0,6-10
+2022,2,Chet Holmgren,Oklahoma Cty,Fr.,PF/C,Gonzaga,195.0,7-0
+2022,3,Paolo Banchero,*Houston,Fr.,PF/C,Duke,250.0,6-10
+2022,4,Jaden Ivey,*Sacramento,So.,PG/SG,Purdue,195.0,6-4
+2022,5,Bennedict Mathurin,Detroit,So.,SG/SF,Arizona,205.0,6-6
+2022,6,Keegan Murray,*Indiana,So.,SF/PF,Iowa,225.0,6-8
+2022,7,Dyson Daniels,Portland,Intl.,SG/SF,G-League,195.0,6-7
+2022,8,Shaedon Sharpe,*New Orleans,Fr.,SG,Kentucky,200.0,6-5
+2022,9,Ousmane Dieng,San Antonio,Intl.,SG/SF,France,185.0,6-9
+2022,10,Johnny Davis,Washington,So.,SG,Wisconsin,195.0,6-5
+2022,11,AJ Griffin,*Oklahoma Cty,Fr.,SF,Duke,220.0,6-6
+2022,12,Malaki Branham,*Oklahoma Cty,Fr.,SG/SF,Ohio St.,195.0,6-5
+2022,13,Jeremy Sochan,*Detroit,Fr.,PF,Baylor,230.0,6-9
+2022,14,Ochai Agbaji,*Cleveland,Sr.,SG,Kansas,215.0,6-6
+2022,15,Jalen Duren,*Charlotte,Fr.,PF/C,Memphis,250.0,6-11
+2022,16,Jalen Williams,Atlanta,Jr.,SG/SF,Santa Clara,210.0,6-6
+2022,17,Tari Eason,*Houston,So.,SF/PF,LSU,215.0,6-8
+2022,18,Mark Williams,Chicago,So.,C,Duke,240.0,7-1
+2022,19,Wendell Moore,*Memphis,Jr.,SG/SF,Duke,215.0,6-5
+2022,20,Blake Wesley,*San Antonio,Fr.,PG/SG,Notre Dame,185.0,6-4
+2022,21,Dalen Terry,Denver,So.,PG/SG,Arizona,195.0,6-7
+2022,22,TyTy Washington,*Minnesota,Fr.,PG,Kentucky,195.0,6-3
+2022,23,Patrick Baldwin,*Memphis,Fr.,SF/PF,Wisconsin–M...,220.0,6-10
+2022,24,Jake LaRavia,Milwaukee,Jr.,SF/PF,Wake Forest,225.0,6-8
+2022,25,Ismael Kamagate,*San Antonio,Intl.,C,France,230.0,6-11
+2022,26,Jaden Hardy,*Minnesota,Fr.,SG,G-League,200.0,6-4
+2022,27,Walker Kessler,Miami,So.,C,Auburn,255.0,7-1
+2022,28,Max Christie,Golden St.,Fr.,SG,Michigan St.,190.0,6-5
+2022,29,Christian Braun,*Houston,Jr.,SG,Kansas,210.0,6-7
+2022,30,Kennedy Chandler,*Denver,Fr.,PG,Tennessee,170.0,6-1
+2022,31,EJ Liddell,*Indiana,Jr.,PF,Ohio St.,245.0,6-7
+2022,32,MarJon Beauchamp,Orlando,So.,SG/SF,G-League,195.0,6-6
+2022,33,Andrew Nembhard,*Toronto,Sr.,PG,Gonzaga,195.0,6-4
+2022,34,Nikola Jovic,Oklahoma Cty,Intl.,SF/PF,Serbia,225.0,6-11
+2022,35,Caleb Houstan,*LA Lakers,Fr.,SG/SF,Michigan,205.0,6-8
+2022,36,Bryce McGowens,*Detroit,Fr.,SG,Nebraska,180.0,6-6
+2022,37,Jaylin Williams,*Dallas,So.,PF/C,Arkansas,235.0,6-10
+2022,38,Christian Koloko,*Memphis,Jr.,C,Arizona,220.0,7-0
+2022,39,Peyton Watson,*Cleveland,Fr.,SG/SF,UCLA,205.0,6-8
+2022,40,Justin Lewis,*Charlotte,Fr.,PF/C,Marquette,235.0,6-7
+2022,41,Kendall Brown,*New Orleans,Fr.,SF/PF,Baylor,200.0,6-7
+2022,42,John Butler,New York,Fr.,PF/C,Florida St.,175.0,7-1
+2022,43,Jean Montero,LA Clippers,Intl.,PG/SG,Overtime Elite,170.0,6-2
+2022,44,Ryan Rollins,*Golden St.,So.,PG/SG,Toledo,180.0,6-3
+2022,45,Ron Harper Jr.,*Minnesota,Sr.,SF,Rutgers,240.0,6-5
+2022,46,Trevor Keels,*Denver,Fr.,PG/SG,Duke,225.0,6-4
+2022,47,Gabriele Procida,*Memphis,Intl.,SG,Italy,195.0,6-7
+2022,48,Josh Minott,*Indiana,Fr.,SF/PF,Memphis,205.0,6-8
+2022,49,Jamaree Bouyea,*Cleveland,Sr.,PG,San Francisco,170.0,6-1
+2022,50,Michael Foster,*Minnesota,Fr.,PF,G-League,235.0,6-9
+2022,51,Jordan Hall,*Atlanta,So.,PG/SG,St. Joseph's,215.0,6-7
+2022,52,JD Davison,*New Orleans,Fr.,PG/SG,Alabama,190.0,6-2
+2022,53,Kenneth Lofton,Boston,So.,PF,Louisiana Tech,280.0,6-7
+2022,56,Julian Champagnie,*Washington,Jr.,SF,St. Johns,210.0,6-7
+2022,57,Karlo Matkovic,Golden St.,Intl.,PF/C,Croatia,240.0,6-9
+2022,58,Isaiah Mobley,*Cleveland,Jr.,PF,USC,240.0,6-10
+2022,59,Jabari Walker,*Portland,So.,SF/PF,Colorado,215.0,6-8
+2022,60,Iverson Molinar,*Indiana,Jr.,PG,Mississippi St.,185.0,6-3
+2023,1,Victor Wembanyama,San Antonio,Intl.,C,France,210.0,7-4
+2023,2,Brandon Miller,Charlotte,Fr.,SF,Alabama,200.0,6-9
+2023,3,Scoot Henderson,Portland,Fr.,PG,G-League,195.0,6-2
+2023,4,Amen Thompson,*Houston,Fr.,PG/SG,Overtime Elite,215.0,6-7
+2023,5,Ausar Thompson,*Detroit,Fr.,SG,Overtime Elite,220.0,6-7
+2023,6,Anthony Black,Orlando,Fr.,PG/SG,Arkansas,210.0,6-7
+2023,7,Jarace Walker,Washington,Fr.,SF/PF,Houston,250.0,6-8
+2023,8,Cam Whitmore,*Indiana,Fr.,SF,Villanova,235.0,6-7
+2023,9,Taylor Hendricks,Utah,Fr.,PF,Central Florida,215.0,6-9
+2023,10,Dereck Lively,*Oklahoma Cty,Fr.,C,Duke,230.0,7-1
+2023,11,Bilal Coulibaly,*Orlando,Intl.,SF,France,200.0,6-7
+2023,12,Kobe Bufkin,Dallas,So.,SG,Michigan,185.0,6-5
+2023,13,Jordan Hawkins,Toronto,So.,SG,UConn,185.0,6-5
+2023,14,Cason Wallace,*New Orleans,Fr.,PG/SG,Kentucky,195.0,6-4
+2023,15,Gradey Dick,Atlanta,Fr.,SG,Kansas,205.0,6-7
+2023,16,Jalen Hood-Schif...,*Utah,Fr.,PG/SG,Indiana,215.0,6-5
+2023,17,Keyonte George,*LA Lakers,Fr.,SG,Baylor,185.0,6-4
+2023,18,Noah Clowney,Miami,Fr.,PF/C,Alabama,210.0,6-10
+2023,19,Nick Smith,Golden St.,Fr.,PG/SG,Arkansas,185.0,6-5
+2023,20,Kris Murray,*Houston,Jr.,SF/PF,Iowa,215.0,6-9
+2023,21,Brandin Podziemski,*Brooklyn,So.,PG/SG,Santa Clara,205.0,6-5
+2023,22,Rayan Rupert,Brooklyn,Intl.,SG/SF,France,195.0,6-7
+2023,23,Jaime Jaquez,*Portland,Sr.,SF/PF,UCLA,225.0,6-7
+2023,24,Jett Howard,*Dallas,Fr.,SG,Michigan,215.0,6-8
+2023,25,Olivier-Maxence ...,*Detroit,Jr.,SF/PF,Marquette,210.0,6-8
+2023,26,Ben Sheppard,*Indiana,Sr.,SG,Belmont,195.0,6-6
+2023,27,Leonard Miller,*Charlotte,Fr.,SF/PF,G-League,210.0,6-10
+2023,28,Maxwell Lewis,*Utah,So.,SG/SF,Pepperdine,205.0,6-7
+2023,29,Trayce Jackson-D...,*Denver,Sr.,PF/C,Indiana,245.0,6-9
+2023,30,Dariq Whitehead,*LA Clippers,Fr.,SG/SF,Duke,220.0,6-7
+2023,31,Julian Strawther,*Charlotte,Jr.,SF,Gonzaga,210.0,6-7
+2023,32,Sidy Cissoko,*Denver,Intl.,SG/SF,G-League,225.0,6-7
+2023,33,Julian Phillips,*Minnesota,Fr.,SF/PF,Tennessee,195.0,6-8
+2023,34,Marcus Sasser,*Sacramento,Sr.,PG/SG,Houston,195.0,6-2
+2023,35,Brice Sensabaugh,*Chicago,Fr.,SF/PF,Ohio St.,235.0,6-6
+2023,36,Andre Jackson,Milwaukee,Jr.,SG/SF,UConn,210.0,6-6
+2023,37,Jalen Pickett,*Denver,Sr.,PG/SG,Penn State,200.0,6-3
+2023,38,Amari Bailey,*Boston,Fr.,PG/SG,UCLA,190.0,6-4
+2023,39,GG Jackson,*Atlanta,Fr.,PF,South Carolina,215.0,6-9
+2023,40,Colby Jones,*LA Lakers,Jr.,SG,Xavier,205.0,6-6
+2023,41,Tristan Vukcevic,*Charlotte,Intl.,PF/C,Serbia,225.0,7-0
+2023,42,James Nnaji,*Washington,Intl.,C,Nigeria,235.0,6-10
+2023,43,Jalen Wilson,*Portland,Jr.,SF/PF,Kansas,225.0,6-7
+2023,44,Seth Lundy,*San Antonio,Sr.,SG/SF,Penn State,215.0,6-5
+2023,45,Jordan Walsh,*Memphis,Fr.,SF/PF,Arkansas,205.0,6-7
+2023,46,Isaiah Wong,*Atlanta,Sr.,PG/SG,Miami,185.0,6-4
+2023,47,Terquavion Smith,*Indiana,So.,PG/SG,NC State,165.0,6-4
+2023,48,Adam Flagler,LA Clippers,Sr.,PG/SG,Baylor,190.0,6-2
+2023,49,Adama Sanogo,*Cleveland,Jr.,C,UConn,260.0,6-8
+2023,50,Ricky Council,*Oklahoma Cty,Jr.,SG,Arkansas,205.0,6-6
+2023,51,Keyontae Johnson,Brooklyn,Sr.,SG/SF,Kansas State,240.0,6-5
+2023,52,Emoni Bates,Phoenix,So.,SG,Eastern Michi...,190.0,6-10
+2023,53,Jaylen Clark,*Minnesota,Jr.,SG,UCLA,205.0,6-5
+2023,54,Oscar Tshiebwe,Sacramento,Sr.,PF/C,Kentucky,255.0,6-8
+2023,55,Azuolas Tubelis,*Indiana,Jr.,PF,Arizona,235.0,6-10
+2023,56,Kobe Brown,Memphis,Sr.,SF/PF,Missouri,250.0,6-8
+2023,57,Forfeited Pick,*Chicago,,,,,
+2023,58,Forfeited Pick,*Philadelphia,,,,,
+2023,59,Nadir Hifi,*Golden St.,Intl.,PG,France,170.0,6-1
+2023,60,Malcolm Cazalon,Milwaukee,Intl.,SG,France,185.0,6-6
+2024,1,Cooper Flagg,Atlanta,Fr.,SF/PF,Duke,220.0,6-9
+2024,2,Dylan Harper,*Washington,Fr.,PG/SG,Rutgers,215.0,6-6
+2024,3,VJ Edgecombe,Houston,Fr.,PG/SG,Baylor,195.0,6-5
+2024,4,Kon Knueppel,San Antonio,Fr.,SG/SF,Duke,215.0,6-7
+2024,5,Tre Johnson,*Detroit,Fr.,SG,Texas,190.0,6-6
+2024,6,Jeremiah Fears,*Charlotte,Fr.,PG/SG,Oklahoma,180.0,6-4
+2024,7,Ace Bailey,*Portland,Fr.,SG/SF,Rutgers,205.0,6-9
+2024,8,Egor Demin,*San Antonio,Fr.,SG/SF,BYU,200.0,6-9
+2024,9,Nolan Traore,Memphis,Intl.,PG,France,185.0,6-4
+2024,10,Noa Essengue,*Utah,Intl.,SF/PF,France,200.0,6-10
+2024,11,Khaman Maluach,Chicago,Fr.,C,Duke,255.0,7-2
+2024,12,Asa Newell,*Oklahoma Cty,Fr.,PF,Georgia,225.0,6-10
+2024,13,Kasparas Jakucio...,*Sacramento,Fr.,PG/SG,Illinois,205.0,6-6
+2024,14,Thomas Sorber,*Washington,Fr.,C,Georgetown,265.0,6-10
+2024,15,Derik Queen,Miami,Fr.,C,Maryland,250.0,6-10
+2024,16,Collin Murray-Bo...,Philadelphia,So.,PF/C,South Carolina,240.0,6-8
+2024,17,Nique Clifford,*LA Lakers,Sr.,SG,Colorado St.,200.0,6-6
+2024,18,Carter Bryant,Orlando,Fr.,SF,Arizona,215.0,6-8
+2024,19,Joan Beringer,*Toronto,Intl.,PF/C,France,235.0,7-0
+2024,20,Liam McNeeley,Cleveland,Fr.,SF,UConn,215.0,6-8
+2024,21,Drake Powell,*New Orleans,Fr.,SG/SF,North Carolina,200.0,6-6
+2024,22,Will Riley,*Phoenix,Fr.,SG/SF,Illinois,185.0,6-9
+2024,23,Rasheer Fleming,*Milwaukee,Jr.,PF/C,St. Joseph's,240.0,6-9
+2024,24,Jase Richardson,*Washington,Fr.,PG/SG,Michigan St.,180.0,6-2
+2024,25,Walter Clayton,New York,Sr.,PG/SG,Florida,200.0,6-3
+2024,26,Cedric Coward,*Oklahoma Cty,Sr.,SG/SF,Washington St...,205.0,6-6
+2024,27,Noah Penda,Minnesota,Intl.,SG/SF,France,240.0,6-8
+2024,28,Maxime Raynaud,Phoenix,Sr.,C,Stanford,240.0,7-1
+2024,29,Hugo Gonzalez,*Utah,Intl.,SG/SF,Spain,225.0,6-7
+2024,30,Chaz Lanier,Boston,Sr.,SG,Tennessee,206.0,6-5
+2024,31,Danny Wolf,*Toronto,Jr.,PF/C,Michigan,250.0,7-0
+2024,32,Tamar Bates,*Utah,Sr.,SG,Missouri,190.0,6-5
+2024,33,Ryan Kalkbrenner,*Milwaukee,Sr.,C,Creighton,260.0,7-2
+2024,34,Hansen Yang,*New York,Intl.,C,China,255.0,7-2
+2024,35,Ben Saraf,Indiana,Intl.,PG/SG,Israel,200.0,6-6
+2024,36,Yanic Konan Nied...,*San Antonio,Sr.,C,Penn State,245.0,7-1
+2024,37,Micah Peavy,*Detroit,Sr.,SG/SF,Georgetown,210.0,6-7
+2024,38,Adou Thiero,*Oklahoma Cty,Jr.,SF/PF,Arkansas,220.0,6-7
+2024,39,Tyrese Proctor,*Memphis,Jr.,PG,Duke,185.0,6-5
+2024,40,Bogoljub Markovic,*Phoenix,Intl.,PF,Serbia,210.0,6-11
+2024,41,Johni Broome,*Philadelphia,Sr.,PF/C,Auburn,250.0,6-10
+2024,42,Eric Dixon,*Charlotte,Sr.,PF,Villanova,260.0,6-9
+2024,43,Sion James,Atlanta,Sr.,SF,Duke,220.0,6-6
+2024,44,Javon Small,*Miami,Sr.,PG,West Virginia,190.0,6-2
+2024,45,Kam Jones,Toronto,Sr.,PG/SG,Marquette,200.0,6-4
+2024,46,Koby Brea,*LA Clippers,Sr.,SG/SF,Kentucky,200.0,6-7
+2024,47,RJ Luis,New Orleans,Jr.,SG/SF,St. Johns,210.0,6-7
+2024,48,Hunter Sallis,*San Antonio,Sr.,SG,Wake Forest,180.0,6-5
+2024,49,Brice Williams,*Philadelphia,Sr.,SG/SF,Nebraska,205.0,6-6
+2024,50,Lachlan Olbrich,*Indiana,Intl.,PF/C,Australia,230.0,6-10
+2024,51,Mohamed Diawara,*Indiana,Intl.,SF/PF,France,225.0,6-9
+2024,52,Kobe Sanders,*Dallas,Sr.,SF,Nevada,205.0,6-9
+2024,53,Jalon Moore,*Golden St.,Sr.,SF,Oklahoma,205.0,6-7
+2024,54,Khalif Battle,*Memphis,Sr.,SG,Gonzaga,185.0,6-5
+2024,55,Jaxson Robinson,*Boston,Sr.,SG/SF,Kentucky,190.0,6-6
+2024,56,Alex Toohey,*LA Lakers,Intl.,SF/PF,Australia,225.0,6-9
+2024,57,Jamir Watkins,*New York,Sr.,SF,Florida St.,215.0,6-6
+2024,58,Amari Williams,*Toronto,Sr.,C,Kentucky,260.0,7-0
+2024,59,Ryan Nembhard,*Phoenix,Sr.,PG,Gonzaga,175.0,6-0
+2024,60,Forfeited Pick,*Dallas,,,,,
+2025,1,Cooper Flagg,Dallas,Fr.,SF/PF,Duke,220.0,6-9
+2025,2,Dylan Harper,San Antonio,Fr.,PG/SG,Rutgers,215.0,6-6
+2025,3,VJ Edgecombe,Philadelphia,Fr.,PG/SG,Baylor,195.0,6-5
+2025,4,Kon Knueppel,Charlotte,Fr.,SG/SF,Duke,215.0,6-7
+2025,5,Jeremiah Fears,Utah,Fr.,PG/SG,Oklahoma,180.0,6-4
+2025,6,Ace Bailey,Washington,Fr.,SG/SF,Rutgers,205.0,6-9
+2025,7,Khaman Maluach,New Orleans,Fr.,C,Duke,255.0,7-2
+2025,8,Tre Johnson,Brooklyn,Fr.,SG,Texas,190.0,6-6
+2025,9,Noa Essengue,Toronto,Intl.,SF/PF,France,200.0,6-10
+2025,10,Derik Queen,*Phoenix,Fr.,C,Maryland,250.0,6-10
+2025,11,Carter Bryant,*Memphis,Fr.,SF,Arizona,215.0,6-8
+2025,12,Kasparas Jakucio...,Chicago,Fr.,PG/SG,Illinois,205.0,6-6
+2025,13,Asa Newell,*New Orleans,Fr.,PF,Georgia,225.0,6-10
+2025,14,Cedric Coward,*San Antonio,Sr.,SG/SF,Washington St...,205.0,6-6
+2025,15,Joan Beringer,*Oklahoma Cty,Intl.,PF/C,France,235.0,7-0
+2025,16,Collin Murray-Bo...,*Portland,So.,PF/C,South Carolina,240.0,6-8
+2025,17,Nique Clifford,*Minnesota,Sr.,SG,Colorado St.,200.0,6-6
+2025,18,Nolan Traore,*Utah,Intl.,PG,France,185.0,6-4
+2025,19,Egor Demin,*Brooklyn,Fr.,SG/SF,BYU,200.0,6-9
+2025,20,Walter Clayton,*Miami,Sr.,PG/SG,Florida,200.0,6-3
+2025,21,Liam McNeeley,*Washington,Fr.,SF,UConn,215.0,6-8
+2025,22,Thomas Sorber,*Brooklyn,Fr.,C,Georgetown,265.0,6-10
+2025,23,Rasheer Fleming,*Atlanta,Jr.,PF/C,St. Joseph's,240.0,6-9
+2025,24,Hugo Gonzalez,*Sacramento,Intl.,SG/SF,Spain,225.0,6-7
+2025,25,Jase Richardson,*Orlando,Fr.,PG/SG,Michigan St.,180.0,6-2
+2025,26,Will Riley,*Brooklyn,Fr.,SG/SF,Illinois,185.0,6-9
+2025,27,Drake Powell,*Brooklyn,Fr.,SG/SF,North Carolina,200.0,6-6
+2025,28,Noah Penda,Boston,Intl.,SG/SF,France,240.0,6-8
+2025,29,Maxime Raynaud,*Charlotte,Sr.,C,Stanford,240.0,7-1
+2025,30,Chaz Lanier,*LA Clippers,Sr.,SG,Tennessee,206.0,6-5
+2025,31,Danny Wolf,*Phoenix,Jr.,PF/C,Michigan,250.0,7-0
+2025,32,Ryan Kalkbrenner,*Orlando,Sr.,C,Creighton,260.0,7-2
+2025,33,Yanic Konan Nied...,Charlotte,Sr.,C,Penn State,245.0,7-1
+2025,34,Hansen Yang,*Charlotte,Intl.,C,China,255.0,7-2
+2025,35,Ben Saraf,Philadelphia,Intl.,PG/SG,Israel,200.0,6-6
+2025,36,Tamar Bates,*LA Lakers,Sr.,SG,Missouri,190.0,6-5
+2025,37,Micah Peavy,*Detroit,Sr.,SG/SF,Georgetown,210.0,6-7
+2025,38,Javon Small,*Indiana,Sr.,PG,West Virginia,190.0,6-2
+2025,39,Tyrese Proctor,*Toronto,Jr.,PG,Duke,185.0,6-5
+2025,40,Bogoljub Markovic,*New Orleans,Intl.,PF,Serbia,210.0,6-11
+2025,41,Johni Broome,*Phoenix,Sr.,PF/C,Auburn,250.0,6-10
+2025,42,Eric Dixon,*Sacramento,Sr.,PF,Villanova,260.0,6-9
+2025,43,Sion James,*Washington,Sr.,SF,Duke,220.0,6-6
+2025,44,Adou Thiero,*Oklahoma Cty,Jr.,SF/PF,Arkansas,220.0,6-7
+2025,45,Alex Toohey,*Minnesota,Intl.,SF/PF,Australia,225.0,6-9
+2025,46,Koby Brea,*Boston,Sr.,SG/SF,Kentucky,200.0,6-7
+2025,47,RJ Luis,*Milwaukee,Jr.,SG/SF,St. Johns,210.0,6-7
+2025,48,Kam Jones,*Memphis,Sr.,PG/SG,Marquette,200.0,6-4
+2025,49,Rocco Zikarsky,*Cleveland,Intl.,C,Australia,260.0,7-4
+2025,50,Hunter Sallis,*LA Clippers,Sr.,SG,Wake Forest,180.0,6-5
+2025,51,Mohamed Diawara,*New York,Intl.,SF/PF,France,225.0,6-9
+2025,52,Lachlan Olbrich,*Golden St.,Intl.,PF/C,Australia,230.0,6-10
+2025,53,Ryan Nembhard,*Utah,Sr.,PG,Gonzaga,175.0,6-0
+2025,54,Jamir Watkins,Indiana,Sr.,SF,Florida St.,215.0,6-6
+2025,55,Jaxson Robinson,Chicago,Sr.,SG/SF,Kentucky,190.0,6-6
+2025,56,Chucky Hepburn,*Golden St.,Sr.,PG,Louisville,195.0,6-2
+2025,57,Brice Williams,*Boston,Sr.,SG/SF,Nebraska,205.0,6-6
+2025,58,Amari Williams,Cleveland,Sr.,C,Kentucky,260.0,7-0
+2025,59,Mark Sears,*Memphis,Sr.,PG/SG,Alabama,185.0,6-0
+2025,60,Forfeited Pick,*New York,,,,,
