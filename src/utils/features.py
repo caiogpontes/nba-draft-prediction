@@ -4,39 +4,20 @@ import pandas as pd
 from typing import Literal
 from rapidfuzz import process, fuzz
 
-def calculate_proxy_usage(df: pd.DataFrame, source: Literal['per40', 'per100']) -> pd.DataFrame:
+def calculate_proxy_usage(FGA: float, FTA: float, TOV: float) -> float:
     """
     Cria a coluna Proxy_Usage (volume de responsabilidade) a partir de métricas brutas.
     
     Atenção: Assume que as colunas já estão escaladas (ex: FGA_per40).
     """
-    
-    # 1. Define os sufixos corretos baseados na fonte de dados
-    if source == 'per40':
-        suffix = '_per40'
-    elif source == 'per100':
-        suffix = '_per100' # Se você usar Per 100 Possessions
-    else:
-        raise ValueError("A fonte deve ser 'per40' ou 'per100'.")
-
-    # 2. Define as colunas de entrada
-    fga_col = 'FGA' + suffix
-    fta_col = 'FTA' + suffix
-    tov_col = 'TOV' + suffix
-    
-    # 3. Garante que as colunas existam (evita KeyErrors)
-    required_cols = [fga_col, fta_col, tov_col]
-    if not all(col in df.columns for col in required_cols):
-        raise KeyError(f"DataFrame College não contém as colunas necessárias para {source}: {required_cols}")
-
-    # 4. Cálculo da Proxy Usage
-    df['Proxy_Usage'] = (
-        df[fga_col] + 
-        (0.44 * df[fta_col]) + 
-        df[tov_col]
+    # 1. Cálculo da Proxy Usage
+    usage_percent = (
+        FGA + 
+        (0.44 * FTA) + 
+        TOV
     )
     
-    return df
+    return round(usage_percent, 2)
 
 
 def get_fuzzy_mapping(target_names, candidate_names, cutoff=80):
@@ -55,3 +36,21 @@ def find_best_match(name, choices, cutoff=90):
     if match and match[1] >= cutoff:
         return match[0] # Retorna o nome encontrado na tabela Draft
     return None
+
+def categorize_player(row):
+    # 1. Regra Eliminatória: Se jogou menos de 3 temporadas, é 'Bust' automaticamente
+    # (Independente do VORP, pois pode ter feito VORP 0.1 em 10 jogos e sumido)
+    if row['seasons_played'] < 3:
+        return 0 # Código numérico para Bust
+    
+    # 2. Classificação por VORP acumulado
+    vorp = row['vorp_5y_sum']
+    
+    if vorp >= 10.0:
+        return 3 # Star
+    elif vorp >= 3.5:
+        return 2 # Starter
+    elif vorp >= 0.0:
+        return 1 # Rotation
+    else:
+        return 0 # Bust (Mesmo jogando 5 anos, se o VORP é negativo, foi ruim)

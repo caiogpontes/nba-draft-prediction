@@ -110,8 +110,8 @@ class PlayerStatsParser:
                 df = df[~df['Season'].astype(str).isin(invalid_rows)].copy()
                 df = df[df['Season'].astype(str).str.contains(r'\d', na=False)].copy()
 
-            if 'advanced' in NBA_RENAMES: # Exemplo, se houver rename especifico
-                 pass 
+            if table_id in NBA_RENAMES:
+                df.rename(columns=NBA_RENAMES[table_id], inplace=True)
 
             # Conversão numérica segura (agora sem risco de duplicatas)
             cols_to_numeric = ['G', 'MP', 'FG', 'FGA', '3P', '3PA', 'FT', 'FTA', 'TRB', 'AST', 'STL', 'BLK', 'PTS', 'Age']
