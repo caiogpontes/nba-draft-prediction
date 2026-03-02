@@ -18,7 +18,7 @@ Projeto final (TCC) do curso de Pós-Graduação em Data Science e IA. O objetiv
 * **Variável Alvo (Y):** Definir o sucesso de carreira pela métrica **VORP Acumulado nos 5 Primeiros Anos**.
 * **Análise (EDA):** Explorar os dados para encontrar correlações e features preditivas.
 * **Feature Engineering:** Criar *features* preditivas como `Pick_Differential` (Mock vs. Real) e `Proxy_Usage` (Volume Ofensivo).
-* **Preparação:** Unir, limpar e preparar os 7 DataFrames em uma base de modelo única.
+* **Preparação:** Unir, limpar e preparar os 9 DataFrames em uma base de modelo única.
 
 ---
 
@@ -31,7 +31,7 @@ Clone este repositório e instale as dependências:
 
 ```bash
 # 1. Clone o projeto (Certifique-se de estar no diretório raiz)
-git clone [https://github.com/SEU_USUARIO/nba-draft-prediction.git](https://github.com/SEU_USUARIO/nba-draft-prediction.git)
+git clone [https://github.com/SEUí_USUARIO/nba-draft-prediction.git](https://github.com/SEU_USUARIO/nba-draft-prediction.git)
 cd nba-draft-prediction
 
 # 2. (Opcional, mas recomendado) Crie um ambiente virtual
@@ -63,10 +63,12 @@ nba-draft-prediction/
 │   └── .gitkeep             # Onde os .csv de saída são salvos
 │
 ├── notebooks/
-│   ├── 01_data_preparation.ipynb  # Limpeza e junção dos dados
+│   ├── 01_data_preparation.ipynb          # Limpeza e junção dos dados
 │   ├── 02_exploratory_data_analysis.ipynb # EDA
-│   ├── 03_feature_engineering.ipynb # Criação da Variável Alvo e Features
-│   └── 04_model_training.ipynb    # Treinamento do modelo
+│   ├── 03_feature_engineering.ipynb       # Criação da Variável Alvo e Features
+│   ├── 04_model_training.ipynb            # Treinamento do modelo (Base)
+│   ├── 05_model_training.ipynb            # Treinamento de modelos Ensembles
+│   └── 06_model_training_automl.ipynb     # Treinamento de modelos AutoML
 │
 ├── src/                           # Código-fonte do pipeline de engenharia (Clean Code)
 │   ├── config.py                  # Configs, constantes e Mapeamentos

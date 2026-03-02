@@ -5,6 +5,8 @@ numpy   # Utilizado implicitamente pelo Pandas
 unidecode
 typing
 rapidfuzz
+re
+bs4
 
 # Bibliotecas de Rede e API
 cloudscraper  # Usado para superar proteções (Basketball-Reference, NBADraft.net)
