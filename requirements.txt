@@ -1,14 +1,29 @@
-# Bibliotecas Principais para Engenharia e Análise de Dados
-pandas  # Essencial para DataFrames
-lxml    # Parser rápido de HTML (Dependência do pandas)
-numpy   # Utilizado implicitamente pelo Pandas
-unidecode
-typing
+# Pipeline de coleta e processamento
+beautifulsoup4
+cloudscraper
+lxml
+nba-api
+pandas
 rapidfuzz
-re
-bs4
+Unidecode
 
-# Bibliotecas de Rede e API
-cloudscraper  # Usado para superar proteções (Basketball-Reference, NBADraft.net)
-beautifulsoup4 # Usado para parsing de HTML
-nba-api        # Usado para coleta robusta dos dados do Combine
+# Ambiente dos notebooks
+ipykernel
+ipython
+
+# Analise e visualizacao
+adjustText
+matplotlib
+numpy
+scipy
+seaborn
+statsmodels
+
+# Treinamento e interpretabilidade
+imbalanced-learn
+lightgbm
+# O notebook 06 ainda usa LogisticRegression(multi_class=...).
+scikit-learn<1.8
+shap
+tensorflow
+xgboost

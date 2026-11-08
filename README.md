@@ -1,105 +1,76 @@
-# nba-draft-prediction: Modelo Preditivo para Sucesso na NBA 🏀
+# NBA Draft Prediction 🏀
 
-![Status](https://img.shields.io/badge/status-em_desenvolvimento-yellow)
+Projeto de conclusão da pós-graduação em Data Science e IA. O projeto reúne um pipeline de coleta de dados do Draft da NBA e notebooks que estimam o desempenho profissional de jogadores vindos da NCAA a partir de informações disponíveis na época do Draft.
 
-Projeto final (TCC) do curso de Pós-Graduação em Data Science e IA. O objetivo é construir um pipeline de engenharia de dados (web scraping) e um modelo de Machine Learning para prever o sucesso de jogadores universitários (NCAA) na NBA.
+A variável-alvo combina o VORP (*Value Over Replacement Player*) acumulado nas cinco primeiras temporadas na NBA com o número de temporadas disputadas. Jogadores com menos de três temporadas recebem a classe `Bust`. Para os demais, o VORP acumulado define a classe.
 
----
+| Classe | VORP acumulado |
+| --- | --- |
+| `Star` | 10 ou mais |
+| `Starter` | De 3,5 até menos de 10 |
+| `Rotation` | De 0 até menos de 3,5 |
+| `Bust` | Abaixo de 0 |
 
-## 🎯 Objetivos do Projeto
+## Instalação
 
-### 1. Engenharia de Dados (Coleta)
-* **Coleta de Dados Reais:** Desenvolver um scraper robusto para extrair dados históricos do Draft, estatísticas de carreira (NBA) e estatísticas universitárias (NCAA) do [Basketball-Reference.com](https://www.basketball-reference.com/).
-* **Coleta Física e Agilidade:** Integrar dados do **NBA Combine (Medidas Antropométricas e Testes de Força/Salto)** utilizando a biblioteca `nba-api`.
-* **Coleta de Expectativas:** Criar um scraper para extrair dados históricos de "Mock Drafts" do [NBADraft.net](https://www.nbadraft.net/).
-* **Arquitetura Limpa:** Construir o pipeline de coleta seguindo princípios de **Clean Code** e **SOLID (SRP, OCP)**.
-
-### 2. Ciência de Dados (Modelagem)
-* **Variável Alvo (Y):** Definir o sucesso de carreira pela métrica **VORP Acumulado nos 5 Primeiros Anos**.
-* **Análise (EDA):** Explorar os dados para encontrar correlações e features preditivas.
-* **Feature Engineering:** Criar *features* preditivas como `Pick_Differential` (Mock vs. Real) e `Proxy_Usage` (Volume Ofensivo).
-* **Preparação:** Unir, limpar e preparar os 9 DataFrames em uma base de modelo única.
-
----
-
-## 🚀 Como Executar o Pipeline de Coleta
-
-Este projeto utiliza Python. As dependências estão listadas em `requirements.txt`.
-
-### 1. Instalação e Configuração
-Clone este repositório e instale as dependências:
+Os notebooks registram Python 3.13 nos metadados. Use um ambiente virtual com essa versão.
 
 ```bash
-# 1. Clone o projeto (Certifique-se de estar no diretório raiz)
-git clone [https://github.com/SEUí_USUARIO/nba-draft-prediction.git](https://github.com/SEU_USUARIO/nba-draft-prediction.git)
+git clone https://github.com/caiogpontes/nba-draft-prediction.git
 cd nba-draft-prediction
-
-# 2. (Opcional, mas recomendado) Crie um ambiente virtual
-python -m venv venv
-source venv/bin/activate  # No Windows: venv\Scripts\activate
-
-# 3. Instale as dependências
-pip install -r requirements.txt
+python -m venv .venv
 ```
 
-### 3. Executando a Coleta de Dados
-Para executar o pipeline completo de web scraping, basta rodar o `main.py`. Os dados serão salvos na pasta `/data`.
+Ative o ambiente com `.venv\Scripts\Activate.ps1` no PowerShell ou `source .venv/bin/activate` no Bash. Em seguida, instale as dependências do pipeline e dos notebooks.
+
+```bash
+python -m pip install -r requirements.txt
+```
+
+## Coleta de dados
+
+Para refazer a coleta, execute na raiz do repositório.
 
 ```bash
 python main.py
 ```
-*Nota: A coleta pode levar um tempo considerável devido aos delays implementados para não sobrecarregar os servidores de origem.*
 
----
+O pipeline está configurado para os Drafts de 2000 a 2025 e salva os CSVs em `data/`. A coleta acessa serviços externos e pode demorar devido às pausas entre requisições.
 
-## 📁 Estrutura do Projeto
+- Histórico do Draft e estatísticas da NBA e da NCAA. [Basketball Reference](https://www.basketball-reference.com/)
+- Mock Drafts históricos. [NBADraft.net](https://www.nbadraft.net/)
+- Medidas antropométricas e testes de força e agilidade do Combine, consultados com `nba-api`.
 
-O projeto é dividido em duas partes principais: o pipeline de engenharia (`src`) e os notebooks de análise (`notebooks`).
+## Notebooks
 
-```
-nba-draft-prediction/
-│
-├── data/
-│   └── .gitkeep             # Onde os .csv de saída são salvos
-│
-├── notebooks/
-│   ├── 01_data_preparation.ipynb          # Limpeza e junção dos dados
-│   ├── 02_exploratory_data_analysis.ipynb # EDA
-│   ├── 03_feature_engineering.ipynb       # Criação da Variável Alvo e Features
-│   ├── 04_model_training.ipynb            # Treinamento do modelo (Base)
-│   ├── 05_model_training.ipynb            # Treinamento de modelos Ensembles
-│   └── 06_model_training_automl.ipynb     # Treinamento de modelos AutoML
-│
-├── src/                           # Código-fonte do pipeline de engenharia (Clean Code)
-│   ├── config.py                  # Configs, constantes e Mapeamentos
-│   ├── infrastructure/            # NetworkClient, DataManager (I/O)
-│   ├── parsers/                   # Lógica de extração (MockParser, StatsParser)
-│   ├── pipeline/                  # Orchestrator (Coordenação do Fluxo)
-│   └── utils/                     # Para corversoes, métodos para 
-│
-├── main.py                  # Ponto de entrada para executar o pipeline de coleta
-├── requirements.txt         # Dependências do Python
-└── README.md                # Este arquivo
-```
+Abra os notebooks no VS Code ou no Jupyter e selecione o kernel do ambiente virtual. Execute com `notebooks/` como diretório de trabalho, pois há células que leem arquivos em `../data/`.
 
----
+Para reconstruir as bases a partir dos CSVs de coleta, execute `01` e depois `03`. O notebook `02` explora os dados, e os notebooks `04` a `07` usam as bases preparadas para os experimentos. A pasta `notebooks/old_notebooks/` fica fora desse fluxo.
 
-## 📊 Fontes de Dados
+| Notebook | Etapa |
+| --- | --- |
+| `01_data_preparation.ipynb` | Consolidação dos CSVs e cálculo do VORP acumulado |
+| `02_exploratory_data_analysis_(EDA).ipynb` | Análise exploratória |
+| `03_feature_engineering.ipynb` | Criação das classes e variáveis, com separação das bases pelo ano do Draft |
+| `04_multinomial_logistic_regression.ipynb` | Regressão logística multinomial |
+| `05_model_training.ipynb` | Treinamento e comparação de modelos de classificação |
+| `06_model_training_automl.ipynb` | Busca de hiperparâmetros e avaliação de modelos |
+| `07_neural_networks.ipynb` | Treinamento e avaliação de redes neurais |
+| `07_neural_networks_TCC_2_v3.ipynb` | Experimento de redes neurais para o TCC II |
 
-* **Estatísticas Reais:** [Basketball-Reference.com](https://www.basketball-reference.com/)
-* **Dados Físicos (Combine):** [NBA Stats API] (nba-api)
-* **Mock Drafts Históricos:** [NBADraft.net](https://www.nbadraft.net/)
+## Estrutura do projeto
 
----
+- `main.py` executa a coleta.
+- `src/` contém a configuração, a infraestrutura de rede e armazenamento, os parsers, a orquestração e os utilitários.
+- `data/` reúne os CSVs de coleta e as bases preparadas.
+- `notebooks/` reúne as etapas de análise e modelagem.
+- `requirements.txt` reúne as dependências do pipeline e dos notebooks ativos.
 
-## ✍️ Autor
+## Autor
 
-**[Caio Gonçalves Pontes]**
-* [LinkedIn](https://www.linkedin.com/in/caiogpontes/)
-* [GitHub](https://github.com/caiogpontes)
+Caio Gonçalves Pontes. [LinkedIn](https://www.linkedin.com/in/caiogpontes/) · [GitHub](https://github.com/caiogpontes)
 
----
+## Licença
 
-## 📄 Licença
+[MIT](LICENSE).
 
-Este projeto está licenciado sob a Licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
