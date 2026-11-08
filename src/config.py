@@ -1,11 +1,11 @@
-# src/config.py
+
 import logging
 from dataclasses import dataclass
 
-# --- Configuração de Logs ---
+# Configuração de Logs
 def setup_logging():
     logging.basicConfig(
-        level=logging.INFO, # Use DEBUG para dev, INFO para prod
+        level=logging.INFO, 
         format='%(asctime)s - %(levelname)s - [%(name)s] - %(message)s',
         handlers=[logging.StreamHandler()]
     )
@@ -26,11 +26,11 @@ FILES = {
 
 }
 
-# --- Configuração de Rede ---
+# Configuração de Rede
 BASE_URL_BASKETBALL_REF = "https://www.basketball-reference.com"
 BASE_URL_NBADRAFT_NET = "https://www.nbadraft.net" 
 
-# --- 1. Headers Padrão (Também atualizado para Firefox) ---
+# Cabeçalhos HTTP das requisições.
 HEADERS = {
     'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/117.0',
     'Accept-Language': 'en-US,en;q=0.9,pt;q=0.8',
@@ -42,7 +42,7 @@ class ScraperConfig:
     timeout: int = 60
     delay_between_requests: int = 2
 
-# --- Mapeamento de Renomeação ---
+# Mapeamento de Renomeação
 COLLEGE_RENAMES = {
     'players_advanced': {
         'Team': 'Tm',       'WS/40': 'WS_per_40', 'TS%': 'TS_pct',

@@ -11,7 +11,7 @@ Unidecode
 ipykernel
 ipython
 
-# Analise e visualizacao
+# Análise e visualização
 adjustText
 matplotlib
 numpy

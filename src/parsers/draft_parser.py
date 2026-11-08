@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 from io import StringIO
 from src.config import BASE_URL_BASKETBALL_REF, DRAFT_RENAMES
 
-logger = logging.getLogger(__name__) # Pega o logger configurado
+logger = logging.getLogger(__name__) 
 
 class DraftParser:
     @staticmethod
@@ -16,7 +16,7 @@ class DraftParser:
             table = soup.find('table', {'id': 'stats'})
             if not table: return pd.DataFrame()
 
-            # Extração de Metadata (Links e IDs)
+            # Extração de metadados: links e identificadores.
             meta_data = {}
             for row in table.tbody.find_all('tr'):
                 player_col = row.find('td', {'data-stat': 'player'})

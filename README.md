@@ -13,7 +13,7 @@ A variável-alvo combina o VORP (*Value Over Replacement Player*) acumulado nas 
 
 ## Instalação
 
-Os notebooks registram Python 3.13 nos metadados. Use um ambiente virtual com essa versão.
+Os notebooks principais registram Python 3.13.16 nos metadados. Crie um ambiente virtual com Python 3.13.
 
 ```bash
 git clone https://github.com/caiogpontes/nba-draft-prediction.git
@@ -45,7 +45,7 @@ O pipeline está configurado para os Drafts de 2000 a 2025 e salva os CSVs em `d
 
 Abra os notebooks no VS Code ou no Jupyter e selecione o kernel do ambiente virtual. Execute com `notebooks/` como diretório de trabalho, pois há células que leem arquivos em `../data/`.
 
-Para reconstruir as bases a partir dos CSVs de coleta, execute `01` e depois `03`. O notebook `02` explora os dados, e os notebooks `04` a `07` usam as bases preparadas para os experimentos. A pasta `notebooks/old_notebooks/` fica fora desse fluxo.
+Para reconstruir as bases a partir dos CSVs de coleta, execute `01` e depois `03`. Em seguida, execute `02` para explorar as bases preparadas ou `04` a `07` para os experimentos de modelagem. A pasta `notebooks/old_notebooks/` contém versões históricas e fica fora desse fluxo.
 
 | Notebook | Etapa |
 | --- | --- |
@@ -56,7 +56,6 @@ Para reconstruir as bases a partir dos CSVs de coleta, execute `01` e depois `03
 | `05_model_training.ipynb` | Treinamento e comparação de modelos de classificação |
 | `06_model_training_automl.ipynb` | Busca de hiperparâmetros e avaliação de modelos |
 | `07_neural_networks.ipynb` | Treinamento e avaliação de redes neurais |
-| `07_neural_networks_TCC_2_v3.ipynb` | Experimento de redes neurais para o TCC II |
 
 ## Estrutura do projeto
 
@@ -65,6 +64,7 @@ Para reconstruir as bases a partir dos CSVs de coleta, execute `01` e depois `03
 - `data/` reúne os CSVs de coleta e as bases preparadas.
 - `notebooks/` reúne as etapas de análise e modelagem.
 - `requirements.txt` reúne as dependências do pipeline e dos notebooks ativos.
+- `requirements_mlops.txt` contém uma lista separada de dependências para MLOps, fora do fluxo principal.
 
 ## Autor
 

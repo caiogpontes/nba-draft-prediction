@@ -1,15 +1,13 @@
-# src/utils/features.py
+
 
 import pandas as pd
 from typing import Literal
 from rapidfuzz import process, fuzz
 
 def calculate_proxy_usage(FGA: float, FTA: float, TOV: float) -> float:
-    """
-    Cria a coluna Proxy_Usage (volume de responsabilidade) a partir de métricas brutas.
-    
-    Atenção: Assume que as colunas já estão escaladas (ex: FGA_per40).
-    """
+    """Calcula FGA + 0,44 × FTA + TOV, com entradas na mesma escala por 40 minutos.
+
+    O resultado é uma aproximação de volume de uso, não uma porcentagem de posses."""
     # 1. Cálculo da Proxy Usage
     usage_percent = (
         FGA + 
@@ -29,17 +27,17 @@ def get_fuzzy_mapping(target_names, candidate_names, cutoff=80):
             mapping[name] = match
     return mapping
 
-# 2. Função para achar o melhor match
+
 def find_best_match(name, choices, cutoff=90):
-    # Retorna (Melhor Match, Score, Index)
+    # A busca retorna o nome, a pontuação de similaridade e o índice.
     match = process.extractOne(name, choices, scorer=fuzz.token_sort_ratio)
     if match and match[1] >= cutoff:
-        return match[0] # Retorna o nome encontrado na tabela Draft
+        return match[0] # Retorna o nome correspondente entre os candidatos.
     return None
 
 def categorize_player(row):
-    # 1. Regra Eliminatória: Se jogou menos de 3 temporadas, é 'Bust' automaticamente
-    # (Independente do VORP, pois pode ter feito VORP 0.1 em 10 jogos e sumido)
+    # Classifica como Bust os jogadores com menos de três temporadas observadas.
+    
     if row['seasons_played'] < 3:
         return 0 # Código numérico para Bust
     
@@ -53,4 +51,4 @@ def categorize_player(row):
     elif vorp >= 0.0:
         return 1 # Rotation
     else:
-        return 0 # Bust (Mesmo jogando 5 anos, se o VORP é negativo, foi ruim)
+        return 0 # Bust: VORP acumulado negativo.

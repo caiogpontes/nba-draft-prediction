@@ -1,23 +1,23 @@
-# src/infrastructure/network.py - SIMPLIFICADO
+
 
 import time
 from typing import Optional
 import cloudscraper
 import logging
-from src.config import ScraperConfig, HEADERS # HEADERS é o padrão
+from src.config import ScraperConfig, HEADERS 
 
 logger = logging.getLogger(__name__) 
 
 class NetworkClient:
-    """Responsável apenas por buscar o conteúdo (SRP)."""
+    """Obtém páginas HTML com reutilização de sessão e novas tentativas."""
     def __init__(self, config: ScraperConfig):
-        # OTIMIZAÇÃO: Cria o scraper APENAS UMA VEZ.
+        # Reutiliza a sessão nas requisições.
         self.scraper = cloudscraper.create_scraper() 
         self.config = config
 
     def get_html(self, url: str, custom_headers: Optional[dict] = None) -> Optional[str]:
         
-        # Não precisa recriar a sessão
+        
         request_headers = custom_headers if custom_headers else HEADERS
 
         for attempt in range(1, self.config.max_retries + 1):

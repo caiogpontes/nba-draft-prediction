@@ -1,4 +1,4 @@
-# src/utils/converters.py
+
 import math
 import re
 from typing import Tuple, Optional
@@ -10,10 +10,9 @@ def feet_to_meters(feet: float) -> float:
     return round(feet * 0.3048, 2)
 
 def _parse_height_weight_string(hw_str: Optional[str]) -> Tuple[Optional[int], Optional[int], Optional[int]]:
-    """
-    Parses a string like '6-5, 200lb' into (feet, inches, pounds).
-    Returns (None, None, None) on failure.
-    """
+    """Converte uma string como '6-5, 200lb' em pés, polegadas e libras.
+
+    Retorna (None, None, None) quando o formato não é reconhecido."""
     if not hw_str or not isinstance(hw_str, str):
         return None, None, None
         
@@ -74,7 +73,7 @@ def class_to_int(class_str: Optional[str]) -> Optional[int]:
     if not class_str or not isinstance(class_str, str):
         return None
 
-    # 1. Normalização: Remove espaços, pontos e joga para maiúsculo
+    # Remove espaços e pontos e converte para maiúsculas.
     # Ex: "Sr." -> "SR", "  so " -> "SO"
     clean_str = class_str.strip().replace('.', '').upper()
 
@@ -91,7 +90,7 @@ def class_to_int(class_str: Optional[str]) -> Optional[int]:
         'GR': 5,
         'GS': 5,
         'GRAD': 5,
-        'HSSR': 0  # Sugestão: High School Senior (comum em dados antigos)
+        'HSSR': 0  # Último ano do ensino médio, anterior à universidade.
     }
 
     return class_map.get(clean_str, None)

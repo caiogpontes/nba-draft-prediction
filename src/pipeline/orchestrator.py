@@ -1,4 +1,4 @@
-# src/pipeline/orchestrator.py - VERSÃO FINAL LIMPA
+
 import time
 import pandas as pd
 import logging
@@ -23,7 +23,7 @@ class Orchestrator:
     def __init__(self):
         self.client = NetworkClient(ScraperConfig())
 
-    # ... (Métodos auxiliares _get_mock_draft_url, _get_existing_ids, _update_draft_links mantidos) ...
+    
 
     def _get_mock_draft_url(self, year: int) -> str:
         """Encapsula a lógica de qual URL usar para mocks."""
@@ -61,9 +61,9 @@ class Orchestrator:
             # Adiciona os novos dados à lista bruta
             all_data.extend(new_data_list)
             
-            # --- FIX V5: Limpeza Profunda Pré-Concatenação ---
-            # Remove linhas 100% vazias de cada DataFrame antes de juntar.
-            # Isso elimina o aviso de "all-NA entries".
+            # Remove linhas e colunas inteiramente vazias antes da concatenação.
+            
+            
             valid_data = []
             for df in all_data:
                 if df is not None and not df.empty:
@@ -74,12 +74,12 @@ class Orchestrator:
                         valid_data.append(df_clean)
             
             if not valid_data:
-                # Se não sobrou nada, não faz sentido salvar
+                
                 return
 
-            # 2. Concatena (agora seguro)
+            # Concatena os dados válidos.
             final_df = pd.concat(valid_data, ignore_index=True)
-            # -------------------------------------------------
+            
             
             # 3. Remove duplicatas (Lógica de Chave)
             if 'Player_ID' in final_df.columns:
@@ -107,7 +107,7 @@ class Orchestrator:
         DataManager.save_csv(df, filename)
         
     def run_drafts(self, start: int, end: int, output: str):
-        # ... (Mantido)
+        
         existing_years = self._get_existing_ids(output, 'Year')
         existing_years_int = {int(float(y)) for y in existing_years if y.replace('.', '', 1).isdigit()}
         
@@ -123,7 +123,7 @@ class Orchestrator:
 
             logger.info(f"Baixando Draft {year}...")
             url = f"{BASE_URL_BASKETBALL_REF}/draft/NBA_{year}.html"
-            # Não precisa passar headers customizados, usa o padrão HEADERS
+            
             html = self.client.get_html(url) 
             if html:
                 df_year = DraftParser.parse(html, year)
@@ -145,11 +145,11 @@ class Orchestrator:
                 files (Dict[str, str]): Dicionário contendo os caminhos dos arquivos CSV
                                         para 'draft', 'nba', 'college_adv', etc.
         """
-        # ... (Mantido)
+        
         draft_df = DataManager.load_csv(files['draft'])
         if draft_df.empty: return
 
-        # Filtro Não-Destrutivo
+        # Seleciona jogadores com informação de universidade.
         if 'College' not in draft_df.columns:
             has_college_mask = pd.Series([False] * len(draft_df), index=draft_df.index)
         else:
@@ -162,7 +162,7 @@ class Orchestrator:
         # 1. Identifica processados
         processed_nba_ids = self._get_existing_ids(files['nba'], 'Player_ID')
         
-        # OTIMIZAÇÃO: Listas vazias (não carregamos o histórico para a RAM)
+        # Acumula os novos registros até o próximo salvamento parcial.
         new_nba_data = []
         new_nba_college_data = []
         new_college_adv = []
@@ -194,7 +194,7 @@ class Orchestrator:
             
             if not isinstance(nba_link, str): continue
 
-            # Não precisa de headers customizados aqui, usa o padrão.
+            
             nba_html = self.client.get_html(nba_link) 
             if nba_html:
                 nba_stats = PlayerStatsParser.parse_stats_nba(nba_html, 'advanced',pid)
@@ -221,7 +221,7 @@ class Orchestrator:
             
             unsaved_count += 1
             
-            # OTIMIZAÇÃO: Salva e LIMPA a memória
+            # Salva os registros coletados e esvazia as listas.
             if unsaved_count >= PARTIAL_SAVE_INTERVAL:
                 self._append_and_save(new_nba_data, files['nba'])
                 self._append_and_save(new_nba_college_data, files['nba_college_stats'])
@@ -239,7 +239,7 @@ class Orchestrator:
             
             time.sleep(self.client.config.delay_between_requests)
 
-        # Salvamento Final (o que sobrou)
+        # Salva os registros restantes.
         self._append_and_save(new_nba_data, files['nba'])
         self._append_and_save(new_nba_college_data, files['nba_college_stats'])
         self._append_and_save(new_college_adv, files['college_adv'])
@@ -251,7 +251,7 @@ class Orchestrator:
             self._update_draft_links(draft_df, new_college_links, files['draft'])
 
     def run_mocks(self, start: int, end: int, output: str):
-        # ... (Mantido)
+        
         existing_years = self._get_existing_ids(output, 'Year')
         existing_years_int = {int(float(y)) for y in existing_years if y.replace('.', '', 1).isdigit()}
 
@@ -279,7 +279,7 @@ class Orchestrator:
             final_df.drop_duplicates(subset=['Year', 'Mock_Pick'], inplace=True)
             DataManager.save_csv(final_df, output)
             
-    # --- NOVO MÉTODO AUXILIAR (Formatador de Ano) ---
+    
     def _format_season_year(self, year: int) -> str:
         """Converte 2000 -> '2000-01' para a API da NBA."""
         next_year = (year + 1) % 100
@@ -336,8 +336,8 @@ class Orchestrator:
     def _save_combine_final(self, data_list: List[pd.DataFrame], filepath: str):
         if not data_list: return
         
-        # --- CORREÇÃO V3: Filtra DataFrames vazios/inválidos ---
-        # Isso remove a causa da FutureWarning (tabelas que deram sucesso, mas vieram vazias).
+        # Exclui tabelas vazias antes da concatenação.
+        
         valid_data = [df for df in data_list if not df.empty]
         
         if not valid_data:
@@ -345,7 +345,7 @@ class Orchestrator:
             return
         
         final_df = pd.concat(valid_data, ignore_index=True)
-        # -------------------------------------------------------
+        
         
         # Assume que PLAYER_ID é a chave
         subset_cols = ['PLAYER_ID', 'Season_Year'] if 'PLAYER_ID' in final_df.columns else None

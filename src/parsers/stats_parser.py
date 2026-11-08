@@ -7,7 +7,7 @@ from src.config import COLLEGE_RENAMES, NBA_RENAMES
 from src.parsers.html_helper import HtmlParser
 import re
 
-logger = logging.getLogger(__name__) # Pega o logger configurado
+logger = logging.getLogger(__name__) 
 
 class PlayerStatsParser:
     """Regras de Negócio para extração de estatísticas."""
@@ -27,7 +27,7 @@ class PlayerStatsParser:
                 link_href = tag['href']
 
                 # 1. Verifica se o texto do link bate com o que procuramos
-                # (O uso de 'any' deixa mais limpo que vários 'or')
+                
                 if any(target in link_text for target in TARGET_TEXTS):
                     
                     # 2. Verifica se a URL contém a parte específica de jogadores do college
@@ -36,7 +36,7 @@ class PlayerStatsParser:
                         return link_href if link_href.startswith('http') else f"https://www.sports-reference.com{link_href}"
                         
         except Exception as e:
-            # É boa prática logar o erro em vez de apenas 'pass', para debug futuro
+            
             logger.debug(f"Erro ao extrair link do college: {e}")
             
         return None
@@ -51,7 +51,7 @@ class PlayerStatsParser:
             
             # Filtros e Limpeza
             if 'Season' in df.columns:
-                invalid_rows = ['Career', 'Total'] # '2025-2026'
+                invalid_rows = ['Career', 'Total'] 
                 df = df[~df['Season'].astype(str).isin(invalid_rows)].copy()
                 df = df[df['Season'].str.contains('-', na=False)] # Apenas temporadas válidas (ex: 2018-19)
 
@@ -62,20 +62,17 @@ class PlayerStatsParser:
                 df['VORP'] = pd.to_numeric(df['VORP'], errors='coerce').fillna(0)
 
             df['Player_ID'] = player_id
-            return df.to_dict('records') #.head(5)
+            return df.to_dict('records') 
 
         except Exception as e:
             logger.debug(f"Erro parsing NBA para {player_id}: {e}")
             return []
         
-    # Em src/parsers/stats_parser.py
+    
 
     @staticmethod
     def parse_nba_profile_college(html_content: str, table_id: str ,player_id: str) -> List[Dict]:
-        """
-        Extrai a tabela 'College Basketball' do perfil da NBA.
-        V2: Corrige duplicidade de colunas (MP, PTS) que causava erro no pd.to_numeric.
-        """
+        """Extrai estatísticas universitárias do perfil da NBA e remove colunas duplicadas."""
         try:
             soup = BeautifulSoup(html_content, 'html.parser')
             
@@ -90,7 +87,7 @@ class PlayerStatsParser:
             if df is None or df.empty:
                 return []
 
-            # --- FIX: Tratamento de MultiIndex e Deduplicação ---
+            # Normaliza os cabeçalhos e remove colunas duplicadas.
             if isinstance(df.columns, pd.MultiIndex):
                 # Pega o último nível (Season, Age, MP, PTS...)
                 df.columns = df.columns.get_level_values(-1)
@@ -98,12 +95,12 @@ class PlayerStatsParser:
             # Limpa nomes
             df.columns = [str(c).strip() for c in df.columns]
             
-            # REMOVE COLUNAS DUPLICADAS (O Passo Crítico)
+            
             # Mantém a primeira ocorrência de cada coluna (ex: primeiro MP, primeiro PTS)
             df = df.loc[:, ~df.columns.duplicated()].copy()
-            # ----------------------------------------------------
+            
 
-            # --- Limpeza de Dados ---
+            # Limpeza de Dados
             if 'Season' in df.columns:
                 df = df[df['Season'] != 'Season'].copy()
                 invalid_rows = ['Career', 'Total']
@@ -113,11 +110,11 @@ class PlayerStatsParser:
             if table_id in NBA_RENAMES:
                 df.rename(columns=NBA_RENAMES[table_id], inplace=True)
 
-            # Conversão numérica segura (agora sem risco de duplicatas)
+            # Conversão das colunas numéricas.
             cols_to_numeric = ['G', 'MP', 'FG', 'FGA', '3P', '3PA', 'FT', 'FTA', 'TRB', 'AST', 'STL', 'BLK', 'PTS', 'Age']
             for col in cols_to_numeric:
                 if col in df.columns:
-                    # Agora df[col] é garantidamente uma Series única
+                    
                     df[col] = pd.to_numeric(df[col], errors='coerce').fillna(0)
 
             df['Player_ID'] = player_id
@@ -144,7 +141,7 @@ class PlayerStatsParser:
                 df = df[~df['Season'].astype(str).isin(invalid_rows)].copy()
                 df = df[df['Season'].str.contains('-', na=False)] # Apenas temporadas válidas (ex: 2018-19)
 
-            # Aplica renomeação baseada no dicionário externo (OCP Compliance)
+            # Padroniza os nomes das colunas conforme a configuração.
             if table_id in COLLEGE_RENAMES:
                 df.rename(columns=COLLEGE_RENAMES[table_id], inplace=True)
 
@@ -157,12 +154,8 @@ class PlayerStatsParser:
         
     @staticmethod
     def extract_player_metadata(html_content: str, player_id: str) -> Dict:
-        """
-        Extrai metadados essenciais (Posição, Altura, Peso, RSCI) 
-        da página de perfil do Sports Reference (CBB).
-        V3: Extração robusta usando p.text, ignorando tags aninhadas.
-        """
-        import re # Garante que está importado aqui, caso o usuário tenha removido do topo
+        """Extrai posição, altura, peso e classificação RSCI do perfil universitário."""
+        import re 
         
         metadata = {
             'Player_ID': player_id,
