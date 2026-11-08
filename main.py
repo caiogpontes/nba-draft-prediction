@@ -7,7 +7,7 @@ from src.config import setup_logging, FILES
 setup_logging()
 logger = logging.getLogger(__name__)
 
-# AAnos de início e fim para coleta de dados
+# Anos de início e fim para coleta de dados
 START_YEAR = 2000
 END_YEAR = 2025
 
@@ -16,7 +16,7 @@ if __name__ == "__main__":
     
     bot = Orchestrator()
     
-    # ETAPA 1: Coletar Drafts Reais (basketbal9 l-reference)
+    # ETAPA 1: Coletar Drafts Reais (basketball-reference)
     bot.run_drafts(start=START_YEAR, end=END_YEAR, output=FILES['draft'])
     
     # ETAPA 2: Coletar Estatísticas dos Jogadores (baseado no Passo 1)
